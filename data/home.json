@@ -1,0 +1,64 @@
+{
+    "products": [
+        {
+            "title": "Homemade Blueberry Cheesecake",
+            "image": "/assets/images/hero/products/small-cake.webp",
+            "bg-gradient": "--gradient-light-orange",
+            "content": {
+                "title": "The Final Note of Delight",
+                "description": "Discover our new collection of frozen solutions designed for the modern household and professional kitchen.",
+                "buttonLabel": "Explore Now",
+                "buttonLink": "/menu",
+                "image": {
+                    "src": "/assets/images/banner-cake.webp",
+                    "alt": "Hero Product",
+                    "width": 500,
+                    "height": 500
+                },
+                "sub_image": {
+                    "src": "/assets/images/hero/fruits.webp",
+                    "alt": "Hero Sub Image",
+                    "width": 500,
+                    "height": 500
+                },
+                "floatImages": [
+                    "/assets/images/hero/grapes.webp",
+                    "/assets/images/hero/grape-2.webp",
+                    "/assets/images/hero/strawberry.webp"
+                ],
+                "tagline": "Crafted with love, using only fresh fruits, premium dairy, and natural ingredients.",
+                "tagline_img": "/assets/images/hero/products/tagline.webp"
+            }
+        },
+        {
+            "title": "Homemade Blueberry Cheesecake 2",
+            "image": "/assets/images/hero/products/small-cake.webp",
+            "bg-gradient": "--earthy-brown",
+            "content": {
+                "title": "The Final Note of Delight",
+                "description": "Discover our new collection of frozen solutions designed for the modern household and professional kitchen.",
+                "buttonLabel": "Explore Now",
+                "buttonLink": "/menu",
+                "image": {
+                    "src": "/assets/images/banner-cake.webp",
+                    "alt": "Hero Product",
+                    "width": 500,
+                    "height": 500
+                },
+                "sub_image": {
+                    "src": "/assets/images/hero/fruits.webp",
+                    "alt": "Hero Sub Image",
+                    "width": 500,
+                    "height": 500
+                },
+                "floatImages": [
+                    "/assets/images/hero/grapes.webp",
+                    "/assets/images/hero/grape-2.webp",
+                    "/assets/images/hero/strawberry.webp"
+                ],
+                "tagline": "Crafted with love, using only fresh fruits, premium dairy, and natural ingredients.",
+                "tagline_img": "/assets/images/hero/products/tagline.webp"
+            }
+        }
+    ]
+}

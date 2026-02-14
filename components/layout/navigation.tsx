@@ -15,7 +15,7 @@ export default function Navigation() {
     ];
 
     return (
-        <nav className="fixed top-[49.89px] left-[101px] w-[1280px] h-[63px] bg-nav-bg rounded-[25px] border border-[#BC9478]/30 flex items-center px-12 z-50 shadow-sm">
+        <nav className="fixed top-[50px] left-0 right-0 w-[1280px] h-[63px] bg-nav-bg rounded-3xl border border-[#BC9478]/30 flex items-center px-12 z-50 shadow-sm mx-auto">
             <div className="flex w-full items-center justify-between">
                 {/* Left Links */}
                 <div className="flex gap-14 items-center flex-1">
