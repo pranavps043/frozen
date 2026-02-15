@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const AboutSection = () => {
     return (
-        <section className="relative min-h-screen w-full flex items-center overflow-hidden">
+        <div className="relative h-full w-full flex items-center overflow-hidden">
             <div className="absolute inset-0 -z-1">
                 <Image
                     src="/assets/images/about-us-bg.webp"
@@ -14,9 +14,8 @@ const AboutSection = () => {
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 z-1 [background:var(--gradient-chocolate)] opacity-50" />
+                <div className="absolute inset-0 z-1 opacity-50" style={{ background: 'var(--gradient-chocolate)' }} />
 
-                {/* <div className="absolute inset-0 bg-gradient-to-r from-[var(--gradient-golden-mango)] via-[var(--gradient-golden-mango)] to-[var(--gradient-golden-mango)]" /> */}
             </div>
             <div
                 className="flex flex-col justify-center items-center gap-x-16 gap-y-5 xl:gap-28 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full px-8 lg:px-24"
@@ -68,7 +67,7 @@ const AboutSection = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
 

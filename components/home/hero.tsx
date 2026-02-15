@@ -14,9 +14,15 @@ interface HeroListItemProps {
 
 
 
-export default function Hero({ products }: { products: any[] }) {
+interface HeroProps {
+    products: any[];
+    scrollToSection: (ref: React.RefObject<HTMLElement | null>) => void;
+    aboutRef: React.RefObject<HTMLElement | null>;
+}
+
+export default function Hero({ products, scrollToSection, aboutRef }: HeroProps) {
     const [activeIndex, setActiveIndex] = useState(0);
-    const sectionRef = useRef<HTMLElement>(null);
+    const sectionRef = useRef<HTMLDivElement>(null);
     const overlayRef = useRef<HTMLDivElement>(null);
 
     const currentProduct = products[activeIndex];
@@ -66,9 +72,9 @@ export default function Hero({ products }: { products: any[] }) {
     };
 
     return (
-        <section
+        <div
             ref={sectionRef}
-            className="w-full h-screen flex items-center px-8 lg:px-24 overflow-hidden bg-white relative"
+            className="w-full h-full flex items-center px-8 lg:px-24 overflow-hidden bg-white relative"
         >
             <FloatingParticles key={`particles-${activeIndex}`} images={content.floatImages} count={12} />
             <div
@@ -107,7 +113,10 @@ export default function Hero({ products }: { products: any[] }) {
                     variants={textVariants}
                     className="mt-4"
                 >
-                    <button className="px-10 py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-100 hover:scale-105 active:scale-95 transition-all">
+                    <button
+                        onClick={() => scrollToSection(aboutRef)}
+                        className="px-10 py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-100 hover:scale-105 active:scale-95 transition-all"
+                    >
                         {content.buttonLabel}
                     </button>
                 </motion.div>
@@ -167,12 +176,15 @@ export default function Hero({ products }: { products: any[] }) {
                     transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
                     className="mt-0 pointer-events-auto z-20"
                 >
-                    <button className="bg-nav-bg text-chocolate px-14 py-4 rounded-full font-bold text-xl shadow-xl border-b-4 border-earthy-brown/40 hover:bg-[#D4A588] hover:-translate-y-1 active:translate-y-0.5 active:border-b-0 transition-all uppercase tracking-[0.2em]">
+                    <button
+                        onClick={() => scrollToSection(aboutRef)}
+                        className="bg-nav-bg text-chocolate px-14 py-4 rounded-full font-bold text-xl shadow-xl border-b-4 border-earthy-brown/40 hover:bg-[#D4A588] hover:-translate-y-1 active:translate-y-0.5 active:border-b-0 transition-all uppercase tracking-[0.2em]"
+                    >
                         {content.buttonLabel}
                     </button>
                 </motion.div>
             </div>
-        </section>
+        </div>
     );
 }
 

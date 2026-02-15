@@ -26,8 +26,8 @@ interface TreatItem {
 
 export default function FavoriteTreat({ favorite_treats }: { favorite_treats: any }) {
     return (
-        <section className="relative min-h-screen bg-[#FDF8F5] flex flex-col justify-center py-20 overflow-hidden ">
-            <div className="absolute inset-0 z-0 [background:var(--gradient-golden-mango)] opacity-50" />
+        <div className="relative h-full bg-[#FDF8F5] flex flex-col justify-center py-20 overflow-hidden ">
+            <div className="absolute inset-0 z-0 opacity-50" style={{ background: 'var(--gradient-golden-mango)' }} />
             <div className="container mx-auto px-4 max-w-7xl">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -64,7 +64,7 @@ export default function FavoriteTreat({ favorite_treats }: { favorite_treats: an
           scrollbar-width: none;
         }
       `}</style>
-        </section>
+        </div>
     );
 }
 
@@ -179,9 +179,8 @@ const FavoriteTreatCard = ({ treat, index }: { treat: TreatItem, index: number }
                 scale: 1.05,
                 transition: { type: "spring", bounce: 0.25 }
             }}
-            className="relative flex-none w-[85vw] md:w-[320px] snap-center bg-white rounded-2xl shadow-sm border border-[#BC9478]/10 transition-shadow duration-500 hover:shadow-2xl hover:shadow-[#BC9478]/20 mt-20 group
-            [background:var(--gradient-chocolate)]
-            "
+            className="relative flex-none w-[85vw] md:w-[320px] snap-center bg-white rounded-2xl shadow-sm border border-[#BC9478]/10 transition-shadow duration-500 hover:shadow-2xl hover:shadow-[#BC9478]/20 mt-20 group"
+            style={{ background: 'var(--gradient-chocolate)' }}
         >
             <CardContent treat={treat} index={index} />
         </motion.div>

@@ -7,60 +7,28 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef } from 'react';
-import { Button, Image } from '@/types/common';
+import { ButtonType, ImageType } from '@/types/common';
+import GradientAnimator from '../utl/grainient';
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface DessertParadiseType {
     title: string
     description: string
-    button: Button,
-    image: Image
+    button: ButtonType,
+    image: ImageType
 }
 
 
 export default function DessertParadise({ dessert_paradise }: { dessert_paradise: DessertParadiseType }) {
-    const containerRef = useRef<HTMLElement>(null);
+
     const bgRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
 
-    useGSAP(() => {
-        if (!containerRef.current || !bgRef.current) return;
-
-        // Background Parallax
-        gsap.to(bgRef.current, {
-            yPercent: 10,
-            ease: "none",
-            scrollTrigger: {
-                trigger: containerRef.current,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true
-            }
-        });
-
-        // Content Reveal
-        const elements = contentRef.current?.children;
-        if (elements) {
-            gsap.from(elements, {
-                y: 60,
-                opacity: 0,
-                duration: 1.2,
-                stagger: 0.2,
-                ease: "power4.out",
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top 60%",
-                    toggleActions: "play none none reverse"
-                }
-            });
-        }
-    }, { scope: containerRef });
 
 
     return (
-        <section ref={containerRef} className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-            {/* Background Image with Parallax */}
+        <div className="relative h-full w-full overflow-hidden flex items-center justify-center overflow-hidden">
             <div
                 ref={bgRef}
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
@@ -68,6 +36,10 @@ export default function DessertParadise({ dessert_paradise }: { dessert_paradise
                     backgroundImage: "url('/assets/images/about-us-bg.webp')",
                 }}
             />
+            <div className="absolute inset-0 " >
+                <GradientAnimator />
+            </div>
+
 
             {/* Premium Gradient Overlays */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/60" />
@@ -117,11 +89,7 @@ export default function DessertParadise({ dessert_paradise }: { dessert_paradise
                 </motion.div>
             </div>
 
-            {/* Bottom Tagline/Scroll Indicator */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/40">
-                <span className="text-[10px] uppercase tracking-[0.5em] font-bold">Nature's Finest</span>
-                <div className="w-[1px] h-12 bg-gradient-to-b from-white/40 to-transparent" />
-            </div>
-        </section>
+
+        </div>
     );
 }

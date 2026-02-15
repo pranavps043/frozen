@@ -1,85 +1,87 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --white: #fff;
-  --black: #000;
-  --nav-bg: #E9C4AB;
-  --transparent-white: #ffffff80;
-  --transparent-black: #00000080;
-  --transparnet-low-black: #00000040;
-  --chocolate: #3a2313;
-  --earthy-brown: #b8784b;
-  --golden-honey: #eeba53;
-  --spiced-orange: #f19803;
-  --fresh-basil: #55a146;
-  --deep-forest: #164f0b;
-  --light-brown: #e9c4ab;
-  --color-dark-charcoal: #333;
-  --eerie-black: #1c1c1c;
-  --peach-frost: #f1b68e;
-  --sage-mist: #c1c971;
-  --vanilla-glow: #f8dd94;
-  --frosted-white: #ffffffbf;
-  --lemon-thyme: #dae384;
-  --forest-depth: #0f3408;
-  --peach-glaze: #f3a876;
-  --burnt-caramel: #9a3816;
-  --amber-flame: #e38300;
-  --garden-leaf: #4d8a2a;
-  --pink-pearl: #dcadc9;
-  --dark-raspberry: #651243;
-  --gradient-light-orange: linear-gradient(180deg, #a23f1c 0%, #d2986e 100%);
-  --gradient-chocolate: linear-gradient(180deg,
-      rgba(162, 63, 28, 0.5) 0%,
-      rgba(210, 152, 110, 0.5) 100%);
-  --gradient-cinnamon-blush: linear-gradient(180deg,
-      rgba(162, 63, 28, 0.45) 0%,
-      rgba(210, 152, 110, 0.45) 100%);
-  --gradient-golden-mango: linear-gradient(180deg,
-      #e08d00 0%,
-      #ecb342 50%,
-      #f8d984 100%);
-  --gradient-warm-bronze: linear-gradient(180deg,
-      rgba(106, 40, 17, 0.65) 0%,
-      rgba(141, 68, 26, 0.65) 50%,
-      rgba(207, 118, 54, 0.65) 100%);
-  --gradient-honey-glow: linear-gradient(180deg,
-      rgba(226, 144, 32, 0.7) 0%,
-      rgba(248, 202, 74, 0.7) 100%);
-  --gradient-garden-glow: linear-gradient(180deg,
-      rgba(77, 138, 42, 0.6) 0%,
-      rgba(163, 184, 94, 0.6) 50%,
-      rgba(249, 229, 146, 0.6) 100%);
-  --gradient-spring-harvest: linear-gradient(180deg,
-      rgba(77, 138, 42, 0.65) 0%,
-      rgba(163, 184, 94, 0.65) 50%,
-      rgba(249, 229, 146, 0.65) 100%);
-  --gradient-harvest-meadow: linear-gradient(180deg,
-      #4d8a2a 0%,
-      #a3b85e 50%,
-      #f9e592 100%);
+    --background: #ffffff;
+    --foreground: #171717;
+    --white: #fff;
+    --black: #000;
+    --nav-bg: #E9C4AB;
+    --transparent-white: #ffffff80;
+    --transparent-black: #00000080;
+    --transparent-low-black: #00000040;
+    --chocolate: #3a2313;
+    --earthy-brown: #b8784b;
+    --golden-honey: #eeba53;
+    --spiced-orange: #f19803;
+    --fresh-basil: #55a146;
+    --deep-forest: #164f0b;
+    --light-brown: #e9c4ab;
+    --color-dark-charcoal: #333;
+    --eerie-black: #1c1c1c;
+    --peach-frost: #f1b68e;
+    --sage-mist: #c1c971;
+    --vanilla-glow: #f8dd94;
+    --frosted-white: #ffffffbf;
+    --lemon-thyme: #dae384;
+    --forest-depth: #0f3408;
+    --peach-glaze: #f3a876;
+    --burnt-caramel: #9a3816;
+    --amber-flame: #e38300;
+    --garden-leaf: #4d8a2a;
+    --pink-pearl: #dcadc9;
+    --dark-raspberry: #651243;
+    --gradient-light-orange: linear-gradient(180deg, #a23f1c 0%, #d2986e 100%);
+    --gradient-chocolate: linear-gradient(180deg,
+            rgba(162, 63, 28, 0.5) 0%,
+            rgba(210, 152, 110, 0.5) 100%);
+    --gradient-cinnamon-blush: linear-gradient(180deg,
+            rgba(162, 63, 28, 0.45) 0%,
+            rgba(210, 152, 110, 0.45) 100%);
+    --gradient-golden-mango: linear-gradient(180deg,
+            #e08d00 0%,
+            #ecb342 50%,
+            #f8d984 100%);
+    --gradient-warm-bronze: linear-gradient(180deg,
+            rgba(106, 40, 17, 0.65) 0%,
+            rgba(141, 68, 26, 0.65) 50%,
+            rgba(207, 118, 54, 0.65) 100%);
+    --gradient-honey-glow: linear-gradient(180deg,
+            rgba(226, 144, 32, 0.7) 0%,
+            rgba(248, 202, 74, 0.7) 100%);
+    --gradient-garden-glow: linear-gradient(180deg,
+            rgba(77, 138, 42, 0.6) 0%,
+            rgba(163, 184, 94, 0.6) 50%,
+            rgba(249, 229, 146, 0.6) 100%);
+    --gradient-spring-harvest: linear-gradient(180deg,
+            rgba(77, 138, 42, 0.65) 0%,
+            rgba(163, 184, 94, 0.65) 50%,
+            rgba(249, 229, 146, 0.65) 100%);
+    --gradient-harvest-meadow: linear-gradient(180deg,
+            #4d8a2a 0%,
+            #a3b85e 50%,
+            #f9e592 100%);
 }
 
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-nav-bg: var(--nav-bg);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-nav-bg: var(--nav-bg);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
 }
