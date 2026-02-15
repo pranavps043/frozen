@@ -1,20 +1,33 @@
 "use client";
 
+import { ButtonType, ImageType } from '@/types/common';
 import { motion } from 'motion/react';
 import Image from 'next/image';
+import Button from '../ui/button';
 
-const AboutSection = () => {
+interface AboutSectionProps {
+    title: string
+    heading: string
+    description: string
+    body: string
+    button: ButtonType
+    image: ImageType
+    bg_image: string
+    bg_gradient: string
+}
+
+const AboutSection = ({ data }: { data: AboutSectionProps }) => {
     return (
         <div className="relative h-full w-full flex items-center overflow-hidden">
             <div className="absolute inset-0 -z-1">
                 <Image
-                    src="/assets/images/about-us-bg.webp"
-                    alt="About Us Background"
+                    src={data.bg_image}
+                    alt={data.title}
                     fill
-                    className="object-cover"
+                    className="object-cover blur-xs"
                     priority
                 />
-                <div className="absolute inset-0 z-1 opacity-50" style={{ background: 'var(--gradient-chocolate)' }} />
+                <div className="absolute inset-0 z-1 opacity-50" style={{ background: `var(${data.bg_gradient})` }} />
 
             </div>
             <div
@@ -28,10 +41,10 @@ const AboutSection = () => {
                         className="w-full h-full"
                     >
                         <Image
-                            width={800}
-                            height={600}
-                            src="/assets/images/about-image.webp"
-                            alt="About Frozen"
+                            width={data.image.width}
+                            height={data.image.height}
+                            src={data.image.src}
+                            alt={data.image.alt}
                             className="w-full h-auto rounded-xl object-cover shadow-2xl"
                         />
                     </motion.div>
@@ -42,28 +55,46 @@ const AboutSection = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="text-4xl lg:text-5xl font-bold text-white mb-6 uppercase tracking-tighter"
+                            className="heading-display text-white mb-6 uppercase tracking-tighter"
                         >
-                            About Our Vision
+                            {data.title}
                         </motion.h2>
+                        <motion.h3
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="section-title text-white mb-6 tracking-wider leading-[1.1]"
+                        >
+                            {data.heading}
+                        </motion.h3>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="text-lg text-white/80 mb-8 leading-relaxed"
+                            className="text-lg text-zinc-900/90 mb-8 leading-relaxed font-bold"
                         >
-                            We are dedicated to providing the highest quality service in the industry. Our team of experts works tirelessly to ensure that every project we undertake meets our rigorous standards of excellence and innovation.
+                            {data.description}
                         </motion.p>
-                        <motion.button
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="text-lg text-zinc-900 mb-8 leading-relaxed"
+                        >
+                            {data.body}
+                        </motion.p>
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="px-8 py-4 bg-white text-black font-bold hover:bg-gray-100 transition-colors uppercase tracking-widest text-sm rounded-full"
+                            className=" transition-colors uppercase tracking-widest w-1/2"
                         >
-                            Explore More
-                        </motion.button>
+                            <Button fullWidth variant="chocolate" size="sm">
+                                Explore More
+                            </Button>
+                        </motion.div>
                     </div>
                 </div>
             </div>

@@ -7,6 +7,8 @@ interface FlavorsFeelingsType {
     title: string
     description: string
     background: BackgroundType
+    accordion_bg: string
+    accordion_bg_active: string
     accordion: Accordion[]
 }
 
@@ -24,6 +26,7 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
 
     return (
         <div className="h-full w-full bg-gradient-to-br from-amber-50 to-orange-100 flex flex-col items-center justify-center p-8">
+            <h1>{activeIndex} ddd  </h1>
             <div className="w-full max-w-7xl">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -38,11 +41,14 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
                     </p>
                 </motion.div>
             </div>
+
             <div className="w-full max-w-7xl h-[600px] flex gap-4">
+
                 {data.accordion.map((item, index) => (
                     <motion.div
                         key={item.id}
                         className="relative rounded-3xl overflow-hidden cursor-pointer shadow-xl"
+                        style={{ background: `var(${data.accordion_bg})` }}
                         // style={{ backgroundColor: item.color }}
                         animate={{
                             flex: activeIndex === index ? 3 : 0.8,
@@ -61,7 +67,7 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
                                     transition={{ duration: 0.3 }}
-                                    className="absolute inset-0 flex items-center justify-center"
+                                    className={`absolute inset-0 flex items-center justify-center bg-[var(${data.accordion_bg})]`}
                                 >
                                     <h2
                                         className="text-2xl font-serif text-gray-800 whitespace-nowrap"
@@ -85,6 +91,7 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
                                     exit={{ opacity: 0 }}
                                     transition={{ duration: 0.4, delay: 0.2 }}
                                     className="h-full p-5 flex flex-col justify-center gap-8"
+                                    style={{ background: `var(${data.accordion_bg_active})` }}
                                 >
                                     <div className="flex items-start gap-8">
                                         {/* Image Container */}

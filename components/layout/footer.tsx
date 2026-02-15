@@ -11,7 +11,7 @@ import {
 
 const Footer = () => {
     return (
-        <footer className="relative w-full overflow-hidden text-white font-sans">
+        <footer className="relative w-full overflow-hidden text-white font-sans bg-[url('/assets/images/footer-icecream.webp')] bg-cover bg-center bg-no-repeat">
             {/* 
         Background Layer 
         Using a CSS pattern + Gradient to ensure it works without external image assets.
@@ -19,7 +19,7 @@ const Footer = () => {
         backgroundImage: `linear-gradient(rgba(162, 63, 28, 0.85), rgba(210, 152, 110, 0.85)), url('/assets/images/footer-bg.webp')`
       */}
             <div
-                className="absolute inset-0 z-0"
+                className="absolute inset-0 z-0 opacity-70"
                 style={{
                     backgroundColor: '#3a2313',
                     backgroundImage: `

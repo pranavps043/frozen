@@ -47,7 +47,7 @@ export default function EarnRewards({ earn_rewards }: { earn_rewards: EarnReward
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/60" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
 
-            <FloatingParticles key={`particles-${earn_rewards.particles}`} images={earn_rewards.particles} count={12} />
+            <FloatingParticles key={`particles-${earn_rewards.particles}`} images={earn_rewards.particles} count={14} />
             {/* Centered Content Container */}
             <div ref={contentRef} className="relative z-10 flex flex-row items-center px-4 text-center text-white max-w-7xl">
                 <div className="w-1/2">

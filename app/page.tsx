@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import Hero from "@/components/home/hero";
+import Hero from "@/components/home/hero-multi";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
