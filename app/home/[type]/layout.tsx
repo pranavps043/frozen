@@ -11,7 +11,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
     const pathname = usePathname();
 
     useEffect(() => {
-        const types = ['cheese-cake', 'ice-cream'];
+        const types = ['cheese-cake', 'ice-cream', 'veg-salad'];
 
         types.forEach(type => {
             const path = `/home/${type}`;
@@ -19,11 +19,13 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
                 router.prefetch(path);
             }
         });
+
     }, [router, pathname]);
 
     return (
         <div>
-            <main className="transition-opacity duration-300 relative">
+            <main className={`transition-opacity duration-300 relative ${pathname}`}
+            >
                 <StyleProvider>
                     {children}
                 </StyleProvider>

@@ -27,7 +27,15 @@ interface TreatItem {
 
 export default function FavoriteTreat({ data }: { data: any }) {
     return (
-        <div className="relative h-full bg-[#FDF8F5] flex flex-col justify-center py-20 overflow-hidden ">
+        <div className="relative h-full bg-[#FDF8F5] flex flex-col justify-center py-20 overflow-hidden "
+            style={
+                {
+                    '--card-bg': `var(${data.bg_gradient})`,
+                    '--card-bg-hover': `var(${data.bg_gradient})`,
+                } as React.CSSProperties
+            }
+        >
+
             <div className="absolute inset-0 z-0 opacity-80" style={{ background: `var(${data.bg_gradient})` }} />
             <div className="container mx-auto px-4 max-w-7xl relative z-2">
                 <motion.div
@@ -51,7 +59,7 @@ export default function FavoriteTreat({ data }: { data: any }) {
                     className="flex overflow-x-auto md:overflow-visible pb-8 gap-8 snap-x snap-mandatory scrollbar-hide md:justify-center"
                 >
                     {data.products.map((treat: TreatItem, index: number) => (
-                        <FavoriteTreatCard bg={data.card_bg} key={index} treat={treat} index={index} active_bg={data.bg_gradient} />
+                        <FavoriteTreatCard key={index} treat={treat} index={index} />
                     ))}
                 </motion.div>
             </div>
@@ -167,7 +175,7 @@ const ParticleBackground = ({ particles = [], isHovered }: { particles?: string[
 };
 
 
-const FavoriteTreatCard = ({ bg, treat, index, active_bg }: { bg: string, treat: TreatItem, index: number, active_bg: string }) => {
+const FavoriteTreatCard = ({ treat, index }: { treat: TreatItem, index: number }) => {
     return (
         <motion.div
             key={treat.id}
@@ -180,23 +188,25 @@ const FavoriteTreatCard = ({ bg, treat, index, active_bg }: { bg: string, treat:
                 scale: 1.05,
                 transition: { type: "spring", bounce: 0.25 }
             }}
-            className="relative flex-none w-[85vw] md:w-[320px] snap-center bg-white rounded-2xl shadow-sm border border-[#BC9478]/10 transition-shadow duration-500 hover:shadow-2xl hover:shadow-[#BC9478]/20 mt-20 group"
-            style={{ background: bg }}
+            className="relative flex-none w-[85vw] md:w-[320px] snap-center rounded-2xl shadow-sm border border-[#BC9478]/10 transition-shadow duration-500 hover:shadow-2xl hover:shadow-[#BC9478]/20 mt-20 group bg-[var(--card-bg)] hover:bg-[var(--card-bg-hover)]"
+            style={{
+                '--card-bg': `var(--card-bg-hover)`,
+                '--card-bg-hover': `var(--card-bg-hover)`,
+            } as React.CSSProperties}
         >
-            <CardContent bg={bg} treat={treat} index={index} active_bg={active_bg} />
+            <CardContent treat={treat} index={index} />
         </motion.div>
     )
 }
 
-const CardContent = ({ bg, treat, index, active_bg }: { bg: string, treat: TreatItem, index: number, active_bg: string }) => {
+const CardContent = ({ treat, index }: { treat: TreatItem, index: number }) => {
     const [isCardHovered, setIsCardHovered] = useState(false);
 
     return (
         <div
             onMouseEnter={() => setIsCardHovered(true)}
             onMouseLeave={() => setIsCardHovered(false)}
-            className="relative h-full rounded-2xl transition-all duration-500"
-            style={{ background: isCardHovered ? active_bg : bg }}
+            className="relative h-full rounded-2xl transition-all duration-500 "
         >
             <div className={`overflow-hidden ${isCardHovered ? 'active' : ''}`}>
                 <ParticleBackground particles={treat.particles} isHovered={isCardHovered} />

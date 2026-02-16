@@ -71,7 +71,7 @@
         },
         "bg_gradient": "--gradient-harvest-meadow",
         "bg_gradient_active": "--peach-glaze",
-        "card_bg": "#F1B68E",
+        "card_bg": "#4D8A2A",
         "products": [
             {
                 "id": 1,
@@ -158,8 +158,8 @@
         "title": "“Flavors That Speak to Your Soul”",
         "description": "Experience the magic of pure ingredients and timeless recipes in every bite.",
         "bg_gradient": "--gradient-harvest-meadow",
-        "accordion_bg": "--burnt-caramel",
-        "accordion_bg_active": "--peach-glaze",
+        "accordion_bg": "--gradient-garden-glow",
+        "accordion_bg_active": "--frosted-white",
         "accordion": [
             {
                 "id": 1,

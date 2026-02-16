@@ -157,7 +157,7 @@
         "title": "“Flavors That Speak to Your Soul”",
         "description": "Experience the magic of pure ingredients and timeless recipes in every bite.",
         "bg_gradient": "--gradient-golden-mango",
-        "accordion_bg": "--burnt-caramel",
+        "accordion_bg": "--gradient-golden-mango",
         "accordion_bg_active": "--peach-glaze",
         "accordion": [
             {
