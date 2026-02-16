@@ -1,38 +1,63 @@
 {
+    "base_styles": {
+        "bg_gradient": "--gradient-golden-mango",
+        "button_style": "primary",
+        "button_size": "lg"
+    },
     "hero": {
         "title": "Homemade Mango Ice Cream",
-        "image": "/assets/images/hero/products/small-icecream.webp",
-        "bg_gradient": "--earthy-brown",
+        "image": "/assets/images/hero/products/small-cake.webp",
+        "bg_gradient": "--gradient-golden-mango",
         "content": {
-            "title": "The Final Note of Delight",
-            "description": "Discover our new collection of frozen solutions designed for the modern household and professional kitchen.",
-            "buttonLabel": "Order Now",
-            "buttonLink": "/menu",
+            "title": "“Frozen Childhood in a Scoop”",
+            "description": "Our ice creams capture summer’s first bite and timeless sweetness made fresh daily with classic and surprising flavours that spread lasting joy.",
+            "buttonLabel": "Shop Now",
+            "buttonLink": "#",
             "image": {
-                "src": "/assets/images/hero/products/ice-creame/banner-icecream.png",
+                "src": "/assets/images/mango/c554def8957526df9f5ac890a10f8059d245e04b.webp",
                 "alt": "Hero Product",
                 "width": 500,
                 "height": 500
             },
             "sub_image": {
-                "src": "/assets/images/hero/fruits.webp",
+                "src": "/assets/images/mango/ef7fd3cedba2cafcce92d01ce1d17684d6ab9e4f.webp",
                 "alt": "Hero Sub Image",
                 "width": 500,
                 "height": 500
             },
             "floatImages": [
-                "/assets/images/hero/products/ice-creame/top-left-slice-mango.webp",
-                "/assets/images/hero/products/ice-creame/bottom-left-mango.webp",
-                "/assets/images/hero/products/ice-creame/mangos.png"
+                "/assets/images/mango/particles/114365601.webp",
+                "/assets/images/mango/particles/360852469_11436565-1.webp",
+                "/assets/images/mango/particles/360852469_11436565.webp",
+                "/assets/images/mango/particles/mangoslice2.webp",
+                "/assets/images/mango/particles/mangoslice3.webp"
             ],
             "tagline": "Crafted with love, using only fresh fruits, premium dairy, and natural ingredients.",
             "tagline_img": {
-                "src": "/assets/images/hero/products/tagline.webp",
+                "src": "/assets/images/mango/ed513f01de5d97a26abfa0b9fab244ccad2e924f.webp",
                 "alt": "Tagline",
                 "width": 500,
                 "height": 500
             }
         }
+    },
+    "about_us": {
+        "title": "About us",
+        "heading": "What happens when timeless cones meet garden bowls?",
+        "description": "At Frozen Creamery N’ Garden, indulgence and balance sit side by side, creating a story you didn’t know you were craving!",
+        "body": "Some stories start in one place. Ours began across continents, in the busy and bustling kitchens of Dubai, the cobblestone streets of Amsterdam, and the food halls of England. ",
+        "button": {
+            "label": "View More",
+            "link": ""
+        },
+        "image": {
+            "src": "/assets/images/garden-bowls.png",
+            "alt": "",
+            "width": 500,
+            "height": 500
+        },
+        "bg_gradient": "--gradient-golden-mango",
+        "bg_image": "/assets/images/blue-berry/about-bg.webp"
     },
     "favorite_treats": {
         "title": "“Pick Your Favorite Treat”",
@@ -41,9 +66,9 @@
             "src": "/assets/images/logo.png",
             "alt": "Logo"
         },
-        "background": {
-            "color": "--gradient-golden-mango"
-        },
+        "bg_gradient": "--gradient-golden-mango",
+        "bg_gradient_active": "--peach-glaze",
+        "card_bg": "#F1B68E",
         "products": [
             {
                 "id": 1,
@@ -108,14 +133,19 @@
         ]
     },
     "dessert_paradise": {
+        "gradients": {
+            "from": "linear-gradient(180deg, rgba(226, 144, 32, 0.8) 0%, rgba(248, 202, 74, 0.6) 100%)",
+            "to": "linear-gradient(180deg, rgba(248, 202, 74, 0.9) 0%, rgba(226, 144, 32, 0.4) 100%)"
+        },
         "title": "“Indulge in the Ultimate Dessert Paradise”",
         "description": "Handcrafted frozen desserts that blend luxury, love & unforgettable taste.",
+        "bg_gradient": "--gradient-golden-mango",
         "button": {
             "label": "Order now",
             "link": "/shop"
         },
         "image": {
-            "src": "/assets/images/hero/products/small-cake.webp",
+            "src": "/assets/images/blue-berry/desert-para.webp",
             "alt": "Hero Product",
             "width": 500,
             "height": 500
@@ -124,9 +154,9 @@
     "flavors_feelings": {
         "title": "“Flavors That Speak to Your Soul”",
         "description": "Experience the magic of pure ingredients and timeless recipes in every bite.",
-        "background": {
-            "color": "--gradient-golden-mango"
-        },
+        "bg_gradient": "--gradient-golden-mango",
+        "accordion_bg": "--burnt-caramel",
+        "accordion_bg_active": "--peach-glaze",
         "accordion": [
             {
                 "id": 1,
@@ -176,17 +206,16 @@
         ]
     },
     "earn_rewards": {
+        "pre_title": "Experience the Magic",
         "title": "“Make Your Dream Fruit Salad & Earn Rewards!”",
         "subtitle": "Join our fun fruit salad game mix, match, and taste victory with exciting rewards!",
         "description": "Get ready for a fun and frosty challenge! In our Play & Win section, you’ll create your own fruit salad by choosing ingredients in an interactive mini-game",
+        "bg_gradient": "--gradient-golden-mango",
         "image": {
             "src": "/assets/images/special-offer.webp",
             "alt": "Frozen Vegetables",
             "width": 500,
             "height": 500
-        },
-        "background": {
-            "color": "--gradient-golden-mango"
         },
         "button": {
             "label": "Play & Win",

@@ -12,6 +12,7 @@ import GradientAnimator from '../utl/grainient';
 import { ButtonType, ImageType } from '@/types/common';
 import Image from 'next/image';
 import { FloatingParticles } from './floating-particles';
+import Button from '../ui/button';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,6 +21,8 @@ interface EarnRewardsType {
     description: string
     button: ButtonType,
     image: ImageType,
+    subtitle: string,
+    pre_title: string,
     particles: string[]
 }
 
@@ -71,21 +74,20 @@ export default function EarnRewards({ earn_rewards }: { earn_rewards: EarnReward
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="mb-4 text-sm font-bold uppercase tracking-[0.4em] text-peach-frost"
                     >
-                        Experience the Magic
+                        {earn_rewards.pre_title}
                     </motion.span>
 
                     {/* Title */}
-                    <h2 className="mb-8 text-5xl font-bold tracking-tight font-primary leading-none">
-                        {earn_rewards.title.split(' ').map((word, i) => (
-                            <React.Fragment key={i}>
-                                {word}{' '}
-                                {i === 1 && <br />}
-                            </React.Fragment>
-                        ))}
+                    <h2 className="mb-8 text-5xl font-bold tracking-tight font-primary leading-relaxed">
+
+                        {earn_rewards.title}
                     </h2>
 
                     {/* Description */}
-                    <p className="mb-12 text-lg font-light text-gray-200 sm:text-xl md:text-2xl max-w-2xl leading-relaxed">
+                    <p className="mb-5 text-lg font-normal text-black sm:text-xl md:text-2xl max-w-2xl leading-relaxed font-semibold">
+                        {earn_rewards.subtitle}
+                    </p>
+                    <p className="mb-5 text-lg font-normal text-black sm:text-xl md:text-2xl max-w-2xl leading-relaxed">
                         {earn_rewards.description}
                     </p>
 
@@ -94,10 +96,10 @@ export default function EarnRewards({ earn_rewards }: { earn_rewards: EarnReward
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        <button className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-white px-10 py-5 text-black transition-all hover:bg-white/90 hover:shadow-[0_0_50px_-10px_rgba(255,255,255,0.6)]">
-                            <span className="font-bold uppercase tracking-widest text-sm">{earn_rewards.button.label}</span>
+                        <Button variant="chocolate" size="lg">
+                            {earn_rewards.button.label}
+                        </Button>
 
-                        </button>
                     </motion.div>
                 </div>
 

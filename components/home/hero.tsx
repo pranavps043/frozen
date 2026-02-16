@@ -109,23 +109,23 @@ export default function Hero({ content, PageList }: { content: any; PageList: Pa
 
             {/* Left Column: Main Content */}
             <div className=" w-1/2 flex flex-col items-start z-10 pr-12">
-                <motion.h1
+                <motion.h2
                     key={`title-${content.title}`}
                     custom={1}
                     initial="hidden"
                     animate="visible"
                     variants={textVariants}
-                    className="text-7xl font-bold tracking-tight text-white mb-8 font-primary leading-[1.1]"
+                    className="heading-display text-white mb-6 text-shadow-lg"
                 >
                     {content.content.title}
-                </motion.h1>
+                </motion.h2>
                 <motion.p
                     key={`desc-${content.content.title}`}
                     custom={2}
                     initial="hidden"
                     animate="visible"
                     variants={textVariants}
-                    className="text-xl text-white/90 mb-10 leading-relaxed max-w-md"
+                    className="text-xl text-white/90 mb-10 leading-relaxed max-w-md text-shadow-md"
                 >
                     {content.content.description}
                 </motion.p>
@@ -229,7 +229,7 @@ const TagLine = ({ tagline, image }: { tagline: string, image: ImageType }) => {
             className="absolute bottom-12 right-0 z-10 text-right pr-4"
         >
             <div className="max-w-[400px] flex flex-col items-end">
-                <p className="text-[10px] text-white/60 leading-relaxed font-bold uppercase tracking-[0.3em] mb-4 text-right">
+                <p className="text-[14px] text-white/80 leading-relaxed font-bold uppercase tracking-[0.3em] mb-4  text-shadow-sm">
                     {tagline}
                 </p>
                 <div className="relative w-32 h-20">

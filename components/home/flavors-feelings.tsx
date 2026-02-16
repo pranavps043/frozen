@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BackgroundType, ButtonType, ImageType } from '@/types/common';
+import Button from '../ui/button';
 
 interface FlavorsFeelingsType {
     title: string
@@ -9,6 +10,7 @@ interface FlavorsFeelingsType {
     background: BackgroundType
     accordion_bg: string
     accordion_bg_active: string
+    bg_gradient: string
     accordion: Accordion[]
 }
 
@@ -25,9 +27,9 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
-        <div className="h-full w-full bg-gradient-to-br from-amber-50 to-orange-100 flex flex-col items-center justify-center p-8">
-            <h1>{activeIndex} ddd  </h1>
-            <div className="w-full max-w-7xl">
+        <div className="relative h-full w-full flex flex-col items-center justify-center p-8">
+            <div className="absolute inset-0 z-1 opacity-50" style={{ background: `var(${data.bg_gradient})` }} />
+            <div className="relative w-full max-w-7xl z-2">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -35,21 +37,20 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-5xl md:text-6xl font-bold text-[#3B2516] mb-6 tracking-tight">{data.title}</h2>
-                    <p className="text-xl text-[#5D4037]/80 max-w-2xl mx-auto font-medium">
+                    <h2 className="heading-display mb-6 tracking-tight text-white">{data.title}</h2>
+                    <p className="text-xl text-black max-w-2xl mx-auto text-[32px] leading-[45px] tracking-normal text-center fancy-text">
                         {data.description}
                     </p>
                 </motion.div>
             </div>
 
-            <div className="w-full max-w-7xl h-[600px] flex gap-4">
+            <div className="relative w-full max-w-7xl h-[600px] flex gap-4 z-2">
 
                 {data.accordion.map((item, index) => (
                     <motion.div
-                        key={item.id}
+                        key={index}
                         className="relative rounded-3xl overflow-hidden cursor-pointer shadow-xl"
                         style={{ background: `var(${data.accordion_bg})` }}
-                        // style={{ backgroundColor: item.color }}
                         animate={{
                             flex: activeIndex === index ? 3 : 0.8,
                         }}
@@ -67,10 +68,11 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
                                     transition={{ duration: 0.3 }}
-                                    className={`absolute inset-0 flex items-center justify-center bg-[var(${data.accordion_bg})]`}
+                                    className="absolute inset-0 flex items-center justify-center"
+                                    style={{ background: `var(${data.accordion_bg})` }}
                                 >
                                     <h2
-                                        className="text-2xl font-serif text-gray-800 whitespace-nowrap"
+                                        className="fancy-text text-2xl font-serif text-white whitespace-nowrap"
                                         style={{
                                             writingMode: 'vertical-rl',
                                             textOrientation: 'mixed'
@@ -129,10 +131,12 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
                                             <p className="text-lg text-gray-700 leading-relaxed max-w-xl">
                                                 {item.description}
                                             </p>
+                                            <div className="w-1/2">
+                                                <Button variant="chocolate" size="lg">
+                                                    {item.button.label}
+                                                </Button>
+                                            </div>
 
-                                            <button className="self-start px-8 py-4 bg-gray-800 text-white rounded-full text-lg font-medium hover:bg-gray-900 transition-colors shadow-lg">
-                                                {item.button.label}
-                                            </button>
                                         </motion.div>
                                     </div>
                                 </motion.div>

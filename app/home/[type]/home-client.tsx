@@ -77,11 +77,11 @@ export default function HomeClient({ data, PageList }: { data: any; PageList: Pa
             </section>
 
             <section ref={treatRef} className="h-screen">
-                <FavoriteTreat favorite_treats={data.favorite_treats} />
+                <FavoriteTreat data={data.favorite_treats} />
             </section>
 
             <section ref={paradiseRef} className="h-screen">
-                <DessertParadise dessert_paradise={data.dessert_paradise} />
+                <DessertParadise content={data.dessert_paradise} />
             </section>
 
             <section ref={flavorsRef} className="h-screen">

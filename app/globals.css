@@ -38,7 +38,14 @@
 			rgba(106, 40, 17, 0.65) 0%,
 			rgba(141, 68, 26, 0.65) 50%,
 			rgba(207, 118, 54, 0.65) 100%);
-
+	--gradient-golden-mango: linear-gradient(180deg,
+			#e08d00 0%,
+			#ecb342 50%,
+			#f8d984 100%);
+	--gradient-harvest-meadow: linear-gradient(180deg,
+			#4d8a2a 0%,
+			#a3b85e 50%,
+			#f9e592 100%);
 
 
 
@@ -49,10 +56,6 @@
 	--gradient-cinnamon-blush: linear-gradient(180deg,
 			rgba(162, 63, 28, 0.45) 0%,
 			rgba(210, 152, 110, 0.45) 100%);
-	--gradient-golden-mango: linear-gradient(180deg,
-			#e08d00 0%,
-			#ecb342 50%,
-			#f8d984 100%);
 
 	--gradient-honey-glow: linear-gradient(180deg,
 			rgba(226, 144, 32, 0.7) 0%,
@@ -65,10 +68,7 @@
 			rgba(77, 138, 42, 0.65) 0%,
 			rgba(163, 184, 94, 0.65) 50%,
 			rgba(249, 229, 146, 0.65) 100%);
-	--gradient-harvest-meadow: linear-gradient(180deg,
-			#4d8a2a 0%,
-			#a3b85e 50%,
-			#f9e592 100%);
+
 }
 
 
@@ -92,16 +92,22 @@ body {
 	background: var(--background);
 	color: var(--foreground);
 	overflow-x: hidden;
-	font-family: var(--font-montserrat);
+	font-family: var(--font-josefin-sans);
 }
 
 h2 {
-	font-family: var(--font-playfair);
+	/* font-family: var(--font-playfair); */
+	font-family: var(--font-pacifico);
+	font-weight: 400;
+	font-size: 48px;
+	line-height: 100%;
+	letter-spacing: 0;
 }
 
 @layer components {
 	.heading-display {
-		font-family: var(--font-playfair);
+		/* font-family: var(--font-playfair); */
+		font-family: var(--font-pacifico);
 		font-weight: 700;
 		font-size: 48px;
 		line-height: 100%;
@@ -111,6 +117,15 @@ h2 {
 	.section-title {
 		font-family: var(--font-montserrat);
 		font-weight: 600;
+		font-size: 32px;
+		line-height: 32px;
+		/* or 100% */
+		letter-spacing: 0;
+	}
+
+	.fancy-text {
+		font-family: var(--font-akaya);
+		font-weight: 400;
 		font-size: 32px;
 		line-height: 32px;
 		/* or 100% */

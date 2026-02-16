@@ -5,6 +5,7 @@ import { motion } from 'motion/react';
 import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import Button from '../ui/button';
 
 interface TreatItem {
     id: number;
@@ -24,11 +25,11 @@ interface TreatItem {
 }
 
 
-export default function FavoriteTreat({ favorite_treats }: { favorite_treats: any }) {
+export default function FavoriteTreat({ data }: { data: any }) {
     return (
         <div className="relative h-full bg-[#FDF8F5] flex flex-col justify-center py-20 overflow-hidden ">
-            <div className="absolute inset-0 z-0 opacity-50" style={{ background: 'var(--gradient-golden-mango)' }} />
-            <div className="container mx-auto px-4 max-w-7xl">
+            <div className="absolute inset-0 z-0 opacity-80" style={{ background: `var(${data.bg_gradient})` }} />
+            <div className="container mx-auto px-4 max-w-7xl relative z-2">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -36,9 +37,9 @@ export default function FavoriteTreat({ favorite_treats }: { favorite_treats: an
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-5xl md:text-6xl font-bold text-[#3B2516] mb-6 tracking-tight">{favorite_treats.title}</h2>
-                    <p className="text-xl text-[#5D4037]/80 max-w-2xl mx-auto font-medium">
-                        {favorite_treats.description}
+                    <h2 className="heading-display text-white mb-6 tracking-tight">{data.title}</h2>
+                    <p className="text-xl text-black max-w-2xl mx-auto font-medium">
+                        {data.description}
                     </p>
                 </motion.div>
 
@@ -49,8 +50,8 @@ export default function FavoriteTreat({ favorite_treats }: { favorite_treats: an
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="flex overflow-x-auto md:overflow-visible pb-8 gap-8 snap-x snap-mandatory scrollbar-hide md:justify-center"
                 >
-                    {favorite_treats.products.map((treat: TreatItem, index: number) => (
-                        <FavoriteTreatCard key={index} treat={treat} index={index} />
+                    {data.products.map((treat: TreatItem, index: number) => (
+                        <FavoriteTreatCard bg={data.card_bg} key={index} treat={treat} index={index} active_bg={data.bg_gradient} />
                     ))}
                 </motion.div>
             </div>
@@ -166,7 +167,7 @@ const ParticleBackground = ({ particles = [], isHovered }: { particles?: string[
 };
 
 
-const FavoriteTreatCard = ({ treat, index }: { treat: TreatItem, index: number }) => {
+const FavoriteTreatCard = ({ bg, treat, index, active_bg }: { bg: string, treat: TreatItem, index: number, active_bg: string }) => {
     return (
         <motion.div
             key={treat.id}
@@ -180,26 +181,29 @@ const FavoriteTreatCard = ({ treat, index }: { treat: TreatItem, index: number }
                 transition: { type: "spring", bounce: 0.25 }
             }}
             className="relative flex-none w-[85vw] md:w-[320px] snap-center bg-white rounded-2xl shadow-sm border border-[#BC9478]/10 transition-shadow duration-500 hover:shadow-2xl hover:shadow-[#BC9478]/20 mt-20 group"
-            style={{ background: 'var(--gradient-chocolate)' }}
+            style={{ background: bg }}
         >
-            <CardContent treat={treat} index={index} />
+            <CardContent bg={bg} treat={treat} index={index} active_bg={active_bg} />
         </motion.div>
     )
 }
 
-const CardContent = ({ treat, index }: { treat: TreatItem, index: number }) => {
+const CardContent = ({ bg, treat, index, active_bg }: { bg: string, treat: TreatItem, index: number, active_bg: string }) => {
     const [isCardHovered, setIsCardHovered] = useState(false);
 
     return (
         <div
             onMouseEnter={() => setIsCardHovered(true)}
             onMouseLeave={() => setIsCardHovered(false)}
-            className="relative h-full"
+            className="relative h-full rounded-2xl transition-all duration-500"
+            style={{ background: isCardHovered ? active_bg : bg }}
         >
-            <div className='overflow-hidden'>
+            <div className={`overflow-hidden ${isCardHovered ? 'active' : ''}`}>
                 <ParticleBackground particles={treat.particles} isHovered={isCardHovered} />
             </div>
-            <div className="relative group z-10">
+            <div
+                className="relative group z-10"
+            >
                 <div className="absolute h-40 w-40 -bottom-10 left-0 right-0 mx-auto group overflow-hidden">
                     <Image
                         width={treat.image.width}
@@ -211,12 +215,13 @@ const CardContent = ({ treat, index }: { treat: TreatItem, index: number }) => {
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#3B2516]/20 to-transparent" />
             </div>
-            <div className="p-8 mt-2 relative z-10">
+            <div className="p-8 mt-2 relative z-10"
+            >
                 <h3 className="text-2xl font-bold text-[#3B2516] mb-3">{treat.title}</h3>
                 <p className="text-[#5D4037]/70 mb-8 line-clamp-2 leading-relaxed">{treat.description}</p>
-                <button className="w-full py-4 px-6 bg-[#A23F1C] text-white font-bold rounded-2xl hover:bg-[#8B3518] transition-all duration-300 shadow-lg shadow-[#A23F1C]/20 hover:shadow-xl hover:shadow-[#A23F1C]/30 active:scale-[0.98]">
+                <Button variant="chocolate" size="sm" fullWidth={true}>
                     {treat.button.label}
-                </button>
+                </Button>
             </div>
         </div>
     );

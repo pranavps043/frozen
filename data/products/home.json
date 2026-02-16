@@ -18,5 +18,15 @@
             "src": "/assets/images/hero/links/small-icecream.webp",
             "alt": "Ice Cream"
         }
+    },
+    {
+        "id": 3,
+        "name": "Homemade Healthy Green Veg Salad",
+        "slug": "veg-salad",
+        "description": "",
+        "image": {
+            "src": "/assets/images/veg-salad/62779f777b0d0fe914b40faeea5d1aa6c3463f80.webp",
+            "alt": "Veg Salad"
+        }
     }
 ]
