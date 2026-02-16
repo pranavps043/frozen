@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 
 type StyleState = {
     theme: "light" | "dark";
-    primaryColor: string;
+    buttonStyle: string;
     borderRadius: string;
 };
 
@@ -17,16 +17,16 @@ const StyleContext = createContext<StyleContextType | null>(null);
 export function StyleProvider({ children }: { children: React.ReactNode }) {
     const [styles, setStyles] = useState<StyleState>({
         theme: "light",
-        primaryColor: "#3498db",
+        buttonStyle: "primary",
         borderRadius: "8px",
     });
 
     return (
-        <StyleContext.Provider value= {{ styles, setStyles }
-}>
-    { children }
-    </StyleContext.Provider>
-  );
+        <StyleContext.Provider value={{ styles, setStyles }
+        }>
+            {children}
+        </StyleContext.Provider>
+    );
 }
 
 export function useStyle() {

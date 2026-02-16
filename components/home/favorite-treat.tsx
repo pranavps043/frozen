@@ -219,7 +219,7 @@ const CardContent = ({ bg, treat, index, active_bg }: { bg: string, treat: Treat
             >
                 <h3 className="text-2xl font-bold text-[#3B2516] mb-3">{treat.title}</h3>
                 <p className="text-[#5D4037]/70 mb-8 line-clamp-2 leading-relaxed">{treat.description}</p>
-                <Button variant="chocolate" size="sm" fullWidth={true}>
+                <Button variant="primary" size="sm" fullWidth={true}>
                     {treat.button.label}
                 </Button>
             </div>

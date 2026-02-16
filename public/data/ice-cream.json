@@ -1,7 +1,9 @@
 {
     "base_styles": {
         "bg_gradient": "--gradient-golden-mango",
-        "button_style": "primary",
+        "button_color": "#F19803",
+        "button_shadow": "#00000040",
+        "button_hover": "#e68a00",
         "button_size": "lg"
     },
     "hero": {

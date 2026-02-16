@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { StyleProvider } from '@/context/style-context';
 
 
 
@@ -23,7 +24,9 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
     return (
         <div>
             <main className="transition-opacity duration-300 relative">
-                {children}
+                <StyleProvider>
+                    {children}
+                </StyleProvider>
             </main>
         </div>
     );

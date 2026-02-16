@@ -12,6 +12,7 @@ import DessertParadise from "@/components/home/dessert-paradise";
 import FlavorsFeelings from "@/components/home/flavors-feelings";
 import EarnRewards from "@/components/home/earn-rewards";
 import { PageUrlListType } from "@/types/common";
+import { useStyle } from "@/context/style-context";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -38,7 +39,6 @@ export default function HomeClient({ data, PageList }: { data: any; PageList: Pa
     useGSAP(() => {
         const sections = gsap.utils.toArray('section', mainRef.current);
 
-        // Smooth scroll snap
         ScrollTrigger.create({
             trigger: mainRef.current,
             start: "top top",
@@ -52,22 +52,20 @@ export default function HomeClient({ data, PageList }: { data: any; PageList: Pa
         });
     }, { scope: mainRef });
 
-    // Smooth scroll function
-    const scrollToSection = (ref: React.RefObject<HTMLElement | null>) => {
-        if (ref.current) {
-            gsap.to(window, {
-                duration: 1.2,
-                scrollTo: {
-                    y: ref.current,
-                    offsetY: 0
-                },
-                ease: "power3.inOut"
-            });
-        }
-    };
+    // const { styles, setStyles } = useStyle();
+    // setStyles({
+    //     ...styles,
+    //     theme: styles.buttonStyle = data.base_styles.button_style
+    // })
 
     return (
-        <main ref={mainRef} className="relative w-full overflow-x-hidden">
+        <main ref={mainRef} className="relative w-full overflow-x-hidden"
+            style={{
+                '--btn-primary-bg': data.base_styles.button_color,
+                '--btn-primary-shadow': data.base_styles.button_shadow,
+                '--btn-primary-bg-hover': data.base_styles.button_hover,
+            } as React.CSSProperties}
+        >
             <section ref={heroRef} className="h-screen">
                 <Hero content={data.hero} PageList={PageList} />
             </section>

@@ -91,7 +91,7 @@ const AboutSection = ({ data }: { data: AboutSectionProps }) => {
                             whileTap={{ scale: 0.95 }}
                             className=" transition-colors uppercase tracking-widest w-1/2"
                         >
-                            <Button fullWidth variant="chocolate" size="sm">
+                            <Button fullWidth variant="primary" size="sm">
                                 Explore More
                             </Button>
                         </motion.div>

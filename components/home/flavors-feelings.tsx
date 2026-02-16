@@ -132,7 +132,7 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
                                                 {item.description}
                                             </p>
                                             <div className="w-1/2">
-                                                <Button variant="chocolate" size="lg">
+                                                <Button variant="primary" size="lg">
                                                     {item.button.label}
                                                 </Button>
                                             </div>

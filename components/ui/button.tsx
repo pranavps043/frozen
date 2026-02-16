@@ -1,14 +1,19 @@
-'use client';
-
 import React from 'react';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    /** Button visual variant */
     variant?: 'primary' | 'secondary' | 'outline' | 'mint' | 'chocolate';
+    /** Button size */
     size?: 'sm' | 'md' | 'lg';
+    /** Full width button */
     fullWidth?: boolean;
+    /** Loading state */
     isLoading?: boolean;
+    /** Icon to display before text */
     leftIcon?: React.ReactNode;
+    /** Icon to display after text */
     rightIcon?: React.ReactNode;
+    /** Children content */
     children?: React.ReactNode;
 }
 
@@ -37,48 +42,56 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       ${fullWidth ? 'w-full' : ''}
     `;
 
-        const variantStyles = {
-            primary: `
-        bg-[#F19803] text-white
-        hover:bg-[#D88503] active:bg-[#C07703]
-        shadow-[0_6px_0_0_#C07703,0_8px_12px_rgba(241,152,3,0.4)]
-        hover:shadow-[0_4px_0_0_#C07703,0_6px_10px_rgba(241,152,3,0.5)]
-        active:shadow-[0_2px_0_0_#C07703,0_4px_8px_rgba(241,152,3,0.3)]
-      `,
-            secondary: `
-        bg-white text-[#3A2313] border-4 border-[#F19803]
-        hover:bg-[#FFF8E7] active:bg-[#FFE4B5]
-        shadow-[0_6px_0_0_#F19803,0_8px_12px_rgba(241,152,3,0.3)]
-        hover:shadow-[0_4px_0_0_#F19803,0_6px_10px_rgba(241,152,3,0.4)]
-        active:shadow-[0_2px_0_0_#F19803,0_4px_8px_rgba(241,152,3,0.2)]
-      `,
-            outline: `
-        bg-transparent text-[#F19803] border-4 border-[#F19803]
-        hover:bg-[#F19803] hover:text-white active:bg-[#D88503]
-        shadow-[0_4px_0_0_#F19803,0_6px_10px_rgba(241,152,3,0.2)]
-        hover:shadow-[0_3px_0_0_#C07703,0_5px_8px_rgba(241,152,3,0.3)]
-        active:shadow-[0_1px_0_0_#C07703,0_3px_6px_rgba(241,152,3,0.2)]
-      `,
-            mint: `
-        bg-[#0F3408] text-white
-        hover:bg-[#0A2505] active:bg-[#051802]
-        shadow-[0_6px_0_0_#051802,0_8px_12px_rgba(15,52,8,0.4)]
-        hover:shadow-[0_4px_0_0_#051802,0_6px_10px_rgba(15,52,8,0.5)]
-        active:shadow-[0_2px_0_0_#051802,0_4px_8px_rgba(15,52,8,0.3)]
-      `,
-            chocolate: `
-        bg-[#3A2313] text-white
-        hover:bg-[#2A1810] active:bg-[#1A0F08]
-        shadow-[0_6px_0_0_#1A0F08,0_8px_12px_rgba(58,35,19,0.4)]
-        hover:shadow-[0_4px_0_0_#1A0F08,0_6px_10px_rgba(58,35,19,0.5)]
-        active:shadow-[0_2px_0_0_#1A0F08,0_4px_8px_rgba(58,35,19,0.3)]
-      `,
+        const getVariantStyles = (variant: string) => {
+            const styles: Record<string, React.CSSProperties> = {
+                primary: {
+                    backgroundColor: 'var(--btn-primary-bg)',
+                    color: 'var(--btn-primary-text)',
+                    borderColor: 'transparent',
+                },
+                secondary: {
+                    backgroundColor: 'var(--btn-secondary-bg)',
+                    color: 'var(--btn-secondary-text)',
+                    borderColor: 'var(--btn-secondary-border)',
+                    borderWidth: '4px',
+                    borderStyle: 'solid',
+                },
+                outline: {
+                    backgroundColor: 'transparent',
+                    color: 'var(--btn-outline-text)',
+                    borderColor: 'var(--btn-outline-border)',
+                    borderWidth: '4px',
+                    borderStyle: 'solid',
+                },
+                mint: {
+                    backgroundColor: 'var(--btn-mint-bg)',
+                    color: 'var(--btn-mint-text)',
+                    borderColor: 'transparent',
+                },
+                chocolate: {
+                    backgroundColor: 'var(--btn-chocolate-bg)',
+                    color: 'var(--btn-chocolate-text)',
+                    borderColor: 'transparent',
+                },
+            };
+            return styles[variant];
+        };
+
+        const getVariantClasses = (variant: string) => {
+            const classes: Record<string, string> = {
+                primary: 'btn-primary',
+                secondary: 'btn-secondary',
+                outline: 'btn-outline',
+                mint: 'btn-mint',
+                chocolate: 'btn-chocolate',
+            };
+            return classes[variant];
         };
 
         const sizeStyles = {
-            sm: 'px-6 py-2.5 text-base rounded-3xl gap-2',
-            md: 'px-8 py-3.5 text-lg rounded-3xl gap-2.5',
-            lg: 'px-10 py-4.5 text-xl rounded-3xl gap-3',
+            sm: 'px-6 py-2.5 text-base rounded-full gap-2',
+            md: 'px-8 py-3.5 text-lg rounded-full gap-2.5',
+            lg: 'px-10 py-4.5 text-xl rounded-full gap-3',
         };
 
         return (
@@ -86,14 +99,15 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 ref={ref}
                 className={`
           ${baseStyles}
-          ${variantStyles[variant]}
+          ${getVariantClasses(variant)}
           ${sizeStyles[size]}
           ${className}
         `}
-                disabled={disabled || isLoading}
                 style={{
+                    ...getVariantStyles(variant),
                     fontFamily: '"Comic Sans MS", "Chalkboard SE", "Comic Neue", cursive, sans-serif',
                 }}
+                disabled={disabled || isLoading}
                 {...props}
             >
                 {/* Decorative SVG Border */}

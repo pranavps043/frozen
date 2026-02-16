@@ -69,6 +69,50 @@
 			rgba(163, 184, 94, 0.65) 50%,
 			rgba(249, 229, 146, 0.65) 100%);
 
+	/* Primary Button (Orange Cream) */
+	--btn-primary-bg: #F19803;
+	--btn-primary-bg-hover: #D88503;
+	--btn-primary-bg-active: #C07703;
+	--btn-primary-text: #ffffff;
+	--btn-primary-shadow: #C07703;
+	--btn-primary-shadow-rgb: 241, 152, 3;
+
+	/* Secondary Button (Vanilla Swirl) */
+	--btn-secondary-bg: #ffffff;
+	--btn-secondary-bg-hover: #FFF8E7;
+	--btn-secondary-bg-active: #FFE4B5;
+	--btn-secondary-text: #3A2313;
+	--btn-secondary-border: #F19803;
+	--btn-secondary-shadow: #F19803;
+	--btn-secondary-shadow-rgb: 241, 152, 3;
+
+	/* Outline Button (Peachy) */
+	--btn-outline-bg: transparent;
+	--btn-outline-bg-hover: #F19803;
+	--btn-outline-bg-active: #D88503;
+	--btn-outline-text: #F19803;
+	--btn-outline-text-hover: #ffffff;
+	--btn-outline-border: #F19803;
+	--btn-outline-shadow: #F19803;
+	--btn-outline-shadow-active: #C07703;
+	--btn-outline-shadow-rgb: 241, 152, 3;
+
+	/* Mint Button (Mint Chip) */
+	--btn-mint-bg: #0F3408;
+	--btn-mint-bg-hover: #0A2505;
+	--btn-mint-bg-active: #051802;
+	--btn-mint-text: #ffffff;
+	--btn-mint-shadow: #051802;
+	--btn-mint-shadow-rgb: 15, 52, 8;
+
+	/* Chocolate Button (Chocolate Fudge) */
+	--btn-chocolate-bg: #3A2313;
+	--btn-chocolate-bg-hover: #2A1810;
+	--btn-chocolate-bg-active: #1A0F08;
+	--btn-chocolate-text: #ffffff;
+	--btn-chocolate-shadow: #1A0F08;
+	--btn-chocolate-shadow-rgb: 58, 35, 19;
+
 }
 
 
@@ -130,6 +174,111 @@ h2 {
 		line-height: 32px;
 		/* or 100% */
 		letter-spacing: 0;
+	}
+
+	.btn-primary {
+		box-shadow:
+			0 6px 0 0 var(--btn-primary-shadow),
+			0 8px 12px rgba(var(--btn-primary-shadow-rgb), 0.4);
+	}
+
+	.btn-primary:hover:not(:disabled) {
+		background-color: var(--btn-primary-bg-hover) !important;
+		box-shadow:
+			0 4px 0 0 var(--btn-primary-shadow),
+			0 6px 10px rgba(var(--btn-primary-shadow-rgb), 0.5);
+	}
+
+	.btn-primary:active:not(:disabled) {
+		background-color: var(--btn-primary-bg-active) !important;
+		box-shadow:
+			0 2px 0 0 var(--btn-primary-shadow),
+			0 4px 8px rgba(var(--btn-primary-shadow-rgb), 0.3);
+	}
+
+	/* Secondary Button States */
+	.btn-secondary {
+		box-shadow:
+			0 6px 0 0 var(--btn-secondary-shadow),
+			0 8px 12px rgba(var(--btn-secondary-shadow-rgb), 0.3);
+	}
+
+	.btn-secondary:hover:not(:disabled) {
+		background-color: var(--btn-secondary-bg-hover) !important;
+		box-shadow:
+			0 4px 0 0 var(--btn-secondary-shadow),
+			0 6px 10px rgba(var(--btn-secondary-shadow-rgb), 0.4);
+	}
+
+	.btn-secondary:active:not(:disabled) {
+		background-color: var(--btn-secondary-bg-active) !important;
+		box-shadow:
+			0 2px 0 0 var(--btn-secondary-shadow),
+			0 4px 8px rgba(var(--btn-secondary-shadow-rgb), 0.2);
+	}
+
+	/* Outline Button States */
+	.btn-outline {
+		box-shadow:
+			0 4px 0 0 var(--btn-outline-shadow),
+			0 6px 10px rgba(var(--btn-outline-shadow-rgb), 0.2);
+	}
+
+	.btn-outline:hover:not(:disabled) {
+		background-color: var(--btn-outline-bg-hover) !important;
+		color: var(--btn-outline-text-hover) !important;
+		box-shadow:
+			0 3px 0 0 var(--btn-outline-shadow-active),
+			0 5px 8px rgba(var(--btn-outline-shadow-rgb), 0.3);
+	}
+
+	.btn-outline:active:not(:disabled) {
+		background-color: var(--btn-outline-bg-active) !important;
+		box-shadow:
+			0 1px 0 0 var(--btn-outline-shadow-active),
+			0 3px 6px rgba(var(--btn-outline-shadow-rgb), 0.2);
+	}
+
+	/* Mint Button States */
+	.btn-mint {
+		box-shadow:
+			0 6px 0 0 var(--btn-mint-shadow),
+			0 8px 12px rgba(var(--btn-mint-shadow-rgb), 0.4);
+	}
+
+	.btn-mint:hover:not(:disabled) {
+		background-color: var(--btn-mint-bg-hover) !important;
+		box-shadow:
+			0 4px 0 0 var(--btn-mint-shadow),
+			0 6px 10px rgba(var(--btn-mint-shadow-rgb), 0.5);
+	}
+
+	.btn-mint:active:not(:disabled) {
+		background-color: var(--btn-mint-bg-active) !important;
+		box-shadow:
+			0 2px 0 0 var(--btn-mint-shadow),
+			0 4px 8px rgba(var(--btn-mint-shadow-rgb), 0.3);
+	}
+
+	/* Chocolate Button States */
+	.btn-chocolate {
+		box-shadow:
+			0 6px 0 0 var(--btn-chocolate-shadow),
+			0 8px 12px rgba(var(--btn-chocolate-shadow-rgb), 0.4);
+	}
+
+	.btn-chocolate:hover:not(:disabled) {
+		background-color: var(--btn-chocolate-bg-hover) !important;
+		box-shadow:
+			0 4px 0 0 var(--btn-chocolate-shadow),
+			0 6px 10px rgba(var(--btn-chocolate-shadow-rgb), 0.5);
+	}
+
+	.btn-chocolate:active:not(:disabled) {
+		background-color: var(--btn-chocolate-bg-active) !important;
+		box-shadow:
+			0 2px 0 0 var(--btn-chocolate-shadow),
+			0 4px 8px rgba(var(--btn-chocolate-shadow-rgb), 0.3);
 	}
 }
 
