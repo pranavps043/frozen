@@ -48,7 +48,7 @@ export default function FavoriteTreat({ data }: { data: any }) {
                     <h2 className="font-playfair font-bold text-[22px] md:font-pacifico md:font-normal md:text-[48px] my-4">
                         {data.title}
                     </h2>
-                    <p className="text-base sm:text-lg md:text-xl text-black max-w-2xl mx-auto font-medium px-4 sm:px-6">
+                    <p className="font-montserrat font-semibold text-[14px] md:text-[18px] pb-3">
                         {data.description}
                     </p>
                 </motion.div>

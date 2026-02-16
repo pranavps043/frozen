@@ -108,14 +108,14 @@ export default function Hero({ content, PageList }: { content: any; PageList: Pa
             />
 
             {/* Left Column: Main Content */}
-            <div className="w-full lg:w-1/2 flex flex-col items-start z-10 pr-30 lg:pr-12">
+            <div className="w-full h-full mt-[50%] lg:w-1/2 flex flex-col items-start z-10 pr-30 lg:pr-12">
                 <motion.h2
                     key={`title-${content.title}`}
                     custom={1}
                     initial="hidden"
                     animate="visible"
                     variants={textVariants}
-                    className="font-playfair font-normal text-[18px] md:text-[38px]"
+                    className="font-playfair font-normal text-[18px] md:text-[38px] text-shadow-md mb-4"
                 >
                     {content.content.title}
                 </motion.h2>
