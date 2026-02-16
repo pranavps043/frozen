@@ -125,7 +125,7 @@ export default function Hero({ content, PageList }: { content: any; PageList: Pa
                     initial="hidden"
                     animate="visible"
                     variants={textVariants}
-                    className="text-xl text-white/90 mb-10 leading-relaxed max-w-md text-shadow-md"
+                    className="text-[12px] md:text-[18px] text-white/90 mb-10 leading-relaxed max-w-md text-shadow-md"
                 >
                     {content.content.description}
                 </motion.p>
