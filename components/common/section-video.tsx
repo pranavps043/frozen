@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import { ImageType } from "@/types/common";
 import { useEffect, useRef } from "react";
 
-interface FullWidthProps {
+interface SectionVideoProps {
     backgroundImage?: ImageType;
     backgroundVideo?: {
         src: string;
@@ -17,14 +17,14 @@ interface FullWidthProps {
     overlayOpacity?: number;
 }
 
-export default function FullWidth({
+export default function SectionVideo({
     backgroundImage,
     backgroundVideo,
     title,
     description,
     overlayColor = "#000000",
     overlayOpacity = 0.4
-}: FullWidthProps) {
+}: SectionVideoProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {

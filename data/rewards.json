@@ -13,6 +13,10 @@
             "alt": "The Game Background"
         },
         "title": "“The Game”",
-        "description": "Join our rewards program and get exclusive access to special offers, discounts, and more."
+        "description": "Join our rewards program and get exclusive access to special offers, discounts, and more.",
+        "backgroundVideo": {
+            "src": "/assets/images/rewards/coming-soon-frozen.webm",
+            "poster": "/assets/images/rewards/section.webp"
+        }
     }
 }
