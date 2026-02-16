@@ -145,6 +145,22 @@ h1 {
 	letter-spacing: 0;
 }
 
+.font-playfair {
+	font-family: var(--font-playfair), 'Playfair Display', serif !important;
+}
+
+.font-montserrat {
+	font-family: var(--font-montserrat), 'Playfair Display', serif !important;
+}
+
+.font-akaya {
+	font-family: var(--font-akaya), 'Playfair Display', serif !important;
+}
+
+.font-pacifico {
+	font-family: var(--font-pacifico), 'Playfair Display', serif !important;
+}
+
 
 @layer components {
 	h2 {
@@ -162,7 +178,7 @@ h1 {
 
 	.heading-display {
 		/* font-family: var(--font-playfair); */
-		font-family: var(--font-pacifico);
+		/* font-family: var(--font-pacifico); */
 		font-weight: 700;
 		font-size: 48px;
 		line-height: 100%;

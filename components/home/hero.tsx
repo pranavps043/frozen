@@ -108,14 +108,14 @@ export default function Hero({ content, PageList }: { content: any; PageList: Pa
             />
 
             {/* Left Column: Main Content */}
-            <div className=" w-1/2 flex flex-col items-start z-10 pr-12">
+            <div className="w-full lg:w-1/2 flex flex-col items-start z-10 pr-30 lg:pr-12">
                 <motion.h2
                     key={`title-${content.title}`}
                     custom={1}
                     initial="hidden"
                     animate="visible"
                     variants={textVariants}
-                    className="heading-display text-white mb-6 text-shadow-lg"
+                    className="font-playfair font-normal text-[18px] md:text-[38px]"
                 >
                     {content.content.title}
                 </motion.h2>
@@ -154,11 +154,15 @@ export default function Hero({ content, PageList }: { content: any; PageList: Pa
                         />
                     ))}
                 </div>
-                <TagLine
+                {/* <TagLine
                     tagline={content.content.tagline}
                     image={content.content.tagline_img}
-                />
+                /> */}
             </div>
+            <TagLine
+                tagline={content.content.tagline}
+                image={content.content.tagline_img}
+            />
 
 
             {/* Center Absolute Content (Image) */}
@@ -226,7 +230,7 @@ const TagLine = ({ tagline, image }: { tagline: string, image: ImageType }) => {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
-            className="absolute bottom-12 right-0 z-10 text-right pr-4"
+            className="absolute bottom-12 right-0 z-10 text-right pr-4 max-w-3dddxl"
         >
             <div className="max-w-[400px] flex flex-col items-end">
                 <p className="text-[14px] text-white/80 leading-relaxed font-bold uppercase tracking-[0.3em] mb-4  text-shadow-sm">

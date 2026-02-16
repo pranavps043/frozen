@@ -66,7 +66,7 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
                     viewport={{ once: true, margin: "-100px" }}
                     className="text-center mb-8 md:mb-16"
                 >
-                    <h2 className="heading-display mb-4 md:mb-6 tracking-tight text-white">
+                    <h2 className="font-playfair font-bold text-[22px] md:font-pacifico md:font-normal md:text-[48px] my-4">
                         {formattedTitle}
                     </h2>
                     <p className="text-xl md:text-[32px] text-black max-w-2xl mx-auto leading-[1.4] md:leading-[45px] tracking-normal text-center fancy-text">

@@ -34,7 +34,7 @@ const AboutSection = ({ data }: { data: AboutSectionProps }) => {
                 className="flex flex-col justify-center items-center gap-x-16 gap-y-5 xl:gap-28 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full px-8 lg:px-24"
             >
 
-                <div className="w-full lg:w-1/2 overflow-hidden rounded-xl max-w-[600px] max-h-[450px]">
+                <div className="w-full lg:w-1/2 overflow-hidden rounded-xl max-w-[250px] lg:max-w-[450px] max-h-[450px]">
                     <motion.div
                         whileHover={{ scale: 1.2 }}
                         transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
@@ -55,7 +55,7 @@ const AboutSection = ({ data }: { data: AboutSectionProps }) => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="heading-display text-white mb-6  tracking-tighter"
+                            className="font-playfair font-bold text-[22px] md:font-pacifico md:font-normal md:text-[48px] my-4"
                         >
                             {data.title}
                         </motion.h2>
@@ -63,7 +63,7 @@ const AboutSection = ({ data }: { data: AboutSectionProps }) => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="section-title text-white mb-6 tracking-wider leading-[1.1]"
+                            className="font-montserrat font-semibold text-[14px] md:text-[32px] pb-3"
                         >
                             {data.heading}
                         </motion.h3>

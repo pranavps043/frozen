@@ -45,7 +45,7 @@ export default function FavoriteTreat({ data }: { data: any }) {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-8 sm:mb-12 md:mb-16"
                 >
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-tight px-2 playfair-display">
+                    <h2 className="font-playfair font-bold text-[22px] md:font-pacifico md:font-normal md:text-[48px] my-4">
                         {data.title}
                     </h2>
                     <p className="text-base sm:text-lg md:text-xl text-black max-w-2xl mx-auto font-medium px-4 sm:px-6">

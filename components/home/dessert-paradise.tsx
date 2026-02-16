@@ -61,7 +61,7 @@ export default function DessertParadise({ content }: { content: DessertParadiseT
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="mb-8 heading-display"
+                    className="font-playfair font-bold text-[22px] md:font-pacifico md:font-normal md:text-[48px] my-4"
                 >
                     {content.title}
                 </motion.h2>

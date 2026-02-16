@@ -80,7 +80,7 @@ export default function EarnRewards({ earn_rewards }: { earn_rewards: EarnReward
                     </motion.span>
 
                     {/* Title */}
-                    <h2 className="mb-8 lg:text-5xl text-3xl font-bold tracking-tight font-primary leading-relaxed">
+                    <h2 className="font-playfair font-bold text-[22px] md:font-pacifico md:font-normal md:text-[48px] my-4">
 
                         {earn_rewards.title}
                     </h2>
