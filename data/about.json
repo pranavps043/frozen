@@ -1,0 +1,64 @@
+{
+    "hero": {
+        "backgroundImage": {
+            "src": "/assets/images/about/hero-bg.webp",
+            "alt": "About Hero Background"
+        },
+        "title": "Our Story",
+        "description": "Discover the passion and craftsmanship behind every frozen delight. We're committed to creating the finest frozen desserts using only the freshest ingredients."
+    },
+    "timeline": {
+        "backgroundImage": {
+            "src": "/assets/images/about/full-bg.webp",
+            "alt": "Timeline Background"
+        },
+        "title": "Our Journey",
+        "items": [
+            {
+                "year": "2015",
+                "image": {
+                    "src": "/assets/images/about/timeline-1.webp",
+                    "alt": "Timeline 1"
+                },
+                "title": "The Beginning",
+                "description": "Started as a small family kitchen with a dream to create the perfect frozen dessert. Our first shop opened with just three flavors."
+            },
+            {
+                "year": "2017",
+                "image": {
+                    "src": "/assets/images/about/timeline-2.webp",
+                    "alt": "Timeline 2"
+                },
+                "title": "Expanding Our Horizons",
+                "description": "Expanded to multiple locations across the city. Introduced seasonal flavors and gained recognition for our premium quality."
+            },
+            {
+                "year": "2019",
+                "image": {
+                    "src": "/assets/images/about/timeline-3.webp",
+                    "alt": "Timeline 3"
+                },
+                "title": "Innovation Award",
+                "description": "Received the prestigious Innovation in Frozen Desserts award. Launched our signature collection of artisan ice creams."
+            },
+            {
+                "year": "2022",
+                "image": {
+                    "src": "/assets/images/about/timeline-4.webp",
+                    "alt": "Timeline 4"
+                },
+                "title": "Going Green",
+                "description": "Transitioned to 100% sustainable packaging and sourced all dairy from local farms. Our commitment to the environment grew stronger."
+            },
+            {
+                "year": "2024",
+                "image": {
+                    "src": "/assets/images/about/timeline-5.webp",
+                    "alt": "Timeline 5"
+                },
+                "title": "Today",
+                "description": "With over 50 locations nationwide, we continue to innovate and bring joy through our frozen creations. Every scoop tells a story."
+            }
+        ]
+    }
+}

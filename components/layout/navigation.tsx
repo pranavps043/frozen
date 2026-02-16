@@ -47,7 +47,7 @@ export default function Navigation() {
                 }}
                 animate={hidden ? "hidden" : "visible"}
                 transition={{ duration: 0.35, ease: "easeInOut" }}
-                className="fixed top-[50px] left-0 right-0 w-full max-w-[1280px] h-[63px] bg-nav-bg rounded-3xl border border-[#BC9478]/30 items-center px-6 md:px-8 lg:px-12 z-50 shadow-sm mx-auto hidden md:flex"
+                className="fixed top-[20px] left-0 right-0 w-full max-w-[1280px] h-[63px] bg-nav-bg rounded-3xl border border-[#BC9478]/30 items-center px-6 md:px-8 lg:px-12 z-50 shadow-sm mx-auto hidden md:flex"
                 style={{ margin: '50px auto 0' }}
             >
                 <div className="flex w-full items-center justify-between">
