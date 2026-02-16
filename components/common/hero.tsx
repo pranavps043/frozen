@@ -32,7 +32,7 @@ export default function Hero({ backgroundImage, title, description, overlayColor
                     initial={{ y: 30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="text-white"
+                    className="text-white text-2xl lg:text-4xl font-bold leading-loose"
                 >
                     {title}
                 </motion.h1>

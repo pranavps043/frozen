@@ -72,7 +72,7 @@ export default function ContactFormSection({
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        <h2 className="text-4xl lg:text-5xl font-bold text-white font-primary leading-tight text-playfair">
+                        <h2 className="text-4xl lg:text-5xl font-bold text-white font-primary leading-tight playfair-display">
                             {title}
                         </h2>
                     </motion.div>

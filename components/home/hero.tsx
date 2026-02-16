@@ -144,7 +144,7 @@ export default function Hero({ content, PageList }: { content: any; PageList: Pa
 
             {/* Right Column: Dynamic Sidebar Buttons */}
             <div className="absolute right-0 w-1/2 flex flex-col items-end z-10 h-full justify-center pr-12">
-                <div className="w-80 flex flex-col gap-6">
+                <div className=" flex flex-col gap-6">
                     {PageList.map((page: PageUrlListType, index: Key) => (
                         <HeroListItem
                             key={index}
@@ -205,7 +205,7 @@ interface HeroListItemProps {
 const HeroListItem = ({ label, image, onClick }: HeroListItemProps) => (
     <div
         onClick={onClick}
-        className={`flex items-center gap-4 text-left py-3 px-4 rounded-2xl transition-all duration-300 group bg-white/20 backdrop-blur-md border border-white/30 text-white`}
+        className={`flex items-center gap-4 text-left py-3 px-4 rounded-2xl transition-all duration-300 group bg-white/20 backdrop-blur-md shadow-lg border border-white/30 text-white`}
     >
         <div className="relative w-16 h-16 flex-shrink-0">
             <Image
@@ -216,7 +216,7 @@ const HeroListItem = ({ label, image, onClick }: HeroListItemProps) => (
                 priority
             />
         </div>
-        <span className="text-sm font-semibold uppercase tracking-wider leading-tight">{label}</span>
+        <span className="text-sm font-semibold uppercase tracking-wider text-shadow-sm leading-tight hidden lg:block">{label}</span>
     </div>
 );
 

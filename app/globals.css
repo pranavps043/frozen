@@ -141,21 +141,21 @@ body {
 
 h1 {
 	font-family: var(--font-playfair);
-	font-size: 42px;
 	line-height: 100%;
 	letter-spacing: 0;
 }
 
-h2 {
-	/* font-family: var(--font-playfair); */
-	font-family: var(--font-pacifico);
-	font-weight: 400;
-	font-size: 48px;
-	line-height: 100%;
-	letter-spacing: 0;
-}
 
 @layer components {
+	h2 {
+		/* font-family: var(--font-playfair); */
+		/* font-family: var(--font-pacifico); */
+		font-weight: 400;
+		font-size: 48px;
+		line-height: 100%;
+		letter-spacing: 0;
+	}
+
 	.bg-nav-bg {
 		background-color: var(--nav-bg);
 	}
@@ -169,6 +169,8 @@ h2 {
 		letter-spacing: 0;
 	}
 
+
+
 	.section-title {
 		font-family: var(--font-montserrat);
 		font-weight: 600;
@@ -181,7 +183,6 @@ h2 {
 	.fancy-text {
 		font-family: var(--font-akaya);
 		font-weight: 400;
-		font-size: 32px;
 		line-height: 32px;
 		/* or 100% */
 		letter-spacing: 0;
@@ -290,6 +291,20 @@ h2 {
 		box-shadow:
 			0 2px 0 0 var(--btn-chocolate-shadow),
 			0 4px 8px rgba(var(--btn-chocolate-shadow-rgb), 0.3);
+	}
+
+	@media (max-width: 768px) {
+		h2 {
+			font-size: 22px;
+		}
+
+		.heading-display {
+			font-size: 22px;
+		}
+
+		.section-title {
+			font-size: 14px;
+		}
 	}
 }
 

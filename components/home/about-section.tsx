@@ -45,7 +45,7 @@ const AboutSection = ({ data }: { data: AboutSectionProps }) => {
                             height={data.image.height}
                             src={data.image.src}
                             alt={data.image.alt}
-                            className="w-full h-auto rounded-xl object-cover shadow-2xl"
+                            className="w-full h-auto  rounded-xl object-cover shadow-2xl"
                         />
                     </motion.div>
                 </div>

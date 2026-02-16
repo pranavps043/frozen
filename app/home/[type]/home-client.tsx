@@ -37,6 +37,7 @@ export default function HomeClient({ data, PageList }: { data: any; PageList: Pa
     const rewardsRef = useRef<HTMLElement>(null);
 
     useGSAP(() => {
+        if (window.innerWidth < 768) return;
         const sections = gsap.utils.toArray('section', mainRef.current);
 
         ScrollTrigger.create({

@@ -42,7 +42,9 @@ export default function EarnRewards({ earn_rewards }: { earn_rewards: EarnReward
                 }}
             />
             <div className="absolute inset-0 " >
-                <GradientAnimator />
+                <GradientAnimator
+
+                />
             </div>
 
 
@@ -52,8 +54,8 @@ export default function EarnRewards({ earn_rewards }: { earn_rewards: EarnReward
 
             <FloatingParticles key={`particles-${earn_rewards.particles}`} images={earn_rewards.particles} count={14} />
             {/* Centered Content Container */}
-            <div ref={contentRef} className="relative z-10 flex flex-row items-center px-4 text-center text-white max-w-7xl">
-                <div className="w-1/2">
+            <div ref={contentRef} className="relative z-10 flex flex-col lg:flex-row items-center px-4 text-center text-white max-w-7xl">
+                <div className="w-full lg:w-1/2">
 
                     <div className="relative">
                         <Image
@@ -66,7 +68,7 @@ export default function EarnRewards({ earn_rewards }: { earn_rewards: EarnReward
 
                     </div>
                 </div>
-                <div className="w-1/2">
+                <div className="w-full lg:w-1/2">
                     {/* Pre-title */}
                     <motion.span
                         initial={{ opacity: 0, y: 10 }}
@@ -78,16 +80,16 @@ export default function EarnRewards({ earn_rewards }: { earn_rewards: EarnReward
                     </motion.span>
 
                     {/* Title */}
-                    <h2 className="mb-8 text-5xl font-bold tracking-tight font-primary leading-relaxed">
+                    <h2 className="mb-8 lg:text-5xl text-3xl font-bold tracking-tight font-primary leading-relaxed">
 
                         {earn_rewards.title}
                     </h2>
 
                     {/* Description */}
-                    <p className="mb-5 text-lg font-normal text-black sm:text-xl md:text-2xl max-w-2xl leading-relaxed font-semibold">
+                    <p className="mb-5 lg:text-lg text-base font-normal text-black sm:text-xl md:text-2xl max-w-2xl leading-relaxed font-semibold text-white lg:text-black">
                         {earn_rewards.subtitle}
                     </p>
-                    <p className="mb-5 text-lg font-normal text-black sm:text-xl md:text-2xl max-w-2xl leading-relaxed">
+                    <p className="mb-5 lg:text-lg text-base font-normal text-black sm:text-xl md:text-2xl max-w-2xl leading-relaxed text-white lg:text-black">
                         {earn_rewards.description}
                     </p>
 

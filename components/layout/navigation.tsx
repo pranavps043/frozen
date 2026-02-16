@@ -47,7 +47,7 @@ export default function Navigation() {
                 }}
                 animate={hidden ? "hidden" : "visible"}
                 transition={{ duration: 0.35, ease: "easeInOut" }}
-                className="fixed top-[20px] left-0 right-0 w-full max-w-[1280px] h-[63px] bg-nav-bg rounded-3xl border border-[#BC9478]/30 items-center px-6 md:px-8 lg:px-12 z-50 shadow-sm mx-auto hidden md:flex"
+                className="fixed top-[20px] left-0 right-0 w-full max-w-[1280px] h-[63px] bg-nav-bg rounded-3xl border border-[#BC9478]/30 items-center px-6 md:px-8 lg:px-12 z-50 shadow-sm mx-auto hidden md:flex isolate aspect-video bg-white/40 shadow-lg ring-1 ring-black/5"
                 style={{ margin: '50px auto 0' }}
             >
                 <div className="flex w-full items-center justify-between">
@@ -105,27 +105,29 @@ export default function Navigation() {
                 transition={{ duration: 0.35, ease: "easeInOut" }}
                 className="fixed top-[20px] left-4 right-4 z-50 md:hidden"
             >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-end">
                     {/* Hamburger Menu Button */}
                     <motion.button
                         onClick={toggleMobileMenu}
-                        className="flex flex-col gap-1.5 w-10 h-10 items-center justify-center bg-nav-bg rounded-full border border-[#BC9478]/30 shadow-sm"
+                        className="flex flex-col gap-1.5 w-10 h-10 items-center justify-center bg-grey-500/20 rounded-full border border-[#BC9478]/30 shadow-sm"
                         whileTap={{ scale: 0.95 }}
                         aria-label="Toggle menu"
                     >
                         <motion.span
                             animate={mobileMenuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-                            className="w-6 h-0.5 bg-[#3B2516] rounded-full"
+                            className="w-7 h-[3px] bg-white rounded-full"
                         />
                         <motion.span
                             animate={mobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-                            className="w-6 h-0.5 bg-[#3B2516] rounded-full"
+                            className="w-7 h-[3px] bg-white rounded-full"
                         />
                         <motion.span
                             animate={mobileMenuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-                            className="w-6 h-0.5 bg-[#3B2516] rounded-full"
+                            className="w-7 h-[3px] bg-white rounded-full"
                         />
                     </motion.button>
+
+
 
                     {/* Centered Logo */}
                     <motion.div
@@ -136,7 +138,7 @@ export default function Navigation() {
                             delay: 0.1,
                             ease: [0, 0.71, 0.2, 1.01]
                         }}
-                        className="absolute left-1/2 -translate-x-1/2"
+                        className="absolute left-1/2 -translate-x-1/2 z-50"
                     >
                         <Link href="/" className="block hover:scale-105 transition-transform">
                             <div className="w-[90px]">
