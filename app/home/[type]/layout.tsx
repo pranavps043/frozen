@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { StyleProvider } from '@/context/style-context';
-
+import { AnimatePresence, motion } from 'motion/react';
 
 
 export default function HomeLayout({ children }: { children: React.ReactNode }) {
@@ -24,12 +24,23 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
 
     return (
         <div>
-            <main className={`transition-opacity duration-300 relative ${pathname}`}
-            >
-                <StyleProvider>
-                    {children}
-                </StyleProvider>
-            </main>
+            <StyleProvider>
+                <AnimatePresence mode="wait">
+                    <motion.main
+                        key={pathname}
+                        initial={{ opacity: 0, scale: 0.98 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.98 }}
+                        transition={{
+                            duration: 0.4,
+                            ease: "easeInOut"
+                        }}
+                        className="relative"
+                    >
+                        {children}
+                    </motion.main>
+                </AnimatePresence>
+            </StyleProvider>
         </div>
     );
 }

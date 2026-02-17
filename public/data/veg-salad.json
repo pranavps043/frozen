@@ -7,6 +7,7 @@
         "button_size": "lg"
     },
     "hero": {
+        "slug": "veg-salad",
         "title": "Homemade Healthy Green Veg Salad",
         "image": "/assets/images/hero/products/small-cake.webp",
         "bg_gradient": "--gradient-harvest-meadow",

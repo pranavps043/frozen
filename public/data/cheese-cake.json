@@ -1,15 +1,16 @@
 {
     "base_styles": {
-        "bg_gradient": "--gradient-golden-mango",
+        "bg_gradient": "--gradient-light-orange",
         "button_color": "#3A2313",
         "button_shadow": "#00000040",
         "button_hover": "#50331a",
         "button_size": "lg"
     },
     "hero": {
+        "slug": "cheese-cake",
         "title": "Homemade Blueberry Cheesecake",
         "image": "/assets/images/hero/products/small-cake.webp",
-        "bg_gradient": "--gradient-golden-mango",
+        "bg_gradient": "--gradient-light-orange",
         "content": {
             "title": "The Final Note of Delight",
             "description": "Discover our new collection of frozen solutions designed for the modern household and professional kitchen.",
