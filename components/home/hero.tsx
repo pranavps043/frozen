@@ -164,7 +164,7 @@ export default function Hero({ content, PageList }: { content: any; PageList: Pa
                 </div>
 
                 {/* Right Column: Dynamic Sidebar Buttons */}
-                <div className="absolute right-0 w-1/2 flex flex-col items-end h-full justify-center pr-12">
+                <div className="absolute right-0 w-1/2 flex flex-col items-end h-full justify-center pr-1 lg:pr-12">
                     <div className=" flex flex-col gap-6">
                         {PageList.map((page: PageUrlListType, index: Key) => (
                             <HeroListItem
