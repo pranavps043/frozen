@@ -129,7 +129,7 @@ export default function Hero({ content, PageList }: { content: any; PageList: Pa
             {/* Main content wrapper with ref for transitions */}
             <div ref={contentRef} className="w-full h-full flex items-center relative z-10">
                 {/* Left Column: Main Content */}
-                <div className="w-full h-full mt-[50%] lg:w-1/2 flex flex-col items-start pr-30 lg:pr-12">
+                <div className="w-full h-full mt-[50%] lg:w-1/2 flex flex-col items-start pr-5 lg:pr-12">
                     <motion.h2
                         key={`title-${content.title}`}
                         custom={1}
