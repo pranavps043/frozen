@@ -205,22 +205,21 @@ interface HeroListItemProps {
     index?: number;
     isActive?: boolean;
 }
-
 const HeroListItem = ({ label, image, onClick }: HeroListItemProps) => (
     <div
         onClick={onClick}
-        className={`flex items-center gap-4 text-left py-3 px-4 rounded-2xl transition-all duration-300 group bg-white/20 backdrop-blur-md shadow-lg border border-white/30 text-white`}
+        className={`flex items-center gap-4 text-left py-3 px-4 rounded-2xl transition-all duration-300 group bg-white/20 backdrop-blur-md shadow-lg border border-white/30 text-white hover:bg-white/30 relative hover:-translate-x-5 ease-in-out`}
     >
         <div className="relative w-16 h-16 flex-shrink-0">
             <Image
                 src={image.src}
                 alt={image.alt}
                 fill
-                className="object-contain group-hover:scale-110 transition-transform duration-300"
+                className="object-contain group-hover:-translate-x-3 ease-in-out transition-transform duration-300 group-hover:scale-180"
                 priority
             />
         </div>
-        <span className="text-sm font-semibold uppercase tracking-wider text-shadow-md leading-tight hidden lg:block max-w-[150px]">{label}</span>
+        <span className="text-sm font-semibold uppercase tracking-wider text-shadow-md leading-tight hidden lg:block max-w-[150px] pr-4">{label}</span>
     </div>
 );
 
