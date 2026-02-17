@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import Button from "../ui/button";
 import { ImageType } from "@/types/common";
+import { submitContactForm, type ContactFormPayload } from "@/actions/contact";
 
 interface ContactFormSectionProps {
     backgroundImage: ImageType;
@@ -12,13 +13,23 @@ interface ContactFormSectionProps {
     description: string;
     buttonText: string;
     fields: {
-        fullName: string;
+        full_name: string;
         email: string;
         phone: string;
         subject: string;
         message: string;
     };
 }
+
+type FormStatus = "idle" | "loading" | "success" | "error";
+
+const defaultFormData: ContactFormPayload = {
+    full_name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+};
 
 export default function ContactFormSection({
     backgroundImage,
@@ -27,30 +38,37 @@ export default function ContactFormSection({
     buttonText,
     fields,
 }: ContactFormSectionProps) {
-    const [formData, setFormData] = useState({
-        fullName: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-    });
+    const [formData, setFormData] = useState<ContactFormPayload>(defaultFormData);
+    const [status, setStatus] = useState<FormStatus>("idle");
+    const [feedback, setFeedback] = useState<string>("");
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
-        setFormData((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value,
-        }));
+        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Form submitted:", formData);
+        setStatus("loading");
+        setFeedback("");
+
+        const result = await submitContactForm(formData);
+
+        if (result.success) {
+            setStatus("success");
+            setFeedback(result.message || "Message sent! We'll be in touch soon.");
+            setFormData(defaultFormData);
+        } else {
+            setStatus("error");
+            setFeedback(result.message || "Something went wrong. Please try again.");
+        }
     };
 
     const inputClasses =
         "w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all";
+
+    const isLoading = status === "loading";
 
     return (
         <div className="relative w-full min-h-screen flex items-center px-8 lg:px-24 py-20 overflow-hidden">
@@ -81,9 +99,7 @@ export default function ContactFormSection({
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                     >
-                        <p className="text-lg text-white/80 leading-relaxed">
-                            {description}
-                        </p>
+                        <p className="text-lg text-white/80 leading-relaxed">{description}</p>
                     </motion.div>
                 </div>
 
@@ -97,14 +113,15 @@ export default function ContactFormSection({
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label className="block text-white/80 mb-2 text-sm font-medium">
-                                {fields.fullName}
+                                {fields.full_name}
                             </label>
                             <input
                                 type="text"
-                                name="fullName"
-                                value={formData.fullName}
+                                name="full_name"
+                                value={formData.full_name}
                                 onChange={handleChange}
                                 className={inputClasses}
+                                disabled={isLoading}
                                 required
                             />
                         </div>
@@ -118,6 +135,7 @@ export default function ContactFormSection({
                                 value={formData.email}
                                 onChange={handleChange}
                                 className={inputClasses}
+                                disabled={isLoading}
                                 required
                             />
                         </div>
@@ -134,6 +152,7 @@ export default function ContactFormSection({
                                 value={formData.phone}
                                 onChange={handleChange}
                                 className={inputClasses}
+                                disabled={isLoading}
                                 required
                             />
                         </div>
@@ -147,6 +166,7 @@ export default function ContactFormSection({
                                 value={formData.subject}
                                 onChange={handleChange}
                                 className={inputClasses}
+                                disabled={isLoading}
                                 required
                             />
                         </div>
@@ -162,11 +182,23 @@ export default function ContactFormSection({
                             onChange={handleChange}
                             rows={6}
                             className={`${inputClasses} resize-none`}
+                            disabled={isLoading}
                             required
                         />
                     </div>
 
-                    <Button variant="primary" type="submit">{buttonText}</Button>
+                    {feedback && (
+                        <p
+                            className={`mb-6 text-sm font-medium ${status === "success" ? "text-green-400" : "text-red-400"
+                                }`}
+                        >
+                            {feedback}
+                        </p>
+                    )}
+
+                    <Button variant="primary" type="submit" disabled={isLoading}>
+                        {isLoading ? "Sending..." : buttonText}
+                    </Button>
                 </motion.form>
             </div>
         </div>
