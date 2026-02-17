@@ -220,7 +220,7 @@ const HeroListItem = ({ label, image, onClick }: HeroListItemProps) => (
                 priority
             />
         </div>
-        <span className="text-sm font-semibold uppercase tracking-wider text-shadow-sm leading-tight hidden lg:block">{label}</span>
+        <span className="text-sm font-semibold uppercase tracking-wider text-shadow-md leading-tight hidden lg:block max-w-[150px]">{label}</span>
     </div>
 );
 
@@ -230,7 +230,7 @@ const TagLine = ({ tagline, image }: { tagline: string, image: ImageType }) => {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
-            className="absolute bottom-12 right-0 z-10 text-right pr-4 max-w-3dddxl"
+            className="absolute bottom-12 right-0 z-10 text-right pr-4 max-w-3xl"
         >
             <div className="max-w-[400px] flex flex-col items-end">
                 <p className="text-[14px] text-white/80 leading-relaxed font-bold uppercase tracking-[0.3em] mb-4  text-shadow-sm">
