@@ -312,6 +312,7 @@ const CardContent = ({ treat, index }: { treat: TreatItem, index: number }) => {
                     size={isMobile ? "sm" : "md"}
                     fullWidth={true}
                     className="touch-manipulation"
+                    href={treat.button.link}
                 >
                     {treat.button.label}
                 </Button>

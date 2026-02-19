@@ -48,8 +48,8 @@
         "description": "At Frozen Creamery N’ Garden, indulgence and balance sit side by side, creating a story you didn’t know you were craving!",
         "body": "Some stories start in one place. Ours began across continents, in the busy and bustling kitchens of Dubai, the cobblestone streets of Amsterdam, and the food halls of England. ",
         "button": {
-            "label": "View More",
-            "link": ""
+            "label": "Explore More",
+            "link": "#link"
         },
         "image": {
             "src": "/assets/images/garden-bowls.png",

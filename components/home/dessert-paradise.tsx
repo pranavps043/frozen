@@ -77,7 +77,7 @@ export default function DessertParadise({ content }: { content: DessertParadiseT
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                 >
-                    <Button variant="primary" size='lg'>
+                    <Button variant="primary" size='lg' href={content.button.link}>
                         {content.button.label}
                     </Button>
                 </motion.div>

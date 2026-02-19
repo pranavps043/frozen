@@ -224,10 +224,7 @@ const AccordionItem = React.memo(({
                                         <Button
                                             variant="primary"
                                             size="lg"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                // Add button click handler here
-                                            }}
+                                            href={item.button.link}
                                         >
                                             {item.button.label}
                                         </Button>

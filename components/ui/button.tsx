@@ -1,20 +1,16 @@
 import React from 'react';
+import Link from 'next/link';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    /** Button visual variant */
     variant?: 'primary' | 'secondary' | 'outline' | 'mint' | 'chocolate';
-    /** Button size */
     size?: 'sm' | 'md' | 'lg';
-    /** Full width button */
     fullWidth?: boolean;
-    /** Loading state */
     isLoading?: boolean;
-    /** Icon to display before text */
     leftIcon?: React.ReactNode;
-    /** Icon to display after text */
     rightIcon?: React.ReactNode;
-    /** Children content */
     children?: React.ReactNode;
+    /** Optional href - renders as Next.js Link instead of button */
+    href?: string;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -29,6 +25,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             children,
             className = '',
             disabled,
+            href,
             ...props
         },
         ref
@@ -94,23 +91,20 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             lg: 'px-10 py-4.5 text-xl rounded-full gap-3',
         };
 
-        return (
-            <button
-                ref={ref}
-                className={`
-          ${baseStyles}
-          ${getVariantClasses(variant)}
-          ${sizeStyles[size]}
-          ${className}
-        `}
-                style={{
-                    ...getVariantStyles(variant),
-                    fontFamily: '"Comic Sans MS", "Chalkboard SE", "Comic Neue", cursive, sans-serif',
-                }}
-                disabled={disabled || isLoading}
-                {...props}
-            >
-                {/* Decorative SVG Border */}
+        const sharedClassName = `
+            ${baseStyles}
+            ${getVariantClasses(variant)}
+            ${sizeStyles[size]}
+            ${className}
+        `;
+
+        const sharedStyle: React.CSSProperties = {
+            ...getVariantStyles(variant),
+            fontFamily: '"Comic Sans MS", "Chalkboard SE", "Comic Neue", cursive, sans-serif',
+        };
+
+        const innerContent = (
+            <>
                 <svg
                     className="absolute inset-0 w-full h-full pointer-events-none"
                     style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }}
@@ -155,6 +149,30 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 {!isLoading && leftIcon && <span className="inline-flex relative z-10">{leftIcon}</span>}
                 <span className="relative z-10">{children}</span>
                 {!isLoading && rightIcon && <span className="inline-flex relative z-10">{rightIcon}</span>}
+            </>
+        );
+
+        if (href) {
+            return (
+                <Link
+                    href={href}
+                    className={sharedClassName}
+                    style={sharedStyle}
+                >
+                    {innerContent}
+                </Link>
+            );
+        }
+
+        return (
+            <button
+                ref={ref}
+                className={sharedClassName}
+                style={sharedStyle}
+                disabled={disabled || isLoading}
+                {...props}
+            >
+                {innerContent}
             </button>
         );
     }

@@ -98,7 +98,7 @@ export default function EarnRewards({ earn_rewards }: { earn_rewards: EarnReward
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        <Button variant="primary" size="lg">
+                        <Button variant="primary" size="lg" href={earn_rewards.button.link}>
                             {earn_rewards.button.label}
                         </Button>
 

@@ -157,7 +157,7 @@ export default function Hero({ content, PageList }: { content: any; PageList: Pa
                         variants={textVariants}
                         className="mt-4"
                     >
-                        <Button variant="primary" size="sm">
+                        <Button variant="primary" size="sm" href={content.content.buttonLink}>
                             {content.content.buttonLabel}
                         </Button>
                     </motion.div>
