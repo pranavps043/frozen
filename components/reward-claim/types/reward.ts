@@ -74,10 +74,7 @@ export interface StepCongratsProps {
   onReset: () => void;
 }
 
-export interface StepIndicatorProps {
-  currentStep: number;
-  totalSteps?: number;
-}
+
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "success" | "ghost" | "danger";

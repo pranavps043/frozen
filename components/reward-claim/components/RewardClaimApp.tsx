@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Step, Reward, UserInfo, AuthUser } from "../types/reward";
 import { StarBackground } from "../components/StarBackground";
 import { Confetti } from "../components/Confetti";
-import { StepIndicator } from "../components/StepIndicator";
 import { AuthGate } from "../components/AuthGate";
 import { StepCode } from "../components/steps/StepCode";
 import { StepUserInfo } from "../components/steps/StepUserInfo";
@@ -67,7 +66,6 @@ export const RewardClaimApp: React.FC = () => {
               </span>
             </div>
 
-            <StepIndicator currentStep={step} />
 
             {step === 1 && <StepCode onSuccess={handleCodeSuccess} />}
 
@@ -80,7 +78,7 @@ export const RewardClaimApp: React.FC = () => {
             )}
 
             {step === 3 && reward && (
-              <StepScratch reward={reward} onScratched={handleScratched} />
+              <StepScratch reward={reward} onScratchedAndClicked={() => { }} onScratched={handleScratched} />
             )}
 
             {step === 4 && reward && (

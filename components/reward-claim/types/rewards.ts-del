@@ -1,0 +1,6 @@
+import { ValidCodesMap } from "./reward";
+
+
+
+
+export const TOTAL_STEPS = 4;
