@@ -79,6 +79,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onAuthenticated }) => {
     }
 
     if (data.success) {
+      setIsLoading(false);
       setMode("signin");
     }
 
