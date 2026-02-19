@@ -38,6 +38,8 @@ async function mockSignUp(payload: SignUpPayload): Promise<AuthUser> {
     id: crypto.randomUUID(),
     name: payload.name,
     email: payload.email,
+    token: "mock-token",
+    game_level: "1",
     createdAt: new Date().toISOString(),
   };
   mockStore[payload.email.toLowerCase()] = { password: payload.password, user };

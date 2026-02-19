@@ -45,7 +45,6 @@ export const StepCode: React.FC<StepCodeProps> = ({ onSuccess }) => {
   return (
     <div className="animate-fade-in">
       <div className="text-center mb-8">
-        <div className="text-[52px] mb-3">🎟️</div>
         <h1 className="text-[#651243] md:text-[42px] text-[32px]  font-bold mb-4 tracking-tight font-pacifico text-shadow-lg">
           Welcome to Frozen
         </h1>

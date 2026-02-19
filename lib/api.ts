@@ -59,8 +59,26 @@ export async function apiCall<TData = unknown, TBody = unknown>(
 }
 
 // Convenience wrappers
-export const get = <TData>(endpoint: string, headers?: Record<string, string>) =>
-    apiCall<TData>(endpoint, { method: "GET", headers });
+// export const get = <TData>(endpoint: string, headers?: Record<string, string>) =>
+//     apiCall<TData>(endpoint, { method: "GET", headers });
+
+export const get = <TData>(
+    endpoint: string,
+    query?: Record<string, string | number | boolean | null | undefined>,
+    headers?: Record<string, string>
+) => {
+    if (query) {
+        const params = new URLSearchParams(
+            Object.entries(query)
+                .filter(([, v]) => v != null)
+                .map(([k, v]) => [k, String(v)])
+        );
+        const separator = endpoint.includes("?") ? "&" : "?";
+        endpoint = `${endpoint}${separator}${params.toString()}`;
+    }
+    return apiCall<TData>(endpoint, { method: "GET", headers });
+};
+
 
 export const post = <TData, TBody = unknown>(
     endpoint: string,

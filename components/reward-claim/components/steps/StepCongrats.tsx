@@ -28,9 +28,8 @@ export const StepCongrats: React.FC<StepCongratsProps> = ({
       </p>
 
       <div className="bg-gradient-to-br from-[#1a0533] to-[#2d1065] border-2 border-[#7C3AED] rounded-[20px] p-[30px] mb-6 shadow-[0_0_40px_rgba(124,58,237,0.5)]">
-        <div className="text-[56px] mb-3">{reward.emoji}</div>
         <div className="text-[#FFD700] text-xl font-bold tracking-tight mb-2 font-serif">
-          {reward.gift}
+          {reward.message}
         </div>
         <div className="text-[#9CA3AF] text-xs">Confirmation sent to {email}</div>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 import React, { useMemo } from "react";
 
-const COLORS = ["#FF6B35", "#7C3AED", "#F59E0B", "#10B981", "#EC4899", "#3B82F6"];
+const COLORS = ["#FF6B35", "#7c3aed", "#F59E0B", "#10B981", "#EC4899", "#3B82F6"];
 
 export const Confetti: React.FC = () => {
   const pieces = useMemo(

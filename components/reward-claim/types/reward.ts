@@ -28,9 +28,11 @@ export interface SignUpPayload {
 export type Step = 1 | 2 | 3 | 4 | 5;
 
 export interface Reward {
-  gift: string;
-  emoji: string;
-  color: string;
+  id: number
+  type: string
+  message: string
+  type_id: number
+  created_at: string
 }
 
 export type RewardCode = string;
@@ -44,6 +46,7 @@ export interface UserInfo {
 // ── Component Props ───────────────────────────────────
 export interface ScratchCardProps {
   reward: Reward | null;
+  onScratchedAndClicked: () => void;
   onScratched: () => void;
 }
 
@@ -59,6 +62,7 @@ export interface StepUserInfoProps {
 
 export interface StepScratchProps {
   reward: Reward | null;
+  onScratchedAndClicked: () => void;
   onScratched: () => void;
 }
 
@@ -87,7 +91,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 
 // ── Hooks ─────────────────────────────────────────────
 export interface UseScratchReturn {
-  canvasRef: React.RefObject<HTMLCanvasElement>;
+  canvasRef: React.RefObject<HTMLCanvasElement | null>;
   scratchPercent: number;
   isScratched: boolean;
   handleMouseDown: () => void;
@@ -96,4 +100,9 @@ export interface UseScratchReturn {
   handleTouchStart: (e: React.TouchEvent<HTMLCanvasElement>) => void;
   handleTouchEnd: () => void;
   handleTouchMove: (e: React.TouchEvent<HTMLCanvasElement>) => void;
+}
+
+export interface AllRewardsProps {
+  user: AuthUser;
+  onReset: () => void;
 }

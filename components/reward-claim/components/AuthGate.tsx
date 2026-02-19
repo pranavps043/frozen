@@ -1,11 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AuthMode, AuthUser } from "../types/reward";
 import { SignIn } from "./SignIn";
 import { SignUp } from "./SignUp";
 import { useAuth } from "../hooks/useAuth";
-import { div } from "motion/react-client";
 import { post } from "@/lib/api";
+import { loginMember, registerMember } from "../lib/reward-apis";
 
 interface AuthGateProps {
   onAuthenticated: (user: AuthUser) => void;
@@ -16,24 +16,34 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onAuthenticated }) => {
   const { signIn, signUp, loading, error } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setError] = useState<string | null>(null);
-  const uuid = localStorage.getItem("uuid");
+  const [uuid, setUuid] = useState<string>("");
+
+  useEffect(() => {
+    setUuid(localStorage.getItem("uuid") || "");
+  }, []);
+
+  const handleSwitch = (mode: AuthMode) => {
+    setMode(mode);
+    setError(null);
+  }
 
   const handleSignIn = async (payload: Parameters<typeof signIn>[0]) => {
-    // const success = await signIn(payload);
-
     setIsLoading(true);
     setError("");
 
-    const { data, error } = await post<any, any>(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/login-member`,
-      { email: payload.email, password: payload.password, uuid: uuid ? uuid : "" }
-    );
+    const { data, error } = await loginMember(payload, uuid);
     if (!data) {
-
       setError(error);
       setIsLoading(false);
       return false;
     }
+
+    if (data.success == false) {
+      setError(data.message);
+      setIsLoading(false);
+      return false;
+    }
+
     if (error) {
       setError(error);
       setIsLoading(false);
@@ -44,8 +54,8 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onAuthenticated }) => {
       id: data.user.id,
       name: data.user.name,
       email: data.user.email,
-      token: data.token,
-      game_level: data.user.game_level,
+      token: data.tokens_login,
+      game_level: '1',
       createdAt: new Date().toISOString(),
     });
 
@@ -53,35 +63,24 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onAuthenticated }) => {
   };
 
   const handleSignUp = async (payload: Parameters<typeof signUp>[0]) => {
-    // const success = await signUp(payload);
-
-    const { data, error } = await post<any, any>(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/register-member`,
-      {
-        full_name: payload.name,
-        email_or_phone: payload.email,
-        password: payload.password,
-        password_confirmation: payload.confirmPassword,
-      }
-    );
-
+    setIsLoading(true);
+    setError("");
+    const { data, error } = await registerMember(payload);
     if (error) {
       setError(error);
       setIsLoading(false);
       return false;
     }
 
-    if (data) {
-      onAuthenticated({
-        id: data.user.id,
-        name: data.user.name,
-        email: data.user.email,
-        token: data.token,
-        game_level: data.user.game_level,
-        createdAt: new Date().toISOString(),
-      });
+    if (data.success == false) {
+      setError(data.message);
+      setIsLoading(false);
+      return false;
     }
 
+    if (data.success) {
+      setMode("signin");
+    }
 
     return true;
   };
@@ -89,9 +88,9 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onAuthenticated }) => {
   return (
     <div className="max-w-md mx-auto">
       {mode === "signin" ? (
-        <SignIn onSignIn={handleSignIn} onSwitch={setMode} loading={loading} error={error} />
+        <SignIn onSignIn={handleSignIn} onSwitch={handleSwitch} loading={isLoading} error={errorMsg} />
       ) : (
-        <SignUp onSignUp={handleSignUp} onSwitch={setMode} loading={loading} error={error} />
+        <SignUp onSignUp={handleSignUp} onSwitch={handleSwitch} loading={isLoading} error={errorMsg} />
       )}
     </div>
   )

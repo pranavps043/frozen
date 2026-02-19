@@ -8,7 +8,7 @@ interface SignInProps {
   onSignIn: (payload: SignInPayload) => Promise<boolean>;
   onSwitch: (mode: AuthMode) => void;
   loading: boolean;
-  error: string;
+  error: string | null;
 }
 
 export const SignIn: React.FC<SignInProps> = ({ onSignIn, onSwitch, loading, error }) => {

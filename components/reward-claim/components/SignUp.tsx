@@ -8,15 +8,13 @@ interface SignUpProps {
   onSignUp: (payload: SignUpPayload) => Promise<boolean>;
   onSwitch: (mode: AuthMode) => void;
   loading: boolean;
-  error: string;
+  error: string | null;
 }
 
 export const SignUp: React.FC<SignUpProps> = ({ onSignUp, onSwitch, loading, error }) => {
   const [form, setForm] = useState<SignUpPayload>({
     name: "", email: "", password: "", confirmPassword: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Partial<SignUpPayload>>({});
 
   const set = (field: keyof SignUpPayload) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,12 +65,12 @@ export const SignUp: React.FC<SignUpProps> = ({ onSignUp, onSwitch, loading, err
       </div>
 
       {error && (
-        <p className="text-[#F87171] text-[13px] text-center mt-3">
+        <p className="text-red-600 text-[15px] text-center mt-5 ">
           {error}
         </p>
       )}
 
-      <div className="mt-5">
+      <div className="mt-5 flex justify-center">
         <Button variant="primary" isLoading={loading} onClick={handleSubmit}>
           CREATE ACCOUNT →
         </Button>

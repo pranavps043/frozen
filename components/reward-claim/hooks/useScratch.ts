@@ -13,7 +13,7 @@ export function useScratch({
   brushRadius = 28,
   onComplete,
 }: UseScratchOptions = {}): UseScratchReturn {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const isDrawing = useRef(false);
   const [scratchPercent, setScratchPercent] = useState(0);
   const [isScratched, setIsScratched] = useState(false);
@@ -29,9 +29,9 @@ export function useScratch({
     canvas.height = canvas.offsetHeight;
 
     const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    grad.addColorStop(0, "#C0C0C0");
-    grad.addColorStop(0.5, "#E8E8E8");
-    grad.addColorStop(1, "#A8A8A8");
+    grad.addColorStop(0, "#b5a90cff");
+    grad.addColorStop(0.5, "#d1d500ff");
+    grad.addColorStop(1, "#7a7a00ff");
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -43,7 +43,7 @@ export function useScratch({
       }
     }
 
-    ctx.fillStyle = "#888";
+    ctx.fillStyle = "#8d5500ff";
     ctx.font = "bold 16px Georgia, serif";
     ctx.textAlign = "center";
     ctx.fillText("✦ SCRATCH HERE ✦", canvas.width / 2, canvas.height / 2 - 10);
@@ -102,10 +102,10 @@ export function useScratch({
   );
 
   const handleMouseDown = useCallback(() => { isDrawing.current = true; }, []);
-  const handleMouseUp   = useCallback(() => { isDrawing.current = false; }, []);
+  const handleMouseUp = useCallback(() => { isDrawing.current = false; }, []);
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => { doScratch(e); }, [doScratch]);
   const handleTouchStart = useCallback((e: React.TouchEvent<HTMLCanvasElement>) => { isDrawing.current = true; doScratch(e); }, [doScratch]);
-  const handleTouchEnd  = useCallback(() => { isDrawing.current = false; }, []);
+  const handleTouchEnd = useCallback(() => { isDrawing.current = false; }, []);
   const handleTouchMove = useCallback((e: React.TouchEvent<HTMLCanvasElement>) => { doScratch(e); }, [doScratch]);
 
   return {
