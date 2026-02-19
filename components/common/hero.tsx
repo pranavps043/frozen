@@ -1,5 +1,6 @@
 "use client";
 
+import { ReactNode, FC } from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { ImageType } from "@/types/common";
@@ -9,9 +10,10 @@ interface HeroProps {
     title: string;
     description: string;
     overlayColor?: string;
+    children?: ReactNode;
 }
 
-export default function Hero({ backgroundImage, title, description, overlayColor }: HeroProps) {
+export default function Hero({ backgroundImage, title, description, overlayColor, children }: HeroProps) {
     return (
         <div className="relative w-full h-[80vh] flex items-center px-8 lg:px-24 overflow-hidden">
             <div className="absolute inset-0 z-1 opacity-50" style={{ background: overlayColor }} />
@@ -44,6 +46,11 @@ export default function Hero({ backgroundImage, title, description, overlayColor
                 >
                     {description}
                 </motion.p>
+                {children && (
+                    <div className="py-4">
+                        {children}
+                    </div>
+                )}
             </div>
         </div>
     );

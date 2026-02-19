@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 
@@ -35,7 +37,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       font-bold transition-all duration-300
       focus:outline-none
       disabled:opacity-50 disabled:cursor-not-allowed
-      transform hover:scale-105 active:scale-95 cursor-pointer
+      transform hover:scale-105 active:scale-95 cursor-pointer text-shadow-md
       ${fullWidth ? 'w-full' : ''}
     `;
 
