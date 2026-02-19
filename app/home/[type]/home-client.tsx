@@ -83,7 +83,7 @@ export default function HomeClient({ data, PageList }: { data: any; PageList: Pa
                 <DessertParadise content={data.dessert_paradise} />
             </section>
 
-            <section ref={flavorsRef} className="h-screen">
+            <section ref={flavorsRef} className="min-h-screen">
                 <FlavorsFeelings data={data.flavors_feelings} />
             </section>
 

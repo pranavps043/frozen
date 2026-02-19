@@ -139,7 +139,7 @@ export const SplitCodeInput: React.FC<SplitCodeInputProps> = ({
     return (
         <div className={`flex flex-col items-center gap-2 ${className}`}>
             <p className="text-gray-900 text-sm m-0">{label}</p>
-            <div className="flex gap-2 justify-center">
+            <div className="flex gap-2 justify-center flex-wrap">
                 {Array.from({ length }).map((_, index) => (
                     <input
                         key={index}

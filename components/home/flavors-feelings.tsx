@@ -76,7 +76,7 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
             </div>
 
             <div
-                className="relative w-full max-w-7xl h-[600px] flex gap-2 z-2 px-4 md:px-6"
+                className="relative w-full max-w-7xl h-[600px] flex gap-2 z-2 px-0 md:px-2 md:px-6"
                 role="tablist"
                 aria-label="Flavors and feelings accordion"
             >

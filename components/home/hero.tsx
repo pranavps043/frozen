@@ -165,7 +165,7 @@ export default function Hero({ content, PageList }: { content: any; PageList: Pa
 
                 {/* Right Column: Dynamic Sidebar Buttons */}
                 <div className="absolute right-0 w-1/2 flex flex-col items-end h-full justify-center pr-1 lg:pr-12">
-                    <div className=" flex flex-col gap-6">
+                    <div className=" flex flex-col md:gap-6 gap-3">
                         {PageList.map((page: PageUrlListType, index: Key) => (
                             <HeroListItem
                                 key={index}
@@ -227,7 +227,7 @@ interface HeroListItemProps {
 const HeroListItem = ({ label, image, onClick, isActive, isTransitioning }: HeroListItemProps) => (
     <div
         onClick={onClick}
-        className={`flex items-center gap-4 text-left py-3 px-4 rounded-2xl transition-all duration-300 group backdrop-blur-md shadow-lg border border-white/30 text-white hover:bg-white/30 relative -translate-x-0 hover:-translate-x-5 ease-in-out cursor-pointer
+        className={`flex items-center gap-4 text-left py-3 px-4 rounded-2xl transition-all duration-300 group backdrop-blur-md shadow-lg border border-white/30 text-white hover:bg-white/30 relative -translate-x-0 hover:-translate-x-5 ease-in-out cursor-pointer scale-80 sm:scale-100
             ${isActive ? 'ring-2 ring-white/50 bg-amber-700/20 -translate-x-2' : ''}
             ${isTransitioning ? 'opacity-50 pointer-events-none' : ''}
         `}
@@ -253,7 +253,7 @@ const TagLine = ({ tagline, image }: { tagline: string, image: ImageType }) => {
             transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
             className="absolute bottom-12 right-0 z-10 text-right pr-4 max-w-3xl"
         >
-            <div className="max-w-[400px] flex flex-col items-end">
+            <div className="max-w-[400px] flex flex-row-reverse">
                 <p className="text-[14px] text-white/80 leading-relaxed font-bold uppercase tracking-[0.3em] mb-4  text-shadow-sm">
                     {tagline}
                 </p>
