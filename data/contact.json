@@ -1,0 +1,26 @@
+{
+    "hero": {
+        "backgroundImage": {
+            "src": "/assets/images/contact/cb13d5574850290325467f808de1b3dd6ff6bbcc.webp",
+            "alt": "Contact Hero Background"
+        },
+        "title": "“We’re Here To Hear From You”",
+        "description": "Got a question, feedback, or just craving a frozen treat? Reach out to us anytime."
+    },
+    "contactForm": {
+        "backgroundImage": {
+            "src": "/assets/images/contact/sec-bg.webp",
+            "alt": "Contact Form Background"
+        },
+        "title": "\"Your Scoop Starts Here\"",
+        "description": "\"Fill out the form and our team will get back to you faster than your ice cream can melt!\"",
+        "buttonText": "Send Message",
+        "fields": {
+            "full_name": "Full Name",
+            "email": "Email Address",
+            "phone": "Phone Number",
+            "subject": "Subject",
+            "message": "Your Message"
+        }
+    }
+}

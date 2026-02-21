@@ -1,0 +1,34 @@
+{
+    "hero": {
+        "backgroundImage": {
+            "src": "/assets/images/franchise/hero-bg.webp",
+            "alt": "Franchise Hero Background"
+        },
+        "title": "“Own a Frozen Creamery N’ Garden Franchise”",
+        "description": "Bring the joy of fresh ice creams & salads to your city with our proven concept and support"
+    },
+    "contactForm": {
+        "backgroundImage": {
+            "src": "/assets/images/franchise/form-bg.webp",
+            "alt": "Franchise Form Background"
+        },
+        "title": "“Apply for a Frozen Creamery N’ Garden Franchise”",
+        "description": "Fill out the form below and take the first step toward owning your dream business.",
+        "buttonText": "Send Message",
+        "fields": {
+            "full_name": "Full Name",
+            "email": "Email Address",
+            "phone": "Phone Number",
+            "subject": "Subject",
+            "message": "Your Message"
+        }
+    },
+    "start_journey": {
+        "backgroundImage": {
+            "src": "/assets/images/franchise/last-se.webp",
+            "alt": "Franchise Journey Background"
+        },
+        "title": "“Ready to Start Your Journey?”",
+        "description": "Join the Frozen Creamery N’ Garden family and spread sweetness & freshness in your city."
+    }
+}

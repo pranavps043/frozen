@@ -1,0 +1,73 @@
+{
+    "hero": {
+        "backgroundImage": {
+            "src": "/assets/images/about/hero-bg.webp",
+            "alt": "About Hero Background"
+        },
+        "title": "Frozen Creamery N’ Garden",
+        "description": "A place where indulgence and balance share the same space  handcrafted ice creams and farm-fresh salads made with love every day."
+    },
+    "timeline": {
+        "backgroundImage": {
+            "src": "/assets/images/about/full-bg.webp",
+            "alt": "Timeline Background"
+        },
+        "title": "Our Journey",
+        "items": [
+            {
+                "year": "2015",
+                "image": {
+                    "src": "/assets/images/about/timeline1.webp",
+                    "alt": "Timeline 1"
+                },
+                "title": "Origins Across the World",
+                "description": "“Our story began across continents—in Dubai, Amsterdam, and England—where a chef discovered that food could be more than just a meal.”"
+            },
+            {
+                "year": "2017",
+                "image": {
+                    "src": "/assets/images/about/timeline2.webp",
+                    "alt": "Timeline 2"
+                },
+                "title": "The Realization",
+                "description": "“Food can weave memories, spark smiles, and connect people in ways words never could.”"
+            },
+            {
+                "year": "2019",
+                "image": {
+                    "src": "/assets/images/about/timeline3.webp",
+                    "alt": "Timeline 3"
+                },
+                "title": "The Pairing",
+                "description": "Two dishes remained timeless: the innocence of ice creams and the freshness of salads. In 2015, they finally came together."
+            },
+            {
+                "year": "2022",
+                "image": {
+                    "src": "/assets/images/about/timeline4.webp",
+                    "alt": "Timeline 4"
+                },
+                "title": "The First Shop",
+                "description": "Many questioned the pairing, but laughter over melting cups and the clink of salad bowls proved balance and indulgence can live together."
+                },
+            {
+                "year": "2024",
+                "image": {
+                    "src": "/assets/images/about/timeline5.webp",
+                    "alt": "Timeline 5"
+                },
+                "title": " Canada & Niagara",
+                "description": "“Life brought us to Canada. Niagara gave us new flavours, new friends, and the dream of Frozen Creamery N’ Garden.”"
+            },
+            {
+                "year": "2026",
+                "image": {
+                    "src": "/assets/images/about/timeline6.webp",
+                    "alt": "Timeline 6"
+                },
+                "title": "Today’s Vision",
+                "description": "“More than a shop, it’s a place where cones hold memories, bowls spark fresh beginnings, and strangers leave as friends.”"
+            }
+        ]
+    }
+}

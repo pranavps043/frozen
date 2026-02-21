@@ -1,0 +1,235 @@
+{
+    "base_styles": {
+        "bg_gradient": "--gradient-golden-mango",
+        "button_color": "#0F3408",
+        "button_shadow": "#00000040",
+        "button_hover": "#16510a",
+        "button_size": "lg",
+        "footer_bg_image": "/assets/images/vegfooter.webp"
+    },
+    "hero": {
+        "slug": "veg-salad",
+        "title": "Homemade Healthy Green Veg Salad",
+        "image": "/assets/images/hero/products/small-cake.webp",
+        "bg_gradient": "--gradient-harvest-meadow",
+        "content": {
+            "title": "“Garden in Every Bite”",
+            "description": "OCrisp leaves, sun-kissed fruits, colours that speak of seasons, our salads are a reminder that freshness isn’t just tasted, it’s felt.",
+            "buttonLabel": "Shop Now",
+            "buttonLink": "#",
+            "image": {
+                "src": "/assets/images/veg-salad/72f27a4e84604cddb01f5045481a5eb9d58202af.webp",
+                "alt": "Hero Product",
+                "width": 500,
+                "height": 500
+            },
+            "sub_image": {
+                "src": "/assets/images/veg-salad/62779f777b0d0fe914b40faeea5d1aa6c3463f80.webp",
+                "alt": "Hero Sub Image",
+                "width": 500,
+                "height": 500
+            },
+            "floatImages": [
+                "/assets/images/veg-salad/particles/79.webp",
+                "/assets/images/veg-salad/particles/80.webp",
+                "/assets/images/veg-salad/particles/81.webp",
+                "/assets/images/veg-salad/particles/ccucub.webp",
+                "/assets/images/veg-salad/particles/cucu-1.webp",
+                "/assets/images/veg-salad/particles/cucu.webp"
+            ],
+            "tagline": "“Crafted with love, using only fresh fruits, premium dairy, and natural ingredients.”",
+            "tagline_img": {
+                "src": "/assets/images/veg-salad/2bfe4c2b2234c098cb7f01d2818ca52cb4b95b6f.webp",
+                "alt": "Tagline",
+                "width": 500,
+                "height": 500
+            }
+        }
+    },
+    "about_us": {
+        "title": "About us",
+        "heading": "What happens when timeless cones meet garden bowls?",
+        "description": "At Frozen Creamery N’ Garden, indulgence and balance sit side by side, creating a story you didn’t know you were craving!",
+        "body": "Some stories start in one place. Ours began across continents, in the busy and bustling kitchens of Dubai, the cobblestone streets of Amsterdam, and the food halls of England. ",
+        "button": {
+            "label": "View More",
+            "link": ""
+        },
+        "image": {
+            "src": "/assets/images/veg-salad/chef.webp",
+            "alt": "",
+            "width": 500,
+            "height": 500
+        },
+        "bg_gradient": "--gradient-harvest-meadow",
+        "bg_image": "/assets/images/blue-berry/about-bg.webp"
+    },
+    "favorite_treats": {
+        "title": "“Pick Your Favorite Treat”",
+        "description": "From scoops to bowls to slices every product is crafted fresh, every day.”",
+        "image": {
+            "src": "/assets/images/logo.png",
+            "alt": "Logo"
+        },
+        "bg_gradient": "--gradient-harvest-meadow",
+        "bg_gradient_active": "--peach-glaze",
+        "card_bg": "#4D8A2A",
+        "products": [
+            {
+                "id": 1,
+                "title": "Homemade Mango Icecream.",
+                "description": "From scoops to bowls to slices  every product is crafted fresh, every day.”",
+                "image": {
+                    "src": "/assets/images/hero/products/small-icecream.webp",
+                    "alt": "Frozen Vegetables",
+                    "width": 500,
+                    "height": 500
+                },
+                "button": {
+                    "label": "Order now",
+                    "link": "/shop"
+                },
+                "particles": [
+                    "/assets/images/hero/grapes.webp",
+                    "/assets/images/hero/grape-2.webp",
+                    "/assets/images/hero/strawberry.webp"
+                ]
+            },
+            {
+                "id": 2,
+                "title": "Homemade Blueberry Cheesecake.",
+                "description": "From scoops to bowls to slices  every product is crafted fresh, every day.”",
+                "image": {
+                    "src": "/assets/images/hero/products/small-cake.webp",
+                    "alt": "Frozen Vegetables",
+                    "width": 500,
+                    "height": 500
+                },
+                "button": {
+                    "label": "Order now",
+                    "link": "/shop"
+                },
+                "particles": [
+                    "/assets/images/hero/grapes.webp",
+                    "/assets/images/hero/grape-2.webp",
+                    "/assets/images/hero/strawberry.webp"
+                ]
+            },
+            {
+                "id": 3,
+                "title": "Homemade Healthy Green Veg Salad.",
+                "description": "Frozen vegetables are a great way to add fresh vegetables to your diet.",
+                "image": {
+                    "src": "/assets/images/hero/products/small-veg-salad.webp",
+                    "alt": "Frozen Vegetables",
+                    "width": 500,
+                    "height": 500
+                },
+                "button": {
+                    "label": "Order now",
+                    "link": "/shop"
+                },
+                "particles": [
+                    "/assets/images/hero/grapes.webp",
+                    "/assets/images/hero/grape-2.webp",
+                    "/assets/images/hero/strawberry.webp"
+                ]
+            }
+        ]
+    },
+    "dessert_paradise": {
+        "gradients": {
+            "from": "linear-gradient(180deg, #4D8A2A 0%, #A3B75E 50%, #F9E592 100%)",
+            "to": "linear-gradient(180deg, #F9E592 0%, #A3B75E 50%, #4D8A2A 100%)"
+        },
+        "title": "“Indulge in the Ultimate Dessert Paradise”",
+        "description": "Handcrafted frozen desserts that blend luxury, love & unforgettable taste.",
+        "bg_gradient": "--gradient-harvest-meadow",
+        "button": {
+            "label": "Order now",
+            "link": "/shop"
+        },
+        "image": {
+            "src": "/assets/images/veg-salad/vegdessert.webp",
+            "alt": "Hero Product",
+            "width": 500,
+            "height": 500
+        }
+    },
+    "flavors_feelings": {
+        "title": "“Flavors That Speak to Your Soul”",
+        "description": "Experience the magic of pure ingredients and timeless recipes in every bite.",
+        "bg_gradient": "--gradient-harvest-meadow",
+        "accordion_bg": "--gradient-garden-glow",
+        "accordion_bg_active": "--frosted-white",
+        "accordion": [
+            {
+                "id": 1,
+                "title": "Freshness in Every Bowl",
+                "description": "Every bowl of salad  is a blend of freshness, color, and crunch. We handpick locally grown vegetables  from crisp lettuce to juicy tomatoes  ensuring each bite bursts with goodness.Our salads aren’t just food; they’re a reminder that simple ingredients make life vibrant. Whether it’s a mid-day refresh or dinner side, our salads balance taste and health  made with care, served with heart.",
+                "image": {
+                    "src": "/assets/images/veg-salad/3406eb9a2198cd713e20656e96d76c6323840f70.webp",
+                    "alt": "Scoop of Nature",
+                    "width": 500,
+                    "height": 500
+                },
+                "button": {
+                    "label": "Order now",
+                    "link": "/shop"
+                }
+            },
+              {
+                "id": 2,
+                "title": "Scoop of Nature",
+                "description": "At Frozen Creamery N’ Garden, we believe ice cream should taste like happiness  not chemicals. Every scoop is handcrafted using natural fruits, pure milk, and just the right touch of sweetness.From the tang of strawberries to the calm of creamy vanilla, our ice creams are made daily in small batches  no artificial flavors, no preservatives, just nature’s best ingredients blending into a refreshing experience.",
+                "image": {
+                    "src": "/assets/images/mango/d9084091f48676456a139acf3a9206bb114165b8.webp",
+                    "alt": "icecream",
+                    "width": 500,
+                    "height": 500
+                },
+                "button": {
+                    "label": "Order now",
+                    "link": "/shop"
+                }
+            },
+             {
+                "id": 1,
+                "title": " A Taste of Happiness",
+                "description":"Our desserts are more than just the end of a meal  they’re the beginning of a smile. Each creation combines rich textures, natural flavors, and a dash of creativity from our kitchen.From fruit-topped delights to creamy layered indulgences, we craft every dessert to bring a moment of joy. Because we believe sweetness isn’t just tasted  it’s felt, shared, and remembered.",
+                "image": {
+                    "src": "/assets/images/veg-salad/bb.webp",
+                    "alt": "Frozen Vegetables",
+                    "width": 500,
+                    "height": 500
+                },
+                "button": {
+                    "label": "Order now",
+                    "link": "/shop"
+                }
+            }
+        ]
+    },
+    "earn_rewards": {
+        "pre_title": "Experience the Magic",
+        "title": "“Make Your Dream Fruit Salad & Earn Rewards!”",
+        "subtitle": "Join our fun fruit salad game mix, match, and taste victory with exciting rewards!",
+        "description": "Get ready for a fun and frosty challenge! In our Play & Win section, you’ll create your own fruit salad by choosing ingredients in an interactive mini-game",
+        "bg_gradient": "--gradient-harvest-meadow",
+        "image": {
+            "src": "/assets/images/special-offer.webp",
+            "alt": "Frozen Vegetables",
+            "width": 500,
+            "height": 500
+        },
+        "button": {
+            "label": "Play & Win",
+            "link": "/play-and-win"
+        },
+        "particles": [
+            "/assets/images/particles/coin-1.webp",
+            "/assets/images/particles/coin-2.webp",
+            "/assets/images/particles/coin-3.webp"
+        ]
+    }
+}

@@ -1,0 +1,196 @@
+{
+    "hero": {
+        "title": "Homemade Mango Ice Cream",
+        "image": "/assets/images/hero/products/small-icecream.webp",
+        "bg-gradient": "--earthy-brown",
+        "content": {
+            "title": "The Final Note of Delight",
+            "description": "Discover our new collection of frozen solutions designed for the modern household and professional kitchen.",
+            "buttonLabel": "Order Now",
+            "buttonLink": "/menu",
+            "image": {
+                "src": "/assets/images/hero/products/ice-creame/banner-icecream.png",
+                "alt": "Hero Product",
+                "width": 500,
+                "height": 500
+            },
+            "sub_image": {
+                "src": "/assets/images/hero/fruits.webp",
+                "alt": "Hero Sub Image",
+                "width": 500,
+                "height": 500
+            },
+            "floatImages": [
+                "/assets/images/hero/products/ice-creame/top-left-slice-mango.webp",
+                "/assets/images/hero/products/ice-creame/bottom-left-mango.webp",
+                "/assets/images/hero/products/ice-creame/mangos.png"
+            ],
+            "tagline": "Crafted with love, using only fresh fruits, premium dairy, and natural ingredients.",
+            "tagline_img": "/assets/images/hero/products/tagline.webp"
+        }
+    },
+    "favorite_treats": {
+        "title": "“Pick Your Favorite Treat”",
+        "description": "From scoops to bowls to slices every product is crafted fresh, every day.”",
+        "image": {
+            "src": "/assets/images/logo.png",
+            "alt": "Logo"
+        },
+        "background": {
+            "color": "--gradient-golden-mango"
+        },
+        "products": [
+            {
+                "id": 1,
+                "title": "Frozen Vegetables",
+                "description": "Frozen vegetables are a great way to add fresh vegetables to your diet.",
+                "image": {
+                    "src": "/assets/images/hero/products/small-cake.webp",
+                    "alt": "Frozen Vegetables",
+                    "width": 500,
+                    "height": 500
+                },
+                "button": {
+                    "label": "Order now",
+                    "link": "/shop"
+                },
+                "particles": [
+                    "/assets/images/hero/grapes.webp",
+                    "/assets/images/hero/grape-2.webp",
+                    "/assets/images/hero/strawberry.webp"
+                ]
+            },
+            {
+                "id": 2,
+                "title": "Frozen Vegetables",
+                "description": "Frozen vegetables are a great way to add fresh vegetables to your diet.",
+                "image": {
+                    "src": "/assets/images/hero/products/small-cake.webp",
+                    "alt": "Frozen Vegetables",
+                    "width": 500,
+                    "height": 500
+                },
+                "button": {
+                    "label": "Order now",
+                    "link": "/shop"
+                },
+                "particles": [
+                    "/assets/images/hero/grapes.webp",
+                    "/assets/images/hero/grape-2.webp",
+                    "/assets/images/hero/strawberry.webp"
+                ]
+            },
+            {
+                "id": 3,
+                "title": "Frozen Vegetables",
+                "description": "Frozen vegetables are a great way to add fresh vegetables to your diet.",
+                "image": {
+                    "src": "/assets/images/hero/products/small-cake.webp",
+                    "alt": "Frozen Vegetables",
+                    "width": 500,
+                    "height": 500
+                },
+                "button": {
+                    "label": "Order now",
+                    "link": "/shop"
+                },
+                "particles": [
+                    "/assets/images/hero/grapes.webp",
+                    "/assets/images/hero/grape-2.webp",
+                    "/assets/images/hero/strawberry.webp"
+                ]
+            }
+        ]
+    },
+    "dessert_paradise": {
+        "title": "“Indulge in the Ultimate Dessert Paradise”",
+        "description": "Handcrafted frozen desserts that blend luxury, love & unforgettable taste.",
+        "button": {
+            "label": "Order now",
+            "link": "/shop"
+        },
+        "image": {
+            "src": "/assets/images/hero/products/small-cake.webp",
+            "alt": "Hero Product",
+            "width": 500,
+            "height": 500
+        }
+    },
+    "flavors_feelings": {
+        "title": "“Flavors That Speak to Your Soul”",
+        "description": "Experience the magic of pure ingredients and timeless recipes in every bite.",
+        "background": {
+            "color": "--gradient-golden-mango"
+        },
+        "accordion": [
+            {
+                "id": 1,
+                "title": "Frozen Vegetables",
+                "description": "Frozen vegetables are a great way to add fresh vegetables to your diet.",
+                "image": {
+                    "src": "/assets/images/hero/products/small-cake.webp",
+                    "alt": "Frozen Vegetables",
+                    "width": 500,
+                    "height": 500
+                },
+                "button": {
+                    "label": "Order now",
+                    "link": "/shop"
+                }
+            },
+            {
+                "id": 2,
+                "title": "Frozen Vegetables",
+                "description": "Frozen vegetables are a great way to add fresh vegetables to your diet.",
+                "image": {
+                    "src": "/assets/images/hero/products/small-cake.webp",
+                    "alt": "Frozen Vegetables",
+                    "width": 500,
+                    "height": 500
+                },
+                "button": {
+                    "label": "Order now",
+                    "link": "/shop"
+                }
+            },
+            {
+                "id": 3,
+                "title": "Frozen Vegetables",
+                "description": "Frozen vegetables are a great way to add fresh vegetables to your diet.",
+                "image": {
+                    "src": "/assets/images/hero/products/small-cake.webp",
+                    "alt": "Frozen Vegetables",
+                    "width": 500,
+                    "height": 500
+                },
+                "button": {
+                    "label": "Order now",
+                    "link": "/shop"
+                }
+            }
+        ]
+    },
+    "earn_rewards": {
+        "title": "“Make Your Dream Fruit Salad & Earn Rewards!”",
+        "subtitle": "Join our fun fruit salad game mix, match, and taste victory with exciting rewards!",
+        "description": "Get ready for a fun and frosty challenge! In our Play & Win section, you’ll create your own fruit salad by choosing ingredients in an interactive mini-game",
+        "image": {
+            "src": "/assets/images/special-offer.webp",
+            "alt": "Frozen Vegetables",
+            "width": 500,
+            "height": 500
+        },
+        "background": {
+            "color": "--gradient-golden-mango"
+        },
+        "button": {
+            "label": "Play & Win",
+            "link": "/play-and-win"
+        },
+        "particles": [
+            "/assets/images/particles/coin-1.webp",
+            "/assets/images/particles/coin-2.webp",
+            "/assets/images/particles/coin-3.webp"
+        ]
+    }
+}

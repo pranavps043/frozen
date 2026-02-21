@@ -1,0 +1,12 @@
+{
+    "comingSoon": {
+        "title": "Gallery",
+        "subtitle": "Coming Soon",
+        "description": "We're working on something exciting! Our gallery will showcase our delicious frozen creations, behind-the-scenes moments, and customer favorites. Stay tuned!",
+        "particleImages": [
+            "/assets/images/hero/grapes.webp",
+            "/assets/images/hero/grape-2.webp",
+            "/assets/images/hero/strawberry.webp"
+        ]
+    }
+}
