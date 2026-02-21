@@ -1,0 +1,42 @@
+{
+    "slug": "frozen-vegetables",
+    "meta": {
+        "title": "Frozen Vegetables - Fresh & Nutritious | Frozen Creamery",
+        "description": "Discover the benefits of frozen vegetables. Learn about our sourcing, preparation methods, and how we preserve freshness in every bite.",
+        "keywords": ["frozen vegetables", "fresh produce", "healthy eating", "frozen food", "nutritious meals"]
+    },
+    "hero": {
+        "backgroundImage": {
+            "src": "/assets/images/hero/products/small-cake.webp",
+            "alt": "Frozen Vegetables Hero Background"
+        },
+        "title": "Frozen Vegetables",
+        "description": "Discover the journey of our premium frozen vegetables, from farm to table, preserving nature's goodness in every bite."
+    },
+    "sections": [
+        {
+            "title": "Where Every Leaf Tells a Story",
+            "description": "At Frozen Creamery N' Garden, every salad is a story of nature's simplicity. We partner with local farmers to source the freshest produce — ensuring that every ingredient carries the warmth of care and the crispness of the field. Our chefs handcraft each bowl with precision, combining texture, flavor, and nutrition in perfect harmony. Because freshness isn't just a choice, it's a promise we live by.",
+            "image": {
+                "src": "/assets/images/blogs/blog-1.webp",
+                "alt": "Fresh vegetables being prepared"
+            }
+        },
+        {
+            "title": "Simple Ingredients, Thoughtful Creations",
+            "description": "Every bowl is created from wholesome ingredients — crunchy greens, juicy tomatoes, refreshing cucumbers, and homemade dressings that complement nature's flavors. We believe in the art of slow preparation, allowing every bite to feel honest and refreshing. Each salad not only nourishes your body but also brings peace to your mind — a reminder that health can taste beautiful.",
+            "image": {
+                "src": "/assets/images/blogs/blog-2.webp",
+                "alt": "Wholesome salad ingredients"
+            }
+        },
+        {
+            "title": "Frozen Vegetables Bowl Full of Positivity",
+            "description": "Every bowl is created from wholesome ingredients — crunchy greens, juicy tomatoes, refreshing cucumbers, and homemade dressings that complement nature's flavors. We believe in the art of slow preparation, allowing every bite to feel honest and refreshing. Each salad not only nourishes your body but also brings peace to your mind — a reminder that health can taste beautiful.",
+            "image": {
+                "src": "/assets/images/blogs/blog-3.webp",
+                "alt": "Colorful vegetable bowl"
+            }
+        }
+    ]
+}

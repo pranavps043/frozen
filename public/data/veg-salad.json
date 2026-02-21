@@ -173,8 +173,8 @@
                     "height": 500
                 },
                 "button": {
-                    "label": "Order now",
-                    "link": "/shop"
+                    "label": "Read More",
+                    "link": "/blog/frozen-vegetables"
                 }
             },
             {
@@ -188,8 +188,8 @@
                     "height": 500
                 },
                 "button": {
-                    "label": "Order now",
-                    "link": "/shop"
+                    "label": "Read More",
+                    "link": "/blog/frozen-vegetables"
                 }
             },
             {
@@ -203,8 +203,8 @@
                     "height": 500
                 },
                 "button": {
-                    "label": "Order now",
-                    "link": "/shop"
+                    "label": "Read More",
+                    "link": "/blog/frozen-vegetables"
                 }
             }
         ]
