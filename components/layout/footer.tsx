@@ -1,4 +1,4 @@
-import React from 'react';
+'use client';
 import {
     Facebook,
     Linkedin,
@@ -8,183 +8,220 @@ import {
     Mail,
     MapPin
 } from 'lucide-react';
-import WaveSvg from '../ui/wave';
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
-const Footer = () => {
+const footerStyles = {
+    default: {
+        bg: 'bg-[#651243]',
+        image: '/assets/images/footer/footer-bg-default.webp',
+        icon_color: '#651243'
+    },
+    'cheese-cake': {
+        bg: 'bg-gradient-to-b from-[rgba(162,63,28,0.45)] to-[rgba(210,152,110,0.45)]',
+        image: '/assets/images/footer/footer-bg-default.webp',
+        icon_color: '#3A2313'
+    },
+    'ice-cream': {
+        bg: 'bg-[linear-gradient(#8b5000_4%,_#7a5b04fa_100%)]',
+        image: '/assets/images/footer/mango.webp',
+        icon_color: '#F19803'
+    },
+    'veg-salad': {
+        bg: 'bg-gradient-to-b from-[rgba(77,138,42,0.6)] via-[rgba(163,184,94,0.6)] to-[rgba(249,229,146,0.6)]',
+        image: '/assets/images/footer/veg-salad.webp',
+        icon_color: '#0F3408'
+    }
+};
+
+const footerContent = {
+    social: {
+        title: "Follow Us",
+        links: [
+            { Icon: Facebook, label: 'Facebook', href: '#' },
+            { Icon: Linkedin, label: 'LinkedIn', href: '#' },
+            { Icon: Instagram, label: 'Instagram', href: '#' },
+            { Icon: Twitter, label: 'Twitter', href: '#' }
+        ]
+    },
+    contact: {
+        title: "Contact Us",
+        items: [
+            {
+                type: 'phone',
+                label: '905-328-7776',
+                href: 'tel:9053287776',
+                Icon: Phone
+            },
+            {
+                type: 'email',
+                label: 'info@frozencreamery.ca',
+                href: 'mailto:info@frozencreamery.ca',
+                Icon: Mail
+            }
+        ]
+    },
+    location: {
+        title: "Location",
+        address: {
+            street: "31 Ontario St,",
+            city: "St Catharines,",
+            postal: "L2R 5J3"
+        }
+    },
+    copyright: {
+        text: "Frozen Creamery",
+        year: new Date().getFullYear()
+    }
+};
+
+const Footer = ({ waveColor = '#000' }) => {
+    const pathname = usePathname();
+    const [footerStyle, setFooterStyle] = useState(footerStyles.default);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+
+        // Extract style from URL path (e.g., /home/cheese-cake -> cheese-cake)
+        if (pathname) {
+            const pathParts = pathname.split('/');
+            // Get the last part of the path that isn't empty
+            const lastSegment = pathParts.filter(Boolean).pop();
+
+            if (lastSegment && footerStyles[lastSegment as keyof typeof footerStyles]) {
+                setFooterStyle(footerStyles[lastSegment as keyof typeof footerStyles]);
+            } else {
+                setFooterStyle(footerStyles.default);
+            }
+        }
+    }, [pathname]);
+
+    // Prevent hydration mismatch by not rendering style-dependent classes until mounted
+    if (!mounted) {
+        return null; // or a loading skeleton
+    }
+
     return (
         <>
-            <div className="relative">
-                <WaveSvg className="absolute -bottom-2 w-full h-auto -scale-100" fill="#3a2313" />
-            </div>
-            <footer className="relative w-full  text-white font-sans bg-[url('/assets/images/footer-icecream.webp')] bg-cover bg-center bg-no-repeat">
-                {/* Overlay - Optimized for mobile */}
-                <div
-                    className="absolute inset-0 z-0"
-                    style={{
-                        backgroundColor: '#3a2313',
+            <footer className="relative w-full text-white font-sans bg-cover bg-center bg-no-repeat"
+                style={{
+                    backgroundImage: `url(${footerStyle.image})`,
+                }}>
 
-                        backgroundPosition: 'center',
-                        backgroundSize: 'cover',
-                    }}
+                <div
+                    className={`absolute inset-0 z-0 opacity-60 ${footerStyle.bg}`}
                 />
 
-
-                {/* Content Container - Optimized padding for mobile */}
-                <div className="relative z-10 container mx-auto px-4 sm:px-6 py-12 md:py-20">
-                    {/* Main Grid - Stack on mobile, side by side on larger screens */}
-                    <div className="flex flex-col md:grid md:grid-cols-3 gap-10 md:gap-8">
-                        {/* Column 1: Follow Us - Centered on mobile */}
-                        <div className="flex flex-col items-center text-center animate-fade-in-up">
-                            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 tracking-wide text-[#f3e5d8]">
-                                Follow Us
-                            </h3>
-                            <div className="flex gap-3 sm:gap-4">
-                                {[
-                                    { Icon: Facebook, label: 'Facebook' },
-                                    { Icon: Linkedin, label: 'LinkedIn' },
-                                    { Icon: Instagram, label: 'Instagram' },
-                                    { Icon: Twitter, label: 'Twitter' }
-                                ].map(({ Icon, label }, index) => (
-                                    <a
-                                        key={index}
-                                        href="#"
-                                        aria-label={label}
-                                        className="group relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full 
-                                             bg-[#3a2313] border border-[#d2986e]/30 text-[#d2986e] 
-                                             transition-all duration-300 
-                                             active:bg-[#d2986e] active:text-[#3a2314] active:scale-95
-                                             hover:bg-[#d2986e] hover:text-[#3a2313] hover:scale-110 hover:shadow-[0_0_15px_rgba(210,152,110,0.5)]
-                                             touch-manipulation"
-                                    >
-                                        <Icon size={16} strokeWidth={2} />
-                                    </a>
-                                ))}
-                            </div>
+                {/* Content Container */}
+                <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-32 pb-12 md:pb-16">
+                    {/* Main Grid */}
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 gap-y-8 md:gap-8 py-10 max-w-sm mx-auto sm:max-w-3xl lg:max-w-full justify-between">
+                        <div className='hidden lg:block'>
+                            <Social social={footerContent.social} iconColor={footerStyle.icon_color} />
                         </div>
 
-                        {/* Column 2: Contact Us - Centered on mobile */}
                         <div
-                            className="flex flex-col items-center text-center animate-fade-in-up"
+                            className="flex flex-col text-left md:items-start md:text-left"
                             style={{ animationDelay: '0.1s' }}
                         >
-                            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 tracking-wide text-[#f3e5d8]">
-                                Contact Us
+                            <h3 className="text-xl sm:text-2xl text-left font-bold mb-4 sm:mb-6 tracking-wide text-[#f3e5d8]">
+                                {footerContent.contact.title}
                             </h3>
-                            <ul className="space-y-3 sm:space-y-4 w-full max-w-xs mx-auto">
-                                <li className="w-full">
-                                    <a
-                                        href="tel:9053287776"
-                                        className="group flex items-center justify-center sm:justify-start gap-2 sm:gap-3 
+                            <ul className="space-y-3 sm:space-y-4 w-full max-w-xs md:max-w-none">
+                                {footerContent.contact.items.map(({ type, label, href, Icon }, index) => (
+                                    <li key={index}>
+                                        <a
+                                            href={href}
+                                            className="group flex md:justify-start gap-3 
                                              text-[#e6ccb2] hover:text-white transition-colors duration-300
-                                             py-2 px-3 rounded-lg active:bg-[#d2986e]/10 touch-manipulation"
-                                    >
-                                        <div className="p-1.5 sm:p-2 rounded-full bg-[#3a2313]/50 group-hover:bg-[#d2986e] 
-                                                  group-hover:text-[#3a2313] transition-all duration-300 shrink-0">
-                                            <Phone size={16} />
-                                        </div>
-                                        <span className="text-base sm:text-lg font-medium tracking-wide break-all">
-                                            905-328-7776
-                                        </span>
-                                    </a>
-                                </li>
-                                <li className="w-full">
-                                    <a
-                                        href="mailto:info@frozencreamery.ca"
-                                        className="group flex items-center justify-center sm:justify-start gap-2 sm:gap-3 
-                                             text-[#e6ccb2] hover:text-white transition-colors duration-300
-                                             py-2 px-3 rounded-lg active:bg-[#d2986e]/10 touch-manipulation"
-                                    >
-                                        <div className="p-1.5 sm:p-2 rounded-full bg-[#3a2313]/50 group-hover:bg-[#d2986e] 
-                                                  group-hover:text-[#3a2313] transition-all duration-300 shrink-0">
-                                            <Mail size={16} />
-                                        </div>
-                                        <span className="text-base sm:text-lg font-medium tracking-wide break-all">
-                                            info@frozencreamery.ca
-                                        </span>
-                                    </a>
-                                </li>
+                                             py-2 px-3 rounded-lg hover:bg-[#d2986e]/10 touch-manipulation"
+                                        >
+                                            <div
+                                                className="p-2 rounded-full transition-all duration-300 shrink-0"
+                                                style={{ backgroundColor: footerStyle.icon_color }}
+                                            >
+                                                <Icon color="white" size={18} className="sm:w-5 sm:h-5" />
+                                            </div>
+                                            <span className="text-base sm:text-lg font-medium tracking-wide break-all">
+                                                {label}
+                                            </span>
+                                        </a>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
 
-                        {/* Column 3: Location - Centered on mobile */}
+                        {/* Column 3: Location */}
                         <div
-                            className="flex flex-col items-center text-center md:items-end animate-fade-in-up"
+                            className="flex flex-col text-left"
                             style={{ animationDelay: '0.2s' }}
                         >
                             <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 tracking-wide text-[#f3e5d8]">
-                                Location
+                                {footerContent.location.title}
                             </h3>
-                            <div className="flex items-start justify-center md:justify-end gap-2 sm:gap-3 text-[#e6ccb2] 
-                                      max-w-xs w-full px-4 sm:px-0">
-                                <div className="p-1.5 sm:p-2 rounded-full bg-[#3a2313]/50 mt-1 shrink-0">
-                                    <MapPin size={16} className="text-[#d2986e]" />
+                            <div className="flex items-start gap-3 text-[#e6ccb2]">
+                                <div
+                                    className="p-2 rounded-full mt-1 shrink-0"
+                                    style={{ backgroundColor: footerStyle.icon_color }}
+                                >
+                                    <MapPin color="white" size={18} className="text-[#d2986e] sm:w-5 sm:h-5" />
                                 </div>
-                                <address className="not-italic text-base sm:text-lg leading-relaxed text-center md:text-right">
-                                    31 Ontario St,<br />
-                                    St Catharines,<br />
-                                    L2R 5J3
+                                <address className="not-italic text-base sm:text-lg leading-relaxed">
+                                    {footerContent.location.address.street}<br />
+                                    {footerContent.location.address.city}<br />
+                                    {footerContent.location.address.postal}
                                 </address>
                             </div>
                         </div>
                     </div>
 
-                    {/* Divider - Optimized for mobile */}
-                    <div className="mt-12 md:mt-16 mb-6 md:mb-8 flex justify-center">
-                        <div className="h-px w-11/12 sm:w-full max-w-4xl bg-gradient-to-r from-transparent via-[#d2986e]/50 to-transparent"></div>
+                    <div className='lg:hidden'>
+                        <Social social={footerContent.social} iconColor={footerStyle.icon_color} />
                     </div>
 
-                    {/* Copyright - Mobile optimized text size */}
+                    {/* Divider */}
+                    <div className="mt-12 md:mt-16 mb-6 md:mb-8 flex justify-center">
+                        <div className="h-px w-full max-w-4xl bg-gradient-to-r from-transparent via-[#3a2313]/40 to-transparent"></div>
+                    </div>
+
+                    {/* Copyright */}
                     <div className="text-center animate-fade-in px-4">
-                        <p className="text-[#d2986e]/60 text-xs sm:text-sm font-light tracking-widest uppercase">
-                            © {new Date().getFullYear()} Frozen Creamery. All Rights Reserved
+                        <p className="text-white/70 text-xs sm:text-sm font-light tracking-widest uppercase">
+                            © {footerContent.copyright.year} {footerContent.copyright.text}. All Rights Reserved
                         </p>
                     </div>
                 </div>
-
-                {/* Inline Styles for Animations */}
-                <style>{`
-                @keyframes fadeInUp {
-                    from {
-                        opacity: 0;
-                        transform: translate3d(0, 20px, 0);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translate3d(0, 0, 0);
-                    }
-                }
-                
-                .animate-fade-in-up {
-                    animation: fadeInUp 0.8s ease-out forwards;
-                    opacity: 0;
-                }
-                
-                .animate-fade-in {
-                    animation: fadeInUp 1s ease-out 0.5s forwards;
-                    opacity: 0;
-                }
-
-                /* Better touch targets for mobile */
-                .touch-manipulation {
-                    -webkit-tap-highlight-color: transparent;
-                    touch-action: manipulation;
-                }
-
-                /* Prevent text overflow on small screens */
-                .break-all {
-                    word-break: break-word;
-                }
-
-                /* Responsive icon sizes */
-                @media (max-width: 640px) {
-                    [class*="sm:"] {
-                        font-size: 14px;
-                    }
-                }
-            `}</style>
             </footer>
         </>
     );
 };
 
 export default Footer;
+
+const Social = ({ social, iconColor }: { social: { title: string, links: { Icon: any, label: string, href: string }[] }, iconColor: string }) => {
+    return (
+        <div className="flex flex-col items-center text-center">
+            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 tracking-wide text-[#f3e5d8]">
+                {social.title}
+            </h3>
+            <div className="flex gap-3 sm:gap-4">
+                {social.links.map(({ Icon, label, href }, index) => (
+                    <a
+                        key={index}
+                        href={href}
+                        aria-label={label}
+                        className="group relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-full 
+                                 border border-[#d2986e]/30 text-[#d2986e] 
+                                 transition-all duration-300 
+                                 hover:bg-[#d2986e] hover:text-[#3a2313] hover:scale-110 hover:shadow-[0_0_15px_rgba(210,152,110,0.5)]
+                                 active:scale-95 touch-manipulation"
+                        style={{ backgroundColor: iconColor }}
+                    >
+                        <Icon color="white" size={18} strokeWidth={2} className="sm:w-5 sm:h-5" />
+                    </a>
+                ))}
+            </div>
+        </div>
+    )
+}

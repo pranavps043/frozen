@@ -184,32 +184,75 @@ export default function Hero({ content, PageList }: { content: any; PageList: Pa
                     image={content.content.tagline_img}
                 />
 
-                {/* Center Absolute Content (Image) */}
+                {/* Center Absolute Content (Image) - Floating Animation */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none pt-24 -z-1">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeSlug}
-                            initial={{ rotate: -180, scale: 0, opacity: 0 }}
-                            animate={{ rotate: 0, scale: 1, opacity: 1 }}
-                            exit={{ rotate: 360, scale: 0, opacity: 0 }}
-                            transition={{
+
+
+
+
+
+                    <motion.div
+                        key={activeSlug}
+                        initial={{ rotate: -180, scale: 0, opacity: 0 }}
+                        animate={{
+                            rotate: 0,
+                            scale: 1,
+                            opacity: 1,
+                            y: [0, -15, 0, -8, 0],
+                            rotateZ: 360,
+                        }}
+                        exit={{ rotate: 360, scale: 0, opacity: 0 }}
+                        transition={{
+                            rotate: {
                                 duration: 0.8,
                                 ease: "easeOut",
                                 type: "spring",
                                 stiffness: 100,
                                 damping: 20
-                            }}
-                            className="relative w-[500px] h-[500px] lg:w-[650px] lg:h-[650px]"
-                        >
-                            <Image
-                                src={content.content.image.src}
-                                alt={content.content.image.alt}
-                                fill
-                                className="object-contain"
-                                priority
-                            />
-                        </motion.div>
-                    </AnimatePresence>
+                            },
+                            scale: {
+                                duration: 0.8,
+                                ease: "easeOut",
+                                type: "spring",
+                                stiffness: 100,
+                                damping: 20
+                            },
+                            opacity: {
+                                duration: 0.8,
+                                ease: "easeOut"
+                            },
+                            y: {
+                                duration: 6,
+                                ease: "easeInOut",
+                                repeat: Infinity,
+                                repeatType: "loop",
+                                delay: 0.8
+                            },
+                            rotateZ: {
+                                duration: 250,
+                                ease: "linear",
+                                repeat: Infinity,
+                                repeatType: "loop",
+                                delay: 0.8
+                            }
+                        }}
+                        className="relative w-[500px] h-[500px] lg:w-[650px] lg:h-[650px]"
+                    >
+                        <Image
+                            src={content.content.image.src}
+                            alt={content.content.image.alt}
+                            fill
+                            className="object-contain"
+                            priority
+                        />
+                    </motion.div>
+
+
+
+
+
+
+
                 </div>
             </div>
         </div>
@@ -232,15 +275,34 @@ const HeroListItem = ({ label, image, onClick, isActive, isTransitioning }: Hero
             ${isTransitioning ? 'opacity-50 pointer-events-none' : ''}
         `}
     >
+
         <div className="relative w-16 h-16 flex-shrink-0">
-            <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                className={`object-contain group-hover:-translate-x-3 ease-in-out transition-transform duration-300 group-hover:scale-180 ${isActive ? 'scale-180 -translate-x-5' : ''}`}
-                priority
-            />
+            <motion.div
+                animate={isActive ? {
+                    y: [0, -4, 0, -2, 0],
+                    rotate: [0, 3, 0, -3, 0],
+                } : {
+                    y: 0,
+                    rotate: 0,
+                }}
+                transition={{
+                    duration: 10,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "loop",
+                }}
+                className="w-full h-full"
+            >
+                <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className={`object-contain group-hover:-translate-x-3 ease-in-out transition-transform duration-300 group-hover:scale-180 ${isActive ? 'scale-180 -translate-x-5' : ''}`}
+                    priority
+                />
+            </motion.div>
         </div>
+
         <span className="text-sm font-semibold uppercase tracking-wider text-shadow-md leading-tight hidden lg:block max-w-[150px] pr-4">{label}</span>
     </div>
 );

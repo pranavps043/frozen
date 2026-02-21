@@ -1,6 +1,7 @@
 "use client";
 import Logo from "./logo";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
 import { useState } from "react";
 
@@ -8,6 +9,7 @@ export default function Navigation() {
     const [hidden, setHidden] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { scrollY } = useScroll();
+    const pathname = usePathname();
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         const previous = scrollY.getPrevious() ?? 0;
@@ -28,6 +30,11 @@ export default function Navigation() {
         { name: "Rewards", href: "/rewards" },
         { name: "Contact Us", href: "/contact-us" },
     ];
+
+    const isActive = (href: string) => {
+        if (href === "/") return pathname === "/";
+        return pathname.startsWith(href);
+    };
 
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!mobileMenuOpen);
@@ -52,16 +59,36 @@ export default function Navigation() {
             >
                 <div className="flex w-full items-center justify-between">
                     {/* Left Links */}
-                    <div className="flex gap-8 xl:gap-14 items-center flex-1">
-                        {navLinks.slice(0, 3).map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                className="text-[#3B2516] text-[16px] xl:text-[18px] font-medium hover:text-[#5D4037] transition-colors uppercase tracking-wider font-sans whitespace-nowrap"
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
+                    <div className="flex gap-2 xl:gap-4 items-center flex-1">
+                        {navLinks.slice(0, 3).map((link) => {
+                            const active = isActive(link.href);
+                            return (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className={`
+                                        relative pt-1.5 pb-0.5 px-2.5 rounded-full text-[16px] xl:text-[18px] font-medium 
+                                        uppercase tracking-wider font-sans whitespace-nowrap
+                                        transition-all duration-300 ease-out
+                                        ${active
+                                            ? "text-white bg-[var(--dark-raspberry)]"
+                                            : "text-[#3B2516] hover:text-white hover:bg-[var(--dark-raspberry)]"
+                                        }
+                                    `}
+                                >
+                                    <span className="relative z-10">{link.name}</span>
+                                    {!active && (
+                                        <motion.span
+                                            className="absolute inset-0 rounded-full bg-[var(--dark-raspberry)]"
+                                            initial={{ scale: 0, opacity: 0 }}
+                                            whileHover={{ scale: 1, opacity: 1 }}
+                                            transition={{ duration: 0.3, ease: "easeOut" }}
+                                            style={{ originX: 0.5, originY: 0.5 }}
+                                        />
+                                    )}
+                                </Link>
+                            );
+                        })}
                     </div>
 
                     {/* Animated Logo */}
@@ -81,16 +108,36 @@ export default function Navigation() {
                     </motion.div>
 
                     {/* Right Links */}
-                    <div className="flex gap-8 xl:gap-14 items-center flex-1 justify-end">
-                        {navLinks.slice(3).map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                className="text-[#3B2516] text-[16px] xl:text-[18px] font-medium hover:text-[#5D4037] transition-colors uppercase tracking-wider font-sans whitespace-nowrap"
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
+                    <div className="flex gap-2 xl:gap-4 items-center flex-1 justify-end">
+                        {navLinks.slice(3).map((link) => {
+                            const active = isActive(link.href);
+                            return (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className={`
+                                        relative pt-1.5 pb-0.5 px-2.5 rounded-full text-[16px] xl:text-[18px] font-medium 
+                                        uppercase tracking-wider font-sans whitespace-nowrap
+                                        transition-all duration-300 ease-out
+                                        ${active
+                                            ? "text-white bg-[var(--dark-raspberry)]"
+                                            : "text-[#3B2516] hover:text-white hover:bg-[var(--dark-raspberry)]"
+                                        }
+                                    `}
+                                >
+                                    <span className="relative z-10">{link.name}</span>
+                                    {!active && (
+                                        <motion.span
+                                            className="absolute inset-0 rounded-full bg-[var(--dark-raspberry)]"
+                                            initial={{ scale: 0, opacity: 0 }}
+                                            whileHover={{ scale: 1, opacity: 1 }}
+                                            transition={{ duration: 0.3, ease: "easeOut" }}
+                                            style={{ originX: 0.5, originY: 0.5 }}
+                                        />
+                                    )}
+                                </Link>
+                            );
+                        })}
                     </div>
                 </div>
             </motion.nav>
@@ -126,8 +173,6 @@ export default function Navigation() {
                             className="w-7 h-[3px] bg-white rounded-full"
                         />
                     </motion.button>
-
-
 
                     {/* Centered Logo */}
                     <motion.div
@@ -201,22 +246,33 @@ export default function Navigation() {
 
                             {/* Menu Links */}
                             <div className="px-6 py-4">
-                                {navLinks.map((link, index) => (
-                                    <motion.div
-                                        key={link.name}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: index * 0.05 }}
-                                    >
-                                        <Link
-                                            href={link.href}
-                                            onClick={closeMobileMenu}
-                                            className="block py-4 text-[#3B2516] text-[18px] font-medium hover:text-[#5D4037] hover:translate-x-2 transition-all uppercase tracking-wider font-sans border-b border-[#BC9478]/20 last:border-b-0"
+                                {navLinks.map((link, index) => {
+                                    const active = isActive(link.href);
+                                    return (
+                                        <motion.div
+                                            key={link.name}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: index * 0.05 }}
                                         >
-                                            {link.name}
-                                        </Link>
-                                    </motion.div>
-                                ))}
+                                            <Link
+                                                href={link.href}
+                                                onClick={closeMobileMenu}
+                                                className={`
+                                                    block py-4 px-4 rounded-xl text-[18px] font-medium 
+                                                    uppercase tracking-wider font-sans
+                                                    transition-all duration-300 
+                                                    ${active
+                                                        ? "text-white bg-[var(--dark-raspberry)] translate-x-2"
+                                                        : "text-[#3B2516] hover:text-white hover:bg-[var(--dark-raspberry)] hover:translate-x-2"
+                                                    }
+                                                `}
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        </motion.div>
+                                    );
+                                })}
                             </div>
                         </motion.div>
                     </>
