@@ -4,7 +4,6 @@
 import React from 'react';
 
 import { motion } from 'motion/react';
-import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef } from 'react';
@@ -23,7 +22,9 @@ interface EarnRewardsType {
     image: ImageType,
     subtitle: string,
     pre_title: string,
-    particles: string[]
+    particles: string[],
+    bg_gradient: string,
+    opacity?: number
 }
 
 
@@ -41,9 +42,13 @@ export default function EarnRewards({ earn_rewards }: { earn_rewards: EarnReward
                     backgroundImage: "url('/assets/images/about-us-bg.webp')",
                 }}
             />
-            <div className="absolute inset-0 " >
+            <div 
+                className="absolute inset-0" 
+                style={{ opacity: earn_rewards.opacity ? earn_rewards.opacity / 100 : 1 }}
+            >
                 <GradientAnimator
-
+                    gradientFrom={earn_rewards.bg_gradient.startsWith('--') ? `var(${earn_rewards.bg_gradient})` : earn_rewards.bg_gradient}
+                    gradientTo={earn_rewards.bg_gradient.startsWith('--') ? `var(${earn_rewards.bg_gradient})` : earn_rewards.bg_gradient}
                 />
             </div>
 

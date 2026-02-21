@@ -108,8 +108,9 @@ export interface PageDataType {
         pre_title: string;
         title: string;
         subtitle: string;
-        description: string;
         bg_gradient: string;
+        gradient_overlay?: string;
+        opacity?: number;
         image: ImageType;
         button: ButtonType;
         particles: string[];
