@@ -48,7 +48,7 @@ export default function FullWidthSection({
                     initial={{ y: 30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="font-playfair font-bold text-[22px] md:font-pacifico md:font-normal md:text-[48px] my-4"
+                    className="font-playfair font-bold text-[22px] lg:text-[32px] md:font-pacifico md:font-normal md:text-[48px] my-4"
                 >
                     {title}
                 </motion.h1>
@@ -56,7 +56,7 @@ export default function FullWidthSection({
                     initial={{ y: 30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                    className="font-josefin-sans font-normal text-[22px] leading-[32px] tracking-normal"
+                    className="font-josefin-sans font-normal text-[18px] lg:text-[22px] leading-[32px] tracking-normal"
                 >
                     {description}
                 </motion.p>
