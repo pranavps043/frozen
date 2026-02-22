@@ -60,5 +60,43 @@
                 "description": "With over 50 locations nationwide, we continue to innovate and bring joy through our frozen creations. Every scoop tells a story."
             }
         ]
+    },
+    "step_into_our_frozen_world": {
+        "title": "Step into Our Frozen World",
+        "description": "Our shop isn’t just a place to eat — it’s an experience. With interiors inspired by snow-covered landscapes, frosty designs, and warm corners, every visit feels like stepping into a magical frozen escape. From the first glance to the last bite, your senses are wrapped in a snowy celebration.",
+        "image": {
+            "src": "/assets/images/about/step-into-our-frozen-world.webp",
+            "alt": "Step into Our Frozen World"
+        },
+        "bg_gradient": "#65124333"
+    },
+    "our_values": {
+        "title": "Our Values",
+        "values": [
+            {
+                "id": 1,
+                "title": "Freshness First",
+                "description": "We source locally whenever possible, ensuring our ingredients are at their peak of flavor and nutrition. From farm to bowl, we prioritize freshness in every bite.",
+                "icon": "/assets/images/about/values/freshness-first.webp"
+            },
+            {
+                "id": 2,
+                "title": "Crafted with Care",
+                "description": "Our ice creams are made fresh daily in small batches, while our salads are thoughtfully composed to create perfect harmony in flavor, texture, and nutrition.",
+                "icon": "/assets/images/about/values/crafted-with-care.webp"
+            },
+            {
+                "id": 3,
+                "title": "Balance in Every Bite",
+                "description": "We believe in the power of balance – between indulgence and nourishment, tradition and innovation, simplicity and complexity in our food and in life.",
+                "icon": "/assets/images/about/values/balance-in-every-bite.webp"
+            },
+            {
+                "id": 4,
+                "title": "Community & Connection",
+                "description": "Our spaces are designed to bring people together, where strangers become friends over shared meals and meaningful conversations.",
+                "icon": "/assets/images/about/values/community-connection.webp"
+            }
+        ]
     }
 }

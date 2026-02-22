@@ -6,37 +6,24 @@ import { ImageType } from "@/types/common";
 import { useEffect, useRef } from "react";
 
 interface FullWidthProps {
-    backgroundImage?: ImageType;
-    backgroundVideo?: {
-        src: string;
-        poster?: string;
-    };
+    backgroundImage: ImageType;
     title: string;
-    description: string;
+    description: React.ReactNode;
     overlayColor?: string;
     overlayOpacity?: number;
 }
 
-export default function FullWidth({
+export default function FullWidthSection({
     backgroundImage,
-    backgroundVideo,
     title,
     description,
     overlayColor = "#000000",
-    overlayOpacity = 0.4
+    overlayOpacity = 1
 }: FullWidthProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
 
-    useEffect(() => {
-        if (videoRef.current && backgroundVideo) {
-            videoRef.current.play().catch(error => {
-                console.log("Autoplay was prevented:", error);
-            });
-        }
-    }, [backgroundVideo]);
-
     return (
-        <div className="relative w-full h-[80vh] flex items-center px-8 lg:px-24 overflow-hidden">
+        <div className="relative w-full min-h-[70vh] flex items-center px-8 lg:px-24 overflow-hidden">
             <div
                 className="absolute inset-0 z-1"
                 style={{
@@ -46,29 +33,14 @@ export default function FullWidth({
             />
 
             <div className="absolute inset-0 z-0">
-                {backgroundVideo ? (
-                    <video
-                        ref={videoRef}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        poster={backgroundVideo.poster}
-                    >
-                        <source src={backgroundVideo.src} type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                ) : backgroundImage && (
-                    <Image
-                        src={backgroundImage.src}
-                        alt={backgroundImage.alt}
-                        fill
-                        className="object-cover"
-                        priority
-                    />
-                )}
-                <div className="absolute inset-0 bg-black/40" />
+
+                <Image
+                    src={backgroundImage.src}
+                    alt={backgroundImage.alt}
+                    fill
+                    className="object-cover"
+                    priority
+                />
             </div>
 
             <div className="relative z-10 w-full max-w-full lg:max-w-2xl mx-auto text-center">
@@ -76,7 +48,7 @@ export default function FullWidth({
                     initial={{ y: 30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="text-white"
+                    className="font-playfair font-bold text-[22px] md:font-pacifico md:font-normal md:text-[48px] my-4"
                 >
                     {title}
                 </motion.h1>
@@ -84,7 +56,7 @@ export default function FullWidth({
                     initial={{ y: 30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                    className="text-[22px] text-white/90 leading-relaxed mt-4"
+                    className="font-josefin-sans font-normal text-[22px] leading-[32px] tracking-normal"
                 >
                     {description}
                 </motion.p>

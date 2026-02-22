@@ -8,13 +8,13 @@ export default function GalleryPage() {
     return (
         <main className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#651243] to-[#1a0a1a]">
             <FloatingParticles images={db.comingSoon.particleImages} count={15} />
-            
+
             <div className="relative z-10 text-center px-8 max-w-3xl">
                 <motion.h1
                     initial={{ y: 30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="text-6xl lg:text-8xl font-bold text-white mb-4 font-primary"
+                    className="font-playfair font-bold text-[22px] md:font-pacifico md:font-normal md:text-[48px] my-4"
                 >
                     {db.comingSoon.title}
                 </motion.h1>
@@ -34,7 +34,7 @@ export default function GalleryPage() {
                     initial={{ y: 30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                    className="text-xl lg:text-2xl text-white/80 leading-relaxed"
+                    className="font-josefin-sans font-normal text-[22px] leading-[32px] tracking-normal text-white"
                 >
                     {db.comingSoon.description}
                 </motion.p>
