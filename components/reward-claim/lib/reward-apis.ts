@@ -44,6 +44,26 @@ export const getUserGameReward = async (user: AuthUser) => {
     return { data, error };
 }
 
+export const claimReward = async (user: AuthUser) => {
+    const { data, error } = await post<any, any>(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/button-claim-reward`,
+        {
+            login_id: user.id
+        }
+    );
+    return { data, error };
+}
+
+export const fetchUserRewards = async (user: AuthUser) => {
+    const { data, error } = await post<any, any>(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/get-reward-by-user`,
+        {
+            login_id: user.id
+        }
+    );
+    return { data, error };
+}
+
 export const registerMember = async (payload: any) => {
     const { data, error } = await post<any, any>(
         `${process.env.NEXT_PUBLIC_API_URL}/api/register-member`,

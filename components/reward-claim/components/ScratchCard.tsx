@@ -14,6 +14,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = memo(({
   reward,
   onScratchedAndClicked,
   onScratched,
+  isLoading,
 }) => {
   const handleScratchComplete = useCallback(() => {
     if (reward?.type_id !== BONUS_CARD_TYPE_ID) {
@@ -47,6 +48,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = memo(({
           reward={reward}
           onScratchedAndClicked={onScratchedAndClicked}
           isBonusCard={isBonusCard}
+          isLoading={isLoading}
         />
       </div>
 
@@ -82,12 +84,14 @@ interface RewardContentProps {
   reward: Reward;
   onScratchedAndClicked: () => void;
   isBonusCard: boolean;
+  isLoading: boolean;
 }
 
 const RewardContent: React.FC<RewardContentProps> = memo(({
   reward,
   onScratchedAndClicked,
   isBonusCard,
+  isLoading,
 }) => {
   const [visible, setVisible] = useState(false);
   const [imageError, setImageError] = useState(false);
@@ -125,6 +129,7 @@ const RewardContent: React.FC<RewardContentProps> = memo(({
       <Button
         onClick={onScratchedAndClicked}
         size="sm"
+        isLoading={isLoading}
         variant={isBonusCard ? "secondary" : "primary"}
         className="animate-in fade-in zoom-in duration-300"
       >

@@ -8,7 +8,7 @@ import { StepCode } from "./components/steps/StepCode";
 import { StepUserInfo } from "./components/steps/StepUserInfo";
 import { StepScratch } from "./components/steps/StepScratch";
 import { StepCongrats } from "./components/steps/StepCongrats";
-import { getRandomReward, getUserGameReward } from "./lib/reward-apis";
+import { claimReward, getRandomReward, getUserGameReward } from "./lib/reward-apis";
 import { AllRewards } from "./components/steps/AllRewards";
 
 export const RewardClaimApp: React.FC = () => {
@@ -19,6 +19,7 @@ export const RewardClaimApp: React.FC = () => {
   const [claimedCode, setClaimedCode] = useState("");
   const [userInfo, setUserInfo] = useState<UserInfo>({ name: "", email: "" });
   const [showConfetti, setShowConfetti] = useState(false);
+  const [isLoadingScratch, setIsLoadingScratch] = useState(false);
 
   const handleAuthenticated = async (user: AuthUser) => {
     setAuthUser(user);
@@ -52,12 +53,18 @@ export const RewardClaimApp: React.FC = () => {
 
   const handleScratchedClaimSubmit = async () => {
     if (!authUser) return;
-    const { data, error } = await getUserGameReward(authUser);
-    console.log(data, error);
+    setIsLoadingScratch(true);
+    const { data: claimed_data, error: claimed_error } = await claimReward(authUser);
+    localStorage.setItem("memberClaimedReward", JSON.stringify(claimed_data.reward));
+    const { data: user_reward_data, error: user_reward_error } = await getUserGameReward(authUser);
+    localStorage.setItem("memberAvailableRewards", JSON.stringify(user_reward_data));
+    setIsLoadingScratch(false);
     setStep(5);
   };
 
   const handleReset = () => {
+    localStorage.removeItem("memberClaimedReward");
+    localStorage.removeItem("memberAvailableRewards");
     setStep(1);
     setReward(null);
     setClaimedCode("");
@@ -72,7 +79,7 @@ export const RewardClaimApp: React.FC = () => {
       <StarBackground />
       {showConfetti && <Confetti />}
 
-      <div className="lg:w-1/2 w-full bg-white/4 backdrop-blur-xl border border-white/10 rounded-[28px] p-12 shadow-[0_25px_80px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.1)] relative z-10 box-border">
+      <div className="lg:w-1/2 w-full bg-white/4 backdrop-blur-xl border border-white/10 rounded-[28px] px-6 lg:px-12 py-12 lg:py-12 shadow-[0_25px_80px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.1)] relative z-10 box-border">
 
         {/* {step === 1 && <AuthGate onAuthenticated={handleAuthenticated} />} */}
         {step === 1 && <StepCode onSuccess={handleCodeSuccess} />}
@@ -84,26 +91,11 @@ export const RewardClaimApp: React.FC = () => {
         {step >= 3 && authUser && (
           <>
             <div className="flex items-center justify-between mb-2">
-              {/* <span className="text-[#A78BFA] text-[13px]">👤 {authUser.name}</span> */}
-              {/* <span
-                onClick={handleReset}
-                className="text-[#6B7280] text-[12px] cursor-pointer underline"
-              >
-                Start Over
-              </span> */}
+
             </div>
 
-
-            {/* {step === 3 && (
-              <StepUserInfo
-                prefillName={authUser.name}
-                prefillEmail={authUser.email}
-                onSuccess={handleUserInfoSuccess}
-              />
-            )} */}
-
             {step === 3 && reward && (
-              <StepScratch reward={reward} onScratchedAndClicked={handleScratchedClaimSubmit} onScratched={handleScratched} />
+              <StepScratch reward={reward} onScratchedAndClicked={handleScratchedClaimSubmit} onScratched={handleScratched} isLoading={isLoadingScratch} />
             )}
 
             {step === 4 && reward && (

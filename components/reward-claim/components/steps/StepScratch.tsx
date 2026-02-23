@@ -3,7 +3,7 @@ import React from "react";
 import { StepScratchProps } from "../../types/reward";
 import { ScratchCard } from "../ScratchCard";
 
-export const StepScratch: React.FC<StepScratchProps> = ({ reward, onScratchedAndClicked, onScratched }: StepScratchProps) => (
+export const StepScratch: React.FC<StepScratchProps> = ({ reward, onScratchedAndClicked, onScratched, isLoading }: StepScratchProps) => (
   <div className="animate-fade-in">
     <div className="text-center mb-8 relative">
 
@@ -15,6 +15,6 @@ export const StepScratch: React.FC<StepScratchProps> = ({ reward, onScratchedAnd
       </p>
     </div>
 
-    <ScratchCard reward={reward} onScratchedAndClicked={onScratchedAndClicked} onScratched={onScratched} />
+    <ScratchCard reward={reward} onScratchedAndClicked={onScratchedAndClicked} onScratched={onScratched} isLoading={isLoading} />
   </div>
 );

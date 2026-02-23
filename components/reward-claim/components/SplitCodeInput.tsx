@@ -148,7 +148,7 @@ export const SplitCodeInput: React.FC<SplitCodeInputProps> = ({
                         inputMode="text"
                         maxLength={1}
                         className={`
-              w-12 h-14 text-center text-xl font-bold 
+              lg:w-12 w-10 h-12 lg:h-14 text-center text-xl font-bold 
               bg-[#DCADC980] border-2 rounded-lg
               text-[#651243] placeholder-[#4B5563]
               transition-all duration-150

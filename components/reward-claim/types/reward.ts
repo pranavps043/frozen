@@ -48,6 +48,7 @@ export interface ScratchCardProps {
   reward: Reward | null;
   onScratchedAndClicked: () => void;
   onScratched: () => void;
+  isLoading: boolean;
 }
 
 export interface StepCodeProps {
@@ -64,6 +65,7 @@ export interface StepScratchProps {
   reward: Reward | null;
   onScratchedAndClicked: () => void;
   onScratched: () => void;
+  isLoading: boolean;
 }
 
 export interface StepCongratsProps {
