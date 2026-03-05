@@ -26,8 +26,8 @@ export interface ContentType {
 
 
 
-export default function Hero({ content, PageList }: { content: any; PageList: PageUrlListType[] }) {
-    const [activeSlug, setActiveSlug] = useState(content.slug || 'default');
+export default function Hero({ heros, PageList, onHeroChange, activeSlug }: { heros: any[]; PageList: PageUrlListType[]; onHeroChange: (slug: string) => void, activeSlug: string }) {
+    const content = heros.find(h => h.slug === activeSlug) || heros[0];
     const [isTransitioning, setIsTransitioning] = useState(false);
     const sectionRef = useRef<HTMLDivElement>(null);
     const overlayRef = useRef<HTMLDivElement>(null);
@@ -63,10 +63,9 @@ export default function Hero({ content, PageList }: { content: any; PageList: Pa
 
     const handleProductClick = (slug: string) => {
         // Prevent multiple clicks during transition
-        if (isTransitioning || slug === content.slug) return;
+        if (isTransitioning || slug === activeSlug) return;
 
         setIsTransitioning(true);
-        setActiveSlug(slug);
 
         if (sectionRef.current && contentRef.current) {
             const timeline = gsap.timeline();
@@ -86,9 +85,17 @@ export default function Hero({ content, PageList }: { content: any; PageList: Pa
                 ease: 'power2.inOut',
             }, "<");
 
-            // Navigate to new page
+            // Notify parent to change data
             timeline.call(() => {
-                router.push(`/home/${slug}`);
+                onHeroChange(slug);
+            });
+
+            // Fade in content (handled by useEffect and animation keys)
+            timeline.to(contentRef.current, {
+                opacity: 1,
+                scale: 1,
+                duration: 0.3,
+                ease: 'power2.out',
             });
 
             // Fade out overlay

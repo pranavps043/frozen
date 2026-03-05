@@ -27,7 +27,7 @@ const AboutSection = ({ data }: { data: AboutSectionProps }) => {
                     className="object-cover blur-xs"
                     priority
                 />
-                <div className="absolute inset-0 z-1 opacity-50" style={{ background: `var(${data.bg_gradient})` }} />
+                <div className="absolute inset-0 z-1 opacity-50" style={{ background: `var(--theme-gradient)` }} />
 
             </div>
             <div

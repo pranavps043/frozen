@@ -25,13 +25,24 @@ async function getPageData(type: string): Promise<TypeData | null> {
     }
 }
 
+async function getHomeData() {
+    try {
+        const filePath = path.join(process.cwd(), 'data', 'home.json');
+        const fileContent = await fs.readFile(filePath, 'utf-8');
+        return JSON.parse(fileContent);
+    } catch {
+        return null;
+    }
+}
+
 export default async function Home({ params }: { params: Promise<{ type: string }> }) {
     const { type } = await params;
     const data = await getPageData(type);
+    const homeData = await getHomeData();
 
     if (!data) {
         notFound();
     }
 
-    return <HomeClient data={data} PageList={PagesData} />;
+    return <HomeClient data={data} heros={homeData?.heros || []} PageList={PagesData} />;
 }

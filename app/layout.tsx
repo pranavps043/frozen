@@ -44,6 +44,8 @@ export const metadata: Metadata = {
   authors: [{ name: 'Frozen Creamery' }],
 }
 
+import { StyleProvider } from "@/context/style-context";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -54,11 +56,13 @@ export default function RootLayout({
       <body
         className={`${josefinSans.variable} ${montserrat.variable} ${akaya.variable} ${pacifico.variable} ${playfair.variable} antialiased`}
       >
-        <SmoothScroll>
-          <Navigation />
-          {children}
-          <Footer />
-        </SmoothScroll>
+        <StyleProvider>
+          <SmoothScroll>
+            <Navigation />
+            {children}
+            <Footer />
+          </SmoothScroll>
+        </StyleProvider>
       </body>
     </html>
   );

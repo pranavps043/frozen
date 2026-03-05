@@ -78,7 +78,7 @@ export const RewardClaimApp: React.FC = () => {
             )}
 
             {step === 3 && reward && (
-              <StepScratch reward={reward} onScratchedAndClicked={() => { }} onScratched={handleScratched} />
+              <StepScratch isLoading={false} reward={reward} onScratchedAndClicked={() => { }} onScratched={handleScratched} />
             )}
 
             {step === 4 && reward && (

@@ -5,6 +5,7 @@ type StyleState = {
     theme: "light" | "dark";
     buttonStyle: string;
     borderRadius: string;
+    activeSlug?: string;
 };
 
 type StyleContextType = {
@@ -19,6 +20,7 @@ export function StyleProvider({ children }: { children: React.ReactNode }) {
         theme: "light",
         buttonStyle: "primary",
         borderRadius: "8px",
+        activeSlug: undefined,
     });
 
     return (

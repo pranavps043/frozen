@@ -75,27 +75,30 @@ const footerContent = {
     }
 };
 
+import { useStyle } from '@/context/style-context';
+
 const Footer = ({ waveColor = '#000' }) => {
     const pathname = usePathname();
+    const { styles } = useStyle();
     const [footerStyle, setFooterStyle] = useState(footerStyles.default);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
 
-        // Extract style from URL path (e.g., /home/cheese-cake -> cheese-cake)
-        if (pathname) {
-            const pathParts = pathname.split('/');
-            // Get the last part of the path that isn't empty
-            const lastSegment = pathParts.filter(Boolean).pop();
+        const isHomePage = pathname === '/';
+        let targetStyleKey = 'default';
 
-            if (lastSegment && footerStyles[lastSegment as keyof typeof footerStyles]) {
-                setFooterStyle(footerStyles[lastSegment as keyof typeof footerStyles]);
-            } else {
-                setFooterStyle(footerStyles.default);
-            }
+        if (isHomePage && styles.activeSlug) {
+            targetStyleKey = styles.activeSlug;
+        } else if (pathname) {
+            const pathParts = pathname.split('/');
+            const lastSegment = pathParts.filter(Boolean).pop();
+            targetStyleKey = (lastSegment && footerStyles[lastSegment as keyof typeof footerStyles]) ? lastSegment : 'default';
         }
-    }, [pathname]);
+
+        setFooterStyle(footerStyles[targetStyleKey as keyof typeof footerStyles] || footerStyles.default);
+    }, [pathname, styles.activeSlug]);
 
     // Prevent hydration mismatch by not rendering style-dependent classes until mounted
     if (!mounted) {

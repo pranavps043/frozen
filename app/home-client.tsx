@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-
 import Hero from "@/components/home/hero";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,36 +12,27 @@ import DessertParadise from "@/components/home/dessert-paradise";
 import FlavorsFeelings from "@/components/home/flavors-feelings";
 import EarnRewards from "@/components/home/earn-rewards";
 import { PageUrlListType } from "@/types/common";
-import { useStyle } from "@/context/style-context";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-// type TypeData = {
-//     title: string;
-//     description: string;
-//     content: string;
-//     products?: any[];
-//     favorite_treats?: any[];
-//     dessert_paradise?: any[];
-//     flavors_feelings?: any;
-//     earn_rewards?: any;
-// };
-
-import { useRouter } from "next/navigation";
+import { useStyle } from "@/context/style-context";
 
 export default function HomeClient({ data, heros, PageList }: { data: any; heros: any[]; PageList: PageUrlListType[] }) {
-    const router = useRouter();
     const { styles, setStyles } = useStyle();
-    const activeSlug = data.hero.slug;
+
+    // Use context's activeSlug, or default from heros
+    const activeSlug = styles.activeSlug || heros[0]?.slug || 'cheese-cake';
 
     useEffect(() => {
-        if (styles.activeSlug !== activeSlug) {
-            setStyles(prev => ({ ...prev, activeSlug }));
+        if (!styles.activeSlug && heros[0]?.slug) {
+            setStyles(prev => ({ ...prev, activeSlug: heros[0].slug }));
         }
-    }, [activeSlug, setStyles, styles.activeSlug]);
+    }, [styles.activeSlug, heros, setStyles]);
+
+    const activeHero = heros.find(h => h.slug === activeSlug) || heros[0];
+    const theme = activeHero.theme || data.base_styles;
 
     const mainRef = useRef<HTMLElement>(null);
-
     const heroRef = useRef<HTMLElement>(null);
     const aboutRef = useRef<HTMLElement>(null);
     const treatRef = useRef<HTMLElement>(null);
@@ -51,7 +41,7 @@ export default function HomeClient({ data, heros, PageList }: { data: any; heros
     const rewardsRef = useRef<HTMLElement>(null);
 
     const handleHeroChange = (slug: string) => {
-        router.push(`/home/${slug}`);
+        setStyles(prev => ({ ...prev, activeSlug: slug }));
     };
 
     useGSAP(() => {
@@ -72,34 +62,37 @@ export default function HomeClient({ data, heros, PageList }: { data: any; heros
     }, { scope: mainRef });
 
     return (
-        <main ref={mainRef} className="relative w-full overflow-x-hidden"
+        <main ref={mainRef} className="relative w-full overflow-x-hidden transition-colors duration-700"
             style={{
-                '--btn-primary-bg': data.base_styles.button_color,
+                '--btn-primary-bg': theme.button_color,
                 '--btn-primary-shadow': data.base_styles.button_shadow,
-                '--btn-primary-bg-hover': data.base_styles.button_hover,
+                '--btn-primary-bg-hover': theme.button_hover,
+                '--theme-gradient': theme.bg_gradient.startsWith('--') ? `var(${theme.bg_gradient})` : theme.bg_gradient,
+                '--accordion-bg': theme.accordion_bg.startsWith('--') ? `var(${theme.accordion_bg})` : theme.accordion_bg,
+                '--accordion-bg-active': theme.accordion_bg_active.startsWith('--') ? `var(${theme.accordion_bg_active})` : theme.accordion_bg_active,
             } as React.CSSProperties}
         >
-            <section ref={heroRef} className="h-screen" style={{ background: data.base_styles.bg_gradient.startsWith('--') ? `var(${data.base_styles.bg_gradient})` : data.base_styles.bg_gradient }}>
+            <section ref={heroRef} className="h-screen">
                 <Hero heros={heros} PageList={PageList} onHeroChange={handleHeroChange} activeSlug={activeSlug} />
             </section>
 
-            <section ref={aboutRef} className="h-screen" style={{ background: data.base_styles.bg_gradient.startsWith('--') ? `var(${data.base_styles.bg_gradient})` : data.base_styles.bg_gradient }}>
+            <section ref={aboutRef} className="h-screen" style={{ background: 'var(--theme-gradient)' }}>
                 <AboutSection data={data.about_us} />
             </section>
 
-            <section ref={treatRef} className="h-screen" style={{ background: data.base_styles.bg_gradient.startsWith('--') ? `var(${data.base_styles.bg_gradient})` : data.base_styles.bg_gradient }}>
+            <section ref={treatRef} className="h-screen" style={{ background: 'var(--theme-gradient)' }}>
                 <FavoriteTreat data={data.favorite_treats} />
             </section>
 
-            <section ref={paradiseRef} className="h-[70vh] md:h-screen" style={{ background: data.base_styles.bg_gradient.startsWith('--') ? `var(${data.base_styles.bg_gradient})` : data.base_styles.bg_gradient }}>
+            <section ref={paradiseRef} className="h-[70vh] md:h-screen" style={{ background: 'var(--theme-gradient)' }}>
                 <DessertParadise content={data.dessert_paradise} />
             </section>
 
-            <section ref={flavorsRef} className="min-h-screen" style={{ background: data.base_styles.bg_gradient.startsWith('--') ? `var(${data.base_styles.bg_gradient})` : data.base_styles.bg_gradient }}>
+            <section ref={flavorsRef} className="min-h-screen" style={{ background: 'var(--theme-gradient)' }}>
                 <FlavorsFeelings data={data.flavors_feelings} />
             </section>
 
-            <section ref={rewardsRef} className="h-screen" style={{ background: data.base_styles.bg_gradient.startsWith('--') ? `var(${data.base_styles.bg_gradient})` : data.base_styles.bg_gradient }}>
+            <section ref={rewardsRef} className="h-screen" style={{ background: 'var(--theme-gradient)' }}>
                 <EarnRewards earn_rewards={data.earn_rewards} />
             </section>
         </main>

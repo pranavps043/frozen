@@ -29,12 +29,12 @@ export default function FavoriteTreat({ data }: { data: any }) {
             className="relative h-full bg-[#FDF8F5] flex flex-col justify-center py-12 sm:py-16 md:py-20 overflow-hidden"
             style={
                 {
-                    '--card-bg': `var(${data.bg_gradient})`,
-                    '--card-bg-hover': `var(${data.bg_gradient})`,
+                    '--card-bg': `var(--theme-gradient)`,
+                    '--card-bg-hover': `var(--theme-gradient)`,
                 } as React.CSSProperties
             }
         >
-            <div className="absolute inset-0 z-0 opacity-80" style={{ background: `var(${data.bg_gradient})` }} />
+            <div className="absolute inset-0 z-0 opacity-80" style={{ background: `var(--theme-gradient)` }} />
 
             <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-2">
                 {/* Header Section - Mobile optimized */}

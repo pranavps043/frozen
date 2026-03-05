@@ -56,7 +56,7 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
             {/* Background gradient with improved performance */}
             <div
                 className="absolute inset-0 z-1 opacity-50 will-change-transform"
-                style={{ background: `var(${data.bg_gradient})` }}
+                style={{ background: `var(--theme-gradient)` }}
                 aria-hidden="true"
             />
 
@@ -87,8 +87,8 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
                         index={index}
                         isActive={activeIndex === index}
                         onClick={handleAccordionClick}
-                        accordionBg={data.accordion_bg}
-                        accordionBgActive={data.accordion_bg_active}
+                        accordionBg="--accordion-bg"
+                        accordionBgActive="--accordion-bg-active"
                     />
                 ))}
             </div>

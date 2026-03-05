@@ -5,11 +5,25 @@ import { usePathname } from "next/navigation";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
 import { useState } from "react";
 
+import { useStyle } from "@/context/style-context";
+
+const navThemes: Record<string, string> = {
+    default: "var(--dark-raspberry)",
+    'cheese-cake': "#3A2313",
+    'ice-cream': "#F19803",
+    'veg-salad': "#0F3408",
+};
+
 export default function Navigation() {
+    const { styles } = useStyle();
     const [hidden, setHidden] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { scrollY } = useScroll();
     const pathname = usePathname();
+
+    const isHomePage = pathname === '/';
+    const activeSlug = isHomePage ? styles.activeSlug : (pathname?.split('/').filter(Boolean).pop());
+    const themeColor = navThemes[activeSlug as keyof typeof navThemes] || navThemes.default;
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         const previous = scrollY.getPrevious() ?? 0;
@@ -54,8 +68,11 @@ export default function Navigation() {
                 }}
                 animate={hidden ? "hidden" : "visible"}
                 transition={{ duration: 0.35, ease: "easeInOut" }}
-                className="fixed top-[20px] left-0 right-0 w-full max-w-[1280px] h-[63px] bg-nav-bg rounded-3xl border border-[#BC9478]/30 items-center px-6 md:px-8 lg:px-12 z-50 shadow-sm mx-auto hidden md:flex isolate aspect-video bg-white/40 shadow-lg ring-1 ring-black/5"
-                style={{ margin: '50px auto 0' }}
+                className="fixed top-[20px] left-0 right-0 w-full max-w-[1280px] h-[63px] bg-nav-bg rounded-3xl border border-[#BC9478]/30 items-center px-6 md:px-8 lg:px-12 z-50 shadow-sm mx-auto hidden md:flex isolate aspect-video bg-white/40 shadow-lg ring-1 ring-black/5 transition-all duration-700"
+                style={{
+                    margin: '50px auto 0',
+                    '--nav-theme': themeColor,
+                } as React.CSSProperties}
             >
                 <div className="flex w-full items-center justify-between">
                     {/* Left Links */}
@@ -71,15 +88,15 @@ export default function Navigation() {
                                         uppercase tracking-wider font-sans whitespace-nowrap
                                         transition-all duration-300 ease-out
                                         ${active
-                                            ? "text-white bg-[var(--dark-raspberry)]"
-                                            : "text-[#3B2516] hover:text-white hover:bg-[var(--dark-raspberry)]"
+                                            ? "text-white bg-[var(--nav-theme)]"
+                                            : "text-[#3B2516] hover:text-white hover:bg-[var(--nav-theme)]"
                                         }
                                     `}
                                 >
                                     <span className="relative z-10">{link.name}</span>
                                     {!active && (
                                         <motion.span
-                                            className="absolute inset-0 rounded-full bg-[var(--dark-raspberry)]"
+                                            className="absolute inset-0 rounded-full bg-[var(--nav-theme)]"
                                             initial={{ scale: 0, opacity: 0 }}
                                             whileHover={{ scale: 1, opacity: 1 }}
                                             transition={{ duration: 0.3, ease: "easeOut" }}
@@ -218,6 +235,7 @@ export default function Navigation() {
                             exit={{ x: "-100%" }}
                             transition={{ type: "spring", damping: 30, stiffness: 300 }}
                             className="fixed top-0 left-0 bottom-0 w-[280px] bg-[#FFF8F0] shadow-2xl z-50 md:hidden overflow-y-auto"
+                            style={{ '--nav-theme': themeColor } as React.CSSProperties}
                         >
                             {/* Menu Header with Logo */}
                             <div className="flex flex-col items-center justify-center py-8 px-6 border-b border-[#BC9478]/20">
@@ -263,8 +281,8 @@ export default function Navigation() {
                                                     uppercase tracking-wider font-sans
                                                     transition-all duration-300 
                                                     ${active
-                                                        ? "text-white bg-[var(--dark-raspberry)] translate-x-2"
-                                                        : "text-[#3B2516] hover:text-white hover:bg-[var(--dark-raspberry)] hover:translate-x-2"
+                                                        ? "text-white bg-[var(--nav-theme)] translate-x-2"
+                                                        : "text-[#3B2516] hover:text-white hover:bg-[var(--nav-theme)] hover:translate-x-2"
                                                     }
                                                 `}
                                             >
@@ -277,7 +295,7 @@ export default function Navigation() {
                         </motion.div>
                     </>
                 )}
-            </AnimatePresence>
+            </AnimatePresence >
         </>
     );
 }
