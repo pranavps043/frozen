@@ -13,6 +13,7 @@ import DessertParadise from "@/components/home/dessert-paradise";
 import FlavorsFeelings from "@/components/home/flavors-feelings";
 import EarnRewards from "@/components/home/earn-rewards";
 import { PageUrlListType } from "@/types/common";
+import { HomeDataType, HeroType } from "@/types/home";
 import { useStyle } from "@/context/style-context";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -30,7 +31,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 import { useRouter } from "next/navigation";
 
-export default function HomeClient({ data, heros, PageList }: { data: any; heros: any[]; PageList: PageUrlListType[] }) {
+export default function HomeClient({ data, heros, PageList }: { data: HomeDataType; heros: HeroType[]; PageList: PageUrlListType[] }) {
     const router = useRouter();
     const { styles, setStyles } = useStyle();
     const activeSlug = data.hero.slug;
@@ -84,7 +85,10 @@ export default function HomeClient({ data, heros, PageList }: { data: any; heros
             </section>
 
             <section ref={aboutRef} className="h-screen" style={{ background: data.base_styles.bg_gradient.startsWith('--') ? `var(${data.base_styles.bg_gradient})` : data.base_styles.bg_gradient }}>
-                <AboutSection data={data.about_us} />
+                <AboutSection 
+                    data={data.about_us} 
+                    dynamicImage={data.hero.theme?.about_section_image}
+                />
             </section>
 
             <section ref={treatRef} className="h-screen" style={{ background: data.base_styles.bg_gradient.startsWith('--') ? `var(${data.base_styles.bg_gradient})` : data.base_styles.bg_gradient }}>
@@ -92,7 +96,7 @@ export default function HomeClient({ data, heros, PageList }: { data: any; heros
             </section>
 
             <section ref={paradiseRef} className="h-[70vh] md:h-screen" style={{ background: data.base_styles.bg_gradient.startsWith('--') ? `var(${data.base_styles.bg_gradient})` : data.base_styles.bg_gradient }}>
-                <DessertParadise content={data.dessert_paradise} />
+                <DessertParadise content={data.dessert_paradise} bgImage={data.hero.theme?.dessert_paradise_bg} />
             </section>
 
             <section ref={flavorsRef} className="min-h-screen" style={{ background: data.base_styles.bg_gradient.startsWith('--') ? `var(${data.base_styles.bg_gradient})` : data.base_styles.bg_gradient }}>

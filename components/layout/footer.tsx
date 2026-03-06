@@ -19,7 +19,7 @@ const footerStyles = {
     },
     'cheese-cake': {
         bg: 'bg-gradient-to-b from-[rgba(162,63,28,0.45)] to-[rgba(210,152,110,0.45)]',
-        image: '/assets/images/footer/footer-bg-default.webp',
+        image: '/assets/images/footer/cheesecake.webp',
         icon_color: '#3A2313'
     },
     'ice-cream': {
@@ -77,28 +77,28 @@ const footerContent = {
 
 import { useStyle } from '@/context/style-context';
 
-const Footer = ({ waveColor = '#000' }) => {
+const Footer = () => {
     const pathname = usePathname();
     const { styles } = useStyle();
-    const [footerStyle, setFooterStyle] = useState(footerStyles.default);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
+        const handle = requestAnimationFrame(() => setMounted(true));
+        return () => cancelAnimationFrame(handle);
+    }, []);
 
-        const isHomePage = pathname === '/';
-        let targetStyleKey = 'default';
+    const isHomePage = pathname === '/';
+    let targetStyleKey = 'default';
 
-        if (isHomePage && styles.activeSlug) {
-            targetStyleKey = styles.activeSlug;
-        } else if (pathname) {
-            const pathParts = pathname.split('/');
-            const lastSegment = pathParts.filter(Boolean).pop();
-            targetStyleKey = (lastSegment && footerStyles[lastSegment as keyof typeof footerStyles]) ? lastSegment : 'default';
-        }
+    if (isHomePage && styles.activeSlug) {
+        targetStyleKey = styles.activeSlug;
+    } else if (pathname) {
+        const pathParts = pathname.split('/');
+        const lastSegment = pathParts.filter(Boolean).pop();
+        targetStyleKey = (lastSegment && footerStyles[lastSegment as keyof typeof footerStyles]) ? lastSegment : 'default';
+    }
 
-        setFooterStyle(footerStyles[targetStyleKey as keyof typeof footerStyles] || footerStyles.default);
-    }, [pathname, styles.activeSlug]);
+    const currentFooterStyle = footerStyles[targetStyleKey as keyof typeof footerStyles] || footerStyles.default;
 
     // Prevent hydration mismatch by not rendering style-dependent classes until mounted
     if (!mounted) {
@@ -109,11 +109,11 @@ const Footer = ({ waveColor = '#000' }) => {
         <>
             <footer className="relative w-full text-white font-sans bg-cover bg-center bg-no-repeat"
                 style={{
-                    backgroundImage: `url(${footerStyle.image})`,
+                    backgroundImage: `url(${currentFooterStyle.image})`,
                 }}>
 
                 <div
-                    className={`absolute inset-0 z-0 opacity-60 ${footerStyle.bg}`}
+                    className={`absolute inset-0 z-0 opacity-60 ${currentFooterStyle.bg}`}
                 />
 
                 {/* Content Container */}
@@ -121,7 +121,7 @@ const Footer = ({ waveColor = '#000' }) => {
                     {/* Main Grid */}
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 gap-y-8 md:gap-8 py-10 max-w-sm mx-auto sm:max-w-3xl lg:max-w-full justify-between">
                         <div className='hidden lg:block'>
-                            <Social social={footerContent.social} iconColor={footerStyle.icon_color} />
+                            <Social social={footerContent.social} iconColor={currentFooterStyle.icon_color} />
                         </div>
 
                         <div
@@ -132,7 +132,7 @@ const Footer = ({ waveColor = '#000' }) => {
                                 {footerContent.contact.title}
                             </h3>
                             <ul className="space-y-3 sm:space-y-4 w-full max-w-xs md:max-w-none">
-                                {footerContent.contact.items.map(({ type, label, href, Icon }, index) => (
+                                {footerContent.contact.items.map(({ label, href, Icon }, index) => (
                                     <li key={index}>
                                         <a
                                             href={href}
@@ -142,7 +142,7 @@ const Footer = ({ waveColor = '#000' }) => {
                                         >
                                             <div
                                                 className="p-2 rounded-full transition-all duration-300 shrink-0"
-                                                style={{ backgroundColor: footerStyle.icon_color }}
+                                                style={{ backgroundColor: currentFooterStyle.icon_color }}
                                             >
                                                 <Icon color="white" size={18} className="sm:w-5 sm:h-5" />
                                             </div>
@@ -166,7 +166,7 @@ const Footer = ({ waveColor = '#000' }) => {
                             <div className="flex items-start gap-3 text-[#e6ccb2]">
                                 <div
                                     className="p-2 rounded-full mt-1 shrink-0"
-                                    style={{ backgroundColor: footerStyle.icon_color }}
+                                    style={{ backgroundColor: currentFooterStyle.icon_color }}
                                 >
                                     <MapPin color="white" size={18} className="text-[#d2986e] sm:w-5 sm:h-5" />
                                 </div>
@@ -180,7 +180,7 @@ const Footer = ({ waveColor = '#000' }) => {
                     </div>
 
                     <div className='lg:hidden'>
-                        <Social social={footerContent.social} iconColor={footerStyle.icon_color} />
+                        <Social social={footerContent.social} iconColor={currentFooterStyle.icon_color} />
                     </div>
 
                     {/* Divider */}
@@ -202,7 +202,7 @@ const Footer = ({ waveColor = '#000' }) => {
 
 export default Footer;
 
-const Social = ({ social, iconColor }: { social: { title: string, links: { Icon: any, label: string, href: string }[] }, iconColor: string }) => {
+const Social = ({ social, iconColor }: { social: { title: string, links: { Icon: React.ElementType, label: string, href: string }[] }, iconColor: string }) => {
     return (
         <div className="flex flex-col items-center text-center">
             <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 tracking-wide text-[#f3e5d8]">

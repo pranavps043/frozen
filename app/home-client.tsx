@@ -12,12 +12,13 @@ import DessertParadise from "@/components/home/dessert-paradise";
 import FlavorsFeelings from "@/components/home/flavors-feelings";
 import EarnRewards from "@/components/home/earn-rewards";
 import { PageUrlListType } from "@/types/common";
+import { HomeDataType, HeroType } from "@/types/home";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 import { useStyle } from "@/context/style-context";
 
-export default function HomeClient({ data, heros, PageList }: { data: any; heros: any[]; PageList: PageUrlListType[] }) {
+export default function HomeClient({ data, heros, PageList }: { data: HomeDataType; heros: HeroType[]; PageList: PageUrlListType[] }) {
     const { styles, setStyles } = useStyle();
 
     // Use context's activeSlug, or default from heros
@@ -77,7 +78,10 @@ export default function HomeClient({ data, heros, PageList }: { data: any; heros
             </section>
 
             <section ref={aboutRef} className="h-screen" style={{ background: 'var(--theme-gradient)' }}>
-                <AboutSection data={data.about_us} />
+                <AboutSection 
+                    data={data.about_us} 
+                    dynamicImage={theme.about_section_image}
+                />
             </section>
 
             <section ref={treatRef} className="h-screen" style={{ background: 'var(--theme-gradient)' }}>
@@ -85,7 +89,7 @@ export default function HomeClient({ data, heros, PageList }: { data: any; heros
             </section>
 
             <section ref={paradiseRef} className="h-[70vh] md:h-screen" style={{ background: 'var(--theme-gradient)' }}>
-                <DessertParadise content={data.dessert_paradise} />
+                <DessertParadise content={data.dessert_paradise} bgImage={theme.dessert_paradise_bg} />
             </section>
 
             <section ref={flavorsRef} className="min-h-screen" style={{ background: 'var(--theme-gradient)' }}>

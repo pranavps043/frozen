@@ -4,8 +4,8 @@
             "src": "/assets/images/about/hero-bg.webp",
             "alt": "About Hero Background"
         },
-        "title": "Our Story",
-        "description": "Discover the passion and craftsmanship behind every frozen delight. We're committed to creating the finest frozen desserts using only the freshest ingredients."
+        "title": "Frozen Creamery N’ Garden",
+        "description": "A place where indulgence and balance share the same space handcrafted ice creams and farm-fresh salads made with love every day."
     },
     "timeline": {
         "backgroundImage": {
@@ -17,47 +17,56 @@
             {
                 "year": "2015",
                 "image": {
-                    "src": "/assets/images/about/timeline-1.webp",
+                    "src": "/assets/images/about/timeline1.png",
                     "alt": "Timeline 1"
                 },
-                "title": "The Beginning",
-                "description": "Started as a small family kitchen with a dream to create the perfect frozen dessert. Our first shop opened with just three flavors."
+                "title": "Origins Across the World",
+                "description": "“Our story began across continents—in Dubai, Amsterdam, and England—where a chef discovered that food could be more than just a meal.”"
             },
             {
                 "year": "2017",
                 "image": {
-                    "src": "/assets/images/about/timeline-2.webp",
+                    "src": "/assets/images/about/timeline2.png",
                     "alt": "Timeline 2"
                 },
-                "title": "Expanding Our Horizons",
-                "description": "Expanded to multiple locations across the city. Introduced seasonal flavors and gained recognition for our premium quality."
+                "title": "The Realization",
+                "description": "“Food can weave memories, spark smiles, and connect people in ways words never could.”"
             },
             {
                 "year": "2019",
                 "image": {
-                    "src": "/assets/images/about/timeline-3.webp",
+                    "src": "/assets/images/about/timeline3.png",
                     "alt": "Timeline 3"
                 },
-                "title": "Innovation Award",
-                "description": "Received the prestigious Innovation in Frozen Desserts award. Launched our signature collection of artisan ice creams."
+                "title": "The Pairing",
+                "description": "Two dishes remained timeless: the innocence of ice creams and the freshness of salads. In 2015, they finally came together."
             },
             {
                 "year": "2022",
                 "image": {
-                    "src": "/assets/images/about/timeline-4.webp",
+                    "src": "/assets/images/about/timeline4.png",
                     "alt": "Timeline 4"
                 },
-                "title": "Going Green",
-                "description": "Transitioned to 100% sustainable packaging and sourced all dairy from local farms. Our commitment to the environment grew stronger."
+                "title": "The First Shop",
+                "description": "Many questioned the pairing, but laughter over melting cups and the clink of salad bowls proved balance and indulgence can live together."
             },
             {
                 "year": "2024",
                 "image": {
-                    "src": "/assets/images/about/timeline-5.webp",
+                    "src": "/assets/images/about/timeline5.png",
                     "alt": "Timeline 5"
                 },
-                "title": "Today",
-                "description": "With over 50 locations nationwide, we continue to innovate and bring joy through our frozen creations. Every scoop tells a story."
+                "title": "Canada & Niagara",
+                "description": "“Life brought us to Canada. Niagara gave us new flavours, new friends, and the dream of Frozen Creamery N’ Garden.”"
+            },
+            {
+                "year": "2026",
+                "image": {
+                    "src": "/assets/images/about/timeline6.png",
+                    "alt": "Timeline 6"
+                },
+                "title": "Today’s Vision",
+                "description": "“More than a shop, it’s a place where cones hold memories, bowls spark fresh beginnings, and strangers leave as friends.”"
             }
         ]
     },
