@@ -55,7 +55,7 @@ const footerContent = {
             },
             {
                 type: 'email',
-                label: 'info@frozencreamery.ca',
+                label: (<>info@<br className="block sm:hidden" />frozencreamery.ca</>),
                 href: 'mailto:info@frozencreamery.ca',
                 Icon: Mail
             }
@@ -140,12 +140,14 @@ const Footer = ({ waveColor = '#000' }) => {
                                              text-[#e6ccb2] hover:text-white transition-colors duration-300
                                              py-2 px-3 rounded-lg hover:bg-[#d2986e]/10 touch-manipulation"
                                         >
-                                            <div
-                                                className="p-2 rounded-full transition-all duration-300 shrink-0"
-                                                style={{ backgroundColor: footerStyle.icon_color }}
-                                            >
-                                                <Icon color="white" size={18} className="sm:w-5 sm:h-5" />
-                                            </div>
+                                            <span>
+                                                <div
+                                                    className="p-2 rounded-full transition-all duration-300 shrink-0"
+                                                    style={{ backgroundColor: footerStyle.icon_color }}
+                                                >
+                                                    <Icon color="white" size={18} className="sm:w-5 sm:h-5" />
+                                                </div>
+                                            </span>
                                             <span className="text-base sm:text-lg font-medium tracking-wide break-all">
                                                 {label}
                                             </span>

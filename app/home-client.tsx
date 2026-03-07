@@ -46,18 +46,36 @@ export default function HomeClient({ data, heros, PageList }: { data: any; heros
 
     useGSAP(() => {
         if (window.innerWidth < 768) return;
+
         const sections = gsap.utils.toArray('section', mainRef.current);
 
+        // Smooth scroll snap with improved easing
         ScrollTrigger.create({
             trigger: mainRef.current,
             start: "top top",
             end: "bottom bottom",
             snap: {
                 snapTo: 1 / (sections.length - 1),
-                duration: { min: 0.2, max: 0.5 },
-                delay: 0.1,
-                ease: "power2.inOut"
+                duration: { min: 0.3, max: 0.6 },
+                delay: 0.05,
+                ease: "power4.inOut"
             }
+        });
+
+        // Add parallax effect to sections
+        sections.forEach((section: any) => {
+            gsap.fromTo(section,
+                { opacity: 0.7 },
+                {
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top center",
+                        end: "bottom center",
+                        scrub: 1,
+                    }
+                }
+            );
         });
     }, { scope: mainRef });
 

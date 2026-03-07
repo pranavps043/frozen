@@ -41,7 +41,7 @@ export default function Hero({ heros, PageList, onHeroChange, activeSlug }: { he
 
             gsap.to(sectionRef.current, {
                 background: backgroundValue,
-                duration: 1.2,
+                duration: 1.8,
                 ease: 'power2.inOut',
             });
 
@@ -94,7 +94,7 @@ export default function Hero({ heros, PageList, onHeroChange, activeSlug }: { he
             timeline.to(contentRef.current, {
                 opacity: 1,
                 scale: 1,
-                duration: 0.3,
+                duration: 0.8,
                 ease: 'power2.out',
             });
 
@@ -194,10 +194,6 @@ export default function Hero({ heros, PageList, onHeroChange, activeSlug }: { he
                 {/* Center Absolute Content (Image) - Floating Animation */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none pt-24 -z-1">
 
-
-
-
-
                     <motion.div
                         key={activeSlug}
                         initial={{ rotate: -180, scale: 0, opacity: 0 }}
@@ -253,12 +249,6 @@ export default function Hero({ heros, PageList, onHeroChange, activeSlug }: { he
                             priority
                         />
                     </motion.div>
-
-
-
-
-
-
 
                 </div>
             </div>

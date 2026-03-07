@@ -76,7 +76,7 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
             </div>
 
             <div
-                className="relative w-full max-w-7xl h-[600px] flex gap-2 z-2 px-0 md:px-2 md:px-6"
+                className="relative w-full max-w-7xl min-h-[60vh] flex gap-2 z-2 px-0 md:px-2 md:px-6"
                 role="tablist"
                 aria-label="Flavors and feelings accordion"
             >
@@ -184,7 +184,7 @@ const AccordionItem = React.memo(({
                                 transition={{ duration: 0.5, delay: 0.3 }}
                                 className="flex-shrink-0 w-full lg:w-auto"
                             >
-                                <div className="w-full lg:w-[300px] h-[200px] lg:h-[250px] rounded-3xl bg-white/30 backdrop-blur-sm p-3 md:p-4 shadow-lg">
+                                <div className="w-full lg:w-[300px] h-[300px] lg:h-[300px] rounded-3xl">
                                     <div className="relative w-full h-full">
                                         <Image
                                             src={item.image.src}
