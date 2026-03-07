@@ -16,36 +16,41 @@ interface AboutSectionProps {
     bg_gradient: string
 }
 
-const AboutSection = ({ data }: { data: AboutSectionProps }) => {
+const AboutSection = ({ data, dynamicImage }: { data: AboutSectionProps, dynamicImage?: string }) => {
     return (
         <div className="relative h-full w-full flex items-center overflow-hidden">
-            <div className="absolute inset-0 -z-1">
+            <div className="absolute inset-0 z-0">
                 <Image
                     src={data.bg_image}
                     alt={data.title}
                     fill
-                    className="object-cover blur-xs"
+                    className="object-cover blur-sm"
                     priority
                 />
-                <div className="absolute inset-0 z-1 opacity-50" style={{ background: `var(--theme-gradient)` }} />
-
+                <div 
+                    className="absolute inset-0 opacity-60" 
+                    style={{ background: `var(--theme-gradient)` }} 
+                />
             </div>
             <div
-                className="flex flex-col justify-center items-center gap-x-16 gap-y-5 xl:gap-28 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full px-8 lg:px-24"
+                className="relative z-10 flex flex-col justify-center items-center gap-x-16 gap-y-5 xl:gap-28 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full px-8 lg:px-24"
             >
 
                 <div className="w-full lg:w-1/2 overflow-hidden rounded-xl max-w-[250px] lg:max-w-[450px] max-h-[450px]">
                     <motion.div
-                        whileHover={{ scale: 1.2 }}
-                        transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+                        key={dynamicImage || data.image.src}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.6 }}
                         className="w-full h-full"
                     >
                         <Image
                             width={data.image.width}
                             height={data.image.height}
-                            src={data.image.src}
+                            src={dynamicImage || data.image.src}
                             alt={data.image.alt}
-                            className="w-full h-auto  rounded-xl object-cover shadow-2xl"
+                            className="w-full h-auto rounded-xl object-cover shadow-2xl"
                         />
                     </motion.div>
                 </div>
