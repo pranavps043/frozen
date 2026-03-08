@@ -3,30 +3,8 @@ import path from "path";
 import fs from 'fs/promises';
 import HomeClient from "./home-client";
 import PagesData from '@/data/products/home.json';
+import { HomeDataType } from '@/types/home';
 
-type HomeData = {
-    seo: {
-        title: string;
-        description: string;
-        keywords: string;
-        og_title: string;
-        og_description: string;
-    };
-    base_styles: {
-        bg_gradient: string;
-        button_color: string;
-        button_shadow: string;
-        button_hover: string;
-        button_size: string;
-    };
-    hero: any;
-    heros: any[];
-    about_us: any;
-    favorite_treats: any;
-    dessert_paradise: any;
-    flavors_feelings: any;
-    earn_rewards: any;
-};
 
 export const metadata: Metadata = {
     title: 'Frozen Creamery N\' Garden - Premium Frozen Desserts & Fresh Salads',
@@ -43,7 +21,7 @@ export const metadata: Metadata = {
     }
 };
 
-async function getHomeData(): Promise<HomeData> {
+async function getHomeData(): Promise<HomeDataType> {
     const filePath = path.join(process.cwd(), 'data', 'home.json');
     const fileContent = await fs.readFile(filePath, 'utf-8');
     return JSON.parse(fileContent);

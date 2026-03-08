@@ -3,19 +3,9 @@ import path from "path";
 import fs from 'fs/promises';
 import HomeClient from "./home-client";
 import PagesData from '@/data/products/home.json';
+import { HomeDataType, HeroType } from "@/types/home";
 
-type TypeData = {
-    title: string;
-    description: string;
-    content: string;
-    products?: any[];
-    favorite_treats?: any[];
-    dessert_paradise?: any[];
-    flavors_feelings?: any;
-    earn_rewards?: any;
-};
-
-async function getPageData(type: string): Promise<TypeData | null> {
+async function getPageData(type: string): Promise<any> {
     try {
         const filePath = path.join(process.cwd(), 'public', 'data', `${type}.json`);
         const fileContent = await fs.readFile(filePath, 'utf-8');
@@ -25,7 +15,7 @@ async function getPageData(type: string): Promise<TypeData | null> {
     }
 }
 
-async function getHomeData() {
+async function getHomeData(): Promise<HomeDataType | null> {
     try {
         const filePath = path.join(process.cwd(), 'data', 'home.json');
         const fileContent = await fs.readFile(filePath, 'utf-8');
@@ -37,12 +27,28 @@ async function getHomeData() {
 
 export default async function Home({ params }: { params: Promise<{ type: string }> }) {
     const { type } = await params;
-    const data = await getPageData(type);
     const homeData = await getHomeData();
 
-    if (!data) {
+    if (!homeData) {
         notFound();
     }
 
-    return <HomeClient data={data} heros={homeData?.heros || []} PageList={PagesData} />;
+    const specificData = await getPageData(type);
+
+    // Find the specific hero for this page type
+    const activeHero = homeData.heros.find((h: HeroType) => h.slug === type);
+
+    if (!activeHero && !specificData) {
+        notFound();
+    }
+
+    // Create the final data object by merging homeData with specific data
+    // Ensuring it conforms to HomeDataType
+    const data: HomeDataType = {
+        ...homeData,
+        hero: activeHero || specificData?.hero || homeData.hero,
+        ...(specificData || {})
+    };
+
+    return <HomeClient data={data} heros={homeData.heros} PageList={PagesData} />;
 }
