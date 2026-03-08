@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useCallback, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { BackgroundType, ButtonType, ImageType } from '@/types/common';
 import Button from '../ui/button';
 import Image from 'next/image';
