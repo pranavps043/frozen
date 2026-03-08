@@ -14,34 +14,8 @@ interface ErrorType {
 //   onSuccess: (reward: Reward, code: string) => void;
 // }
 
-export const StepCode: React.FC<StepCodeProps> = ({ handleCodeVerification, error }) => {
+export const StepCode: React.FC<StepCodeProps> = ({ handleCodeVerification, error, isLoading }) => {
   const [code, setCode] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState<string | null>(null);
-
-  /* const handleSubmit = async () => {
-    if (!code) { setError("Please enter a reward code."); return; }
-    setIsLoading(true);
-    setError("");
-    const { data, error } = await post<any, any>(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/verify-code`,
-      { code: code }
-    );
-
-    if (!data) {
-      setError(error);
-      setIsLoading(false);
-      return;
-    }
-
-    localStorage.setItem("rewardCode", code);
-    localStorage.setItem("claimToken", data.claim_token);
-    localStorage.setItem("tokenExpiry", data.expires_at);
-
-    setError("");
-    onSuccess(data, code);
-  }; */
-
   return (
     <div className="animate-fade-in">
       <div className="text-center mb-8">

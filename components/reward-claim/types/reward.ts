@@ -68,6 +68,7 @@ export interface ScratchCardProps {
 export interface StepCodeProps {
   handleCodeVerification: (code: string) => void;
   error: string | null;
+  isLoading: boolean;
 }
 
 export interface StepUserInfoProps {

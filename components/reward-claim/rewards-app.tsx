@@ -22,6 +22,7 @@ export const RewardClaimApp: React.FC = () => {
   const [isLoadingScratch, setIsLoadingScratch] = useState(false);
   const [userRewards, setUserRewards] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAuthenticated = async (user: AuthUser) => {
     setAuthUser(user);
@@ -30,7 +31,9 @@ export const RewardClaimApp: React.FC = () => {
     localStorage.setItem("name", user.name);
     localStorage.setItem("start_level", user.game_level);
     localStorage.setItem("justLoggedIn", "yes");
+    setIsLoading(true);
     const { data, error } = await getRandomReward(user.id);
+    setIsLoading(false);
 
     if (data && data.status) {
       setReward(data.reward);
@@ -43,7 +46,9 @@ export const RewardClaimApp: React.FC = () => {
   };
 
   const handleCodeVerification = async (code: string) => {
+    setIsLoading(true);
     const { data, error: apiError } = await verifyCode(code);
+    setIsLoading(false);
     if (apiError || !data) {
       const errorMessage = typeof apiError === "object" && apiError !== null
         ? ((apiError as any).message || (apiError as any).error || JSON.stringify(apiError))
@@ -103,8 +108,11 @@ export const RewardClaimApp: React.FC = () => {
 
       <div className="lg:w-1/2 w-full bg-white/4 backdrop-blur-xl border border-white/10 rounded-[28px] px-6 lg:px-12 py-12 lg:py-12 shadow-[0_25px_80px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.1)] relative z-10 box-border">
 
-        {/* {step === 1 && <AuthGate onAuthenticated={handleAuthenticated} />} */}
-        {step === 1 && <StepCode handleCodeVerification={handleCodeVerification} error={error} />}
+        {step === 1 && <StepCode
+          handleCodeVerification={handleCodeVerification}
+          error={error}
+          isLoading={isLoading}
+        />}
 
         {step === 2 && (
           <AuthGate onAuthenticated={handleAuthenticated} />

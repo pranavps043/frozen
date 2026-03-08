@@ -36,13 +36,6 @@ export default function RewardsPage() {
                 <RewardClaimApp />
             </section>
 
-            {/* <SectionVideo
-                backgroundImage={db.the_game.backgroundImage}
-                title={db.the_game.title}
-                description={db.the_game.description}
-                overlayColor="#65124380"
-                backgroundVideo={db.the_game.backgroundVideo}
-            /> */}
             <Modal isOpen={openModal} onClose={() => setOpenModal(false)}>
                 <video
                     src={db.the_game.backgroundVideo.src}

@@ -8,7 +8,7 @@ import Button from "@/components/ui/button";
 // Constants
 const REVEAL_DELAY_MS = 2000;
 const BONUS_CARD_TYPE_ID = 2;
-const SCRATCH_THRESHOLD_PERCENT = 50;
+const SCRATCH_THRESHOLD_PERCENT = 10;
 
 interface ExtendedScratchCardProps extends ScratchCardProps {
   scratchLayerImage?: string;
