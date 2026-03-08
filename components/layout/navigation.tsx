@@ -37,7 +37,7 @@ export default function Navigation() {
     });
 
     const navLinks = [
-        { name: "Menu", href: "/menu" },
+        { name: "Menu", href: "/#menu" },
         { name: "Franchise", href: "/franchise" },
         { name: "Gallery", href: "/gallery" },
         { name: "About Us", href: "/about-us" },

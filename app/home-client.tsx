@@ -96,8 +96,8 @@ export default function HomeClient({ data, heros, PageList }: { data: HomeDataTy
             </section>
 
             <section ref={aboutRef} className="h-screen" style={{ background: 'var(--theme-gradient)' }}>
-                <AboutSection 
-                    data={data.about_us} 
+                <AboutSection
+                    data={data.about_us}
                     dynamicImage={theme.about_section_image}
                 />
             </section>
