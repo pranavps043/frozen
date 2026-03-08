@@ -8,7 +8,7 @@ import { StepCode } from "./components/steps/StepCode";
 import { StepUserInfo } from "./components/steps/StepUserInfo";
 import { StepScratch } from "./components/steps/StepScratch";
 import { StepCongrats } from "./components/steps/StepCongrats";
-import { claimReward, getRandomReward, getUserGameReward } from "./lib/reward-apis";
+import { claimReward, getRandomReward, getUserGameReward, getUserReward } from "./lib/reward-apis";
 import { AllRewards } from "./components/steps/AllRewards";
 
 export const RewardClaimApp: React.FC = () => {
@@ -20,6 +20,7 @@ export const RewardClaimApp: React.FC = () => {
   const [userInfo, setUserInfo] = useState<UserInfo>({ name: "", email: "" });
   const [showConfetti, setShowConfetti] = useState(false);
   const [isLoadingScratch, setIsLoadingScratch] = useState(false);
+  const [userRewards, setUserRewards] = useState<any>(null);
 
   const handleAuthenticated = async (user: AuthUser) => {
     setAuthUser(user);
@@ -56,7 +57,8 @@ export const RewardClaimApp: React.FC = () => {
     setIsLoadingScratch(true);
     const { data: claimed_data, error: claimed_error } = await claimReward(authUser);
     localStorage.setItem("memberClaimedReward", JSON.stringify(claimed_data.reward));
-    const { data: user_reward_data, error: user_reward_error } = await getUserGameReward(authUser);
+    const { data: user_reward_data, error: user_reward_error } = await getUserReward(authUser);
+    setUserRewards(user_reward_data);
     localStorage.setItem("memberAvailableRewards", JSON.stringify(user_reward_data));
     setIsLoadingScratch(false);
     setStep(5);
@@ -109,7 +111,7 @@ export const RewardClaimApp: React.FC = () => {
             )}
 
             {step === 5 && reward && (
-              <AllRewards user={authUser} onReset={handleReset} />
+              <AllRewards user={authUser} userRewards={userRewards} onReset={handleReset} />
             )}
           </>
         )}

@@ -103,5 +103,6 @@ export interface UseScratchReturn {
 
 export interface AllRewardsProps {
   user: AuthUser;
+  userRewards: any;
   onReset: () => void;
 }

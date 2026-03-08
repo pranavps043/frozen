@@ -2,6 +2,7 @@
 import React from "react";
 import { AllRewardsProps } from "../../types/reward";
 import { Clock } from "lucide-react";
+import { TimeLeftToRedeem } from "./time-left-to-redeem";
 
 
 const rewards = [
@@ -28,8 +29,11 @@ const rewards = [
 
 export const AllRewards: React.FC<AllRewardsProps> = ({
   user,
+  userRewards,
   onReset,
 }: AllRewardsProps) => {
+
+  console.log(userRewards);
 
   return (
     <div className="animate-fade-in text-center">
@@ -45,10 +49,10 @@ export const AllRewards: React.FC<AllRewardsProps> = ({
 
       <div className="flex flex-col md:flex-row bg-[#3b0643] py-5 rounded-3xl">
         <div className="w-full md:w-1/2 p-4">
-          <ActiveClaimedReward />
+          <ActiveClaimedReward userActiveReward={userRewards?.latest} />
         </div>
         <div className="w-full md:w-1/2 p-4">
-          <OtherRewards />
+          <OtherRewards userRewards={userRewards?.rewards} />
         </div>
       </div>
 
@@ -61,7 +65,13 @@ export const AllRewards: React.FC<AllRewardsProps> = ({
 
 
 
-const ActiveClaimedReward = () => {
+const ActiveClaimedReward = ({ userActiveReward }: { userActiveReward: any }) => {
+  let claimedAt = userActiveReward?.claimed_at;
+  if (claimedAt) {
+    claimedAt = new Date(claimedAt.replace(" ", "T"));
+    claimedAt = claimedAt.toLocaleString("en-US", { dateStyle: "full", timeStyle: "medium" });
+  };
+  console.log("userActiveReward", userActiveReward);
   return (
     <div className="flex flex-col items-center text-center gap-4">
       <h2 className="text-xl font-semibold">Claimed Rewards</h2>
@@ -69,25 +79,28 @@ const ActiveClaimedReward = () => {
       <img
         src="/assets/images/rewards/claimed-reward.webp"
         alt="Claimed reward"
-        className="w-40 h-auto"
+        className={`w-40 h-auto ${userActiveReward != null ? "" : "grayscale"}`}
       />
 
-      <h4 className="text-lg font-medium">rewardname</h4>
+      <h4 className="text-lg font-medium">
+        {userActiveReward?.reward?.message}
+      </h4>
 
       <p className="max-w-md">
-        You claimed this reward at TIME### today. Redeem it at any Frozen outlet or online checkout.
+        You claimed this reward at <br /><strong>{claimedAt}</strong>. Redeem it at any Frozen outlet or online checkout.
       </p>
 
       <span className="flex items-center gap-2 text-sm">
         <Clock />
-        Time Left: 23h 59m remaining
+        Time Left:
       </span>
+      <TimeLeftToRedeem issuedAt={userActiveReward?.claimed_at} />
     </div>
   );
 };
 
 
-const OtherRewards = () => {
+const OtherRewards = ({ userRewards }: { userRewards: any }) => {
   return (
     <div className="space-y-6">
 
@@ -97,7 +110,7 @@ const OtherRewards = () => {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {rewards.map((reward, index) => {
+        {userRewards.slice(1, 4).map((reward: any, index: number) => {
           const isFirst = index === 0;
 
           return (
@@ -113,17 +126,14 @@ const OtherRewards = () => {
                 }
               >
                 <img
-                  src={reward.image}
-                  alt={reward.title}
+                  src='/assets/images/rewards/claimed-reward.webp'
+                  alt={reward.reward.message}
                   className="mx-auto mb-4 w-32 h-auto grayscale"
                 />
 
-                <h4 className="font-semibold mb-2">
-                  {reward.title}
-                </h4>
 
                 <p className="text-sm text-zinc-300/80">
-                  {reward.description}
+                  {reward.reward.message}
                 </p>
               </div>
             </div>

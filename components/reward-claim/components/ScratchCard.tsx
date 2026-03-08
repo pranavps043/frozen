@@ -8,13 +8,18 @@ import Button from "@/components/ui/button";
 // Constants
 const REVEAL_DELAY_MS = 2000;
 const BONUS_CARD_TYPE_ID = 2;
-const SCRATCH_THRESHOLD_PERCENT = 50; // Common threshold, adjust as needed
+const SCRATCH_THRESHOLD_PERCENT = 50;
 
-export const ScratchCard: React.FC<ScratchCardProps> = memo(({
+interface ExtendedScratchCardProps extends ScratchCardProps {
+  scratchLayerImage?: string;
+}
+
+export const ScratchCard: React.FC<ExtendedScratchCardProps> = memo(({
   reward,
   onScratchedAndClicked,
   onScratched,
   isLoading,
+  scratchLayerImage = "/assets/images/rewards/scratch-card.webp",
 }) => {
   const handleScratchComplete = useCallback(() => {
     if (reward?.type_id !== BONUS_CARD_TYPE_ID) {
@@ -36,6 +41,52 @@ export const ScratchCard: React.FC<ScratchCardProps> = memo(({
     onComplete: handleScratchComplete,
     threshold: SCRATCH_THRESHOLD_PERCENT,
   });
+
+  // Draw scratch layer image onto canvas
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const img = new Image();
+    img.src = scratchLayerImage;
+
+    img.onload = () => {
+      // Gold background to blend with rounded corners
+      ctx.fillStyle = "#F5C400";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Calculate cover-fit dimensions (like CSS object-fit: cover)
+      const scale = Math.max(
+        canvas.width / img.naturalWidth,
+        canvas.height / img.naturalHeight
+      );
+      const drawW = img.naturalWidth * scale;
+      const drawH = img.naturalHeight * scale;
+      const offsetX = (canvas.width - drawW) / 2;
+      const offsetY = (canvas.height - drawH) / 2;
+
+      ctx.drawImage(img, offsetX, offsetY, drawW, drawH);
+
+      // Subtle "Scratch to reveal" text overlay
+      ctx.fillStyle = "rgba(180, 100, 0, 0.55)";
+      ctx.font = "bold 14px sans-serif";
+      ctx.textAlign = "center";
+      ctx.letterSpacing = "1px";
+      ctx.fillText("✦  SCRATCH TO REVEAL  ✦", canvas.width / 2, canvas.height - 18);
+    };
+
+    img.onerror = () => {
+      // Fallback gold gradient
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, "#F5C400");
+      gradient.addColorStop(1, "#D4A000");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
+  }, [canvasRef, scratchLayerImage]);
 
   if (!reward) return null;
 
@@ -139,3 +190,4 @@ const RewardContent: React.FC<RewardContentProps> = memo(({
   );
 });
 
+RewardContent.displayName = "RewardContent";

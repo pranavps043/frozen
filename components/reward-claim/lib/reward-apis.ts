@@ -13,7 +13,8 @@ export const getRandomReward = async (user: AuthUser) => {
 
 export const getUserReward = async (user: AuthUser) => {
     const { data, error } = await post<any, any>(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/get-user-game-reward`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/get-reward-by-user`,
+        // `${process.env.NEXT_PUBLIC_API_URL}/api/get-user-game-reward`,
         {
             login_id: user.id
         }
