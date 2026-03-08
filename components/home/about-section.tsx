@@ -27,9 +27,9 @@ const AboutSection = ({ data, dynamicImage }: { data: AboutSectionProps, dynamic
                     className="object-cover blur-sm"
                     priority
                 />
-                <div 
-                    className="absolute inset-0 opacity-60" 
-                    style={{ background: `var(--theme-gradient)` }} 
+                <div
+                    className="absolute inset-0 opacity-60"
+                    style={{ background: `var(--theme-gradient)` }}
                 />
             </div>
             <div

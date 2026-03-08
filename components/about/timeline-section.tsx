@@ -151,10 +151,7 @@ export default function TimelineSection({ backgroundImage, title, items }: Timel
                                     {/* Content Card */}
                                     <div className={`pl-12 lg:pl-0 ${isLeft ? 'lg:col-start-1 lg:pr-12 lg:text-right' : 'lg:col-start-2 lg:pl-12 lg:text-left'}`}>
                                         <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl hover:bg-white/15 transition-all duration-300 hover:scale-[1.02]">
-                                            {/* Year */}
-                                            <span className="timeline-content-item inline-block text-4xl font-bold text-white mb-6 font-primary bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">
-                                                {item.year}
-                                            </span>
+
 
                                             {/* Image */}
                                             <div className="timeline-content-item relative w-full h-56 mb-6 rounded-xl overflow-hidden shadow-xl">
