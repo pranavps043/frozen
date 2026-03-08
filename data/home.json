@@ -11,7 +11,11 @@
         "button_color": "#3A2313",
         "button_shadow": "#00000040",
         "button_hover": "#50331a",
-        "button_size": "lg"
+        "button_size": "lg",
+        "accordion_bg": "--burnt-caramel",
+        "accordion_bg_active": "--peach-glaze",
+        "dessert_paradise_bg": "/assets/images/blue-berry/desert-para.webp",
+        "about_section_image": "/assets/images/garden-bowls.png"
     },
     "heros": [
         {
@@ -24,7 +28,9 @@
                 "button_hover": "#50331a",
                 "bg_gradient": "--gradient-light-orange",
                 "accordion_bg": "--burnt-caramel",
-                "accordion_bg_active": "--peach-glaze"
+                "accordion_bg_active": "--peach-glaze",
+                "dessert_paradise_bg": "/assets/images/blue-berry/desert-para.webp",
+                "about_section_image": "/assets/images/garden-bowls.png"
             },
             "content": {
                 "title": "The Final Note of Delight",
@@ -67,7 +73,9 @@
                 "button_hover": "#e68a00",
                 "bg_gradient": "--gradient-golden-mango",
                 "accordion_bg": "--gradient-golden-mango",
-                "accordion_bg_active": "--peach-glaze"
+                "accordion_bg_active": "--peach-glaze",
+                "dessert_paradise_bg": "/assets/images/mango/9eb9a6c27c755239003c3b94467611582160df62.webp",
+                "about_section_image": "/assets/images/mango/c6352e0df1c07c977b243e0e7dcdc8e35e2364b5.webp"
             },
             "content": {
                 "title": "“Frozen Childhood in a Scoop”",
@@ -112,7 +120,9 @@
                 "button_hover": "#16510a",
                 "bg_gradient": "--gradient-harvest-meadow",
                 "accordion_bg": "--gradient-garden-glow",
-                "accordion_bg_active": "--frosted-white"
+                "accordion_bg_active": "--frosted-white",
+                "dessert_paradise_bg": "/assets/images/veg-salad/704a6c539e893e0f2276e9c37eb7a1fd137288a6.webp",
+                "about_section_image": "/assets/images/veg-salad/bcac963392d08329ae6e32e96c938fda034ce73e.webp"
             },
             "content": {
                 "title": "“Garden in Every Bite”",
@@ -216,10 +226,10 @@
         "products": [
             {
                 "id": 1,
-                "title": "Frozen Vegetables",
-                "description": "Frozen vegetables are a great way to add fresh vegetables to your diet.",
+                "title": "Homemade Mango Icecream",
+                "description": "From scoops to bowls to slices every product is crafted fresh, every day.”",
                 "image": {
-                    "src": "/assets/images/hero/products/small-cake.webp",
+                    "src": "/assets/images/hero/products/small-icecream.webp",
                     "alt": "Frozen Vegetables",
                     "width": 500,
                     "height": 500
@@ -236,8 +246,8 @@
             },
             {
                 "id": 2,
-                "title": "Frozen Vegetables",
-                "description": "Frozen vegetables are a great way to add fresh vegetables to your diet.",
+                "title": "Homemade Blueberry Cheesecake.",
+                "description": "From scoops to bowls to slices every product is crafted fresh, every day.”",
                 "image": {
                     "src": "/assets/images/hero/products/small-cake.webp",
                     "alt": "Frozen Vegetables",
@@ -256,10 +266,10 @@
             },
             {
                 "id": 3,
-                "title": "Frozen Vegetables",
+                "title": "Homemade Healthy Green Veg Salad",
                 "description": "Frozen vegetables are a great way to add fresh vegetables to your diet.",
                 "image": {
-                    "src": "/assets/images/hero/products/small-cake.webp",
+                    "src": "/assets/images/hero/products/small-veg-salad.webp",
                     "alt": "Frozen Vegetables",
                     "width": 500,
                     "height": 500
@@ -296,19 +306,18 @@
         }
     },
     "flavors_feelings": {
-        "title": "\"Flavors That Speak to Your Soul\"",
-        "description": "Experience the magic of pure ingredients and timeless recipes in every bite.",
+        "title": "From Our Journal of Flavors & Feelings",
+        "description": "A space where stories are stirred, thoughts are blended, and inspirations are served fresh just like everything we create.",
         "bg_gradient": "--gradient-light-orange",
         "accordion_bg": "--burnt-caramel",
         "accordion_bg_active": "--peach-glaze",
         "accordion": [
             {
                 "id": 1,
-                "title": "Frozen Vegetables",
-                "description": "Frozen vegetables are a great way to add fresh vegetables to your diet.",
+                "title": "A Taste of Happiness",
+                "description": "Our desserts are more than just the end of a meal they’re the beginning of a smile. Each creation combines rich textures, natural flavors, and a dash of creativity from our kitchen.From fruit-topped delights to creamy layered indulgences, we craft every dessert to bring a moment of joy. Because we believe sweetness isn’t just tasted it’s felt, shared, and remembered.",
                 "image": {
-                    "src": "/assets/images/hero/products/small-cake.webp",
-                    "alt": "Frozen Vegetables",
+                "src": "/assets/images/flavors-feelings/expand-card-dessert.webp",                    "alt": "Frozen Vegetables",
                     "width": 500,
                     "height": 500
                 },
@@ -319,10 +328,10 @@
             },
             {
                 "id": 2,
-                "title": "Frozen Vegetables",
-                "description": "Frozen vegetables are a great way to add fresh vegetables to your diet.",
+                "title": "Scoop of Nature",
+                "description": "At Frozen Creamery N’ Garden, we believe ice cream should taste like happiness not chemicals. Every scoop is handcrafted using natural fruits, pure milk, and just the right touch of sweetness.From the tang of strawberries to the calm of creamy vanilla, our ice creams are made daily in small batches no artificial flavors, no preservatives, just nature’s best ingredients blending into a refreshing experience.",
                 "image": {
-                    "src": "/assets/images/hero/products/small-cake.webp",
+                    "src": "/assets/images/flavors-feelings/expand-card-icecream.webp",
                     "alt": "Frozen Vegetables",
                     "width": 500,
                     "height": 500
@@ -334,10 +343,10 @@
             },
             {
                 "id": 3,
-                "title": "Frozen Vegetables",
-                "description": "Frozen vegetables are a great way to add fresh vegetables to your diet.",
+                "title": "Freshness in Every Bowl",
+                "description": "Every bowl of salad is a blend of freshness, color, and crunch. We handpick locally grown vegetables from crisp lettuce to juicy tomatoes ensuring each bite bursts with goodness.Our salads aren’t just food; they’re a reminder that simple ingredients make life vibrant. Whether it’s a mid-day refresh or dinner side, our salads balance taste and health made with care, served with heart.",
                 "image": {
-                    "src": "/assets/images/hero/products/small-cake.webp",
+                     "src": "/assets/images/flavors-feelings/expand-card-salad.webp",
                     "alt": "Frozen Vegetables",
                     "width": 500,
                     "height": 500

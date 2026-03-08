@@ -3,7 +3,6 @@
 "use client";
 
 import { motion } from 'motion/react';
-import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef } from 'react';
@@ -25,7 +24,7 @@ interface DessertParadiseType {
 }
 
 
-export default function DessertParadise({ content }: { content: DessertParadiseType }) {
+export default function DessertParadise({ content, bgImage }: { content: DessertParadiseType, bgImage?: string }) {
 
     const bgRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
@@ -34,11 +33,15 @@ export default function DessertParadise({ content }: { content: DessertParadiseT
 
     return (
         <div className="relative h-full w-full overflow-hidden flex items-center justify-center overflow-hidden">
-            <div
+            <motion.div
+                key={bgImage}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
                 ref={bgRef}
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
                 style={{
-                    backgroundImage: "url('/assets/images/about-us-bg.webp')",
+                    backgroundImage: `url('${bgImage || "/assets/images/about-us-bg.webp"}')`,
                 }}
             />
             <div className="absolute inset-0 " >

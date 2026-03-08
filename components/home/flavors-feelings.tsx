@@ -8,7 +8,7 @@ import Image from 'next/image';
 interface FlavorsFeelingsType {
     title: string;
     description: string;
-    background: BackgroundType;
+    background?: BackgroundType;
     accordion_bg: string;
     accordion_bg_active: string;
     bg_gradient: string;
