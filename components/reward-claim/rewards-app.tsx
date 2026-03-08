@@ -107,7 +107,6 @@ export const RewardClaimApp: React.FC = () => {
       {showConfetti && <Confetti />}
 
       <div className="lg:w-1/2 w-full bg-white/4 backdrop-blur-xl border border-white/10 rounded-[28px] px-6 lg:px-12 py-12 lg:py-12 shadow-[0_25px_80px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.1)] relative z-10 box-border">
-
         {step === 1 && <StepCode
           handleCodeVerification={handleCodeVerification}
           error={error}

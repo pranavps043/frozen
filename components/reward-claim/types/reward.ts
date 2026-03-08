@@ -24,6 +24,22 @@ export interface SignUpPayload {
   confirmPassword: string;
 }
 
+export interface LoginResponse {
+  success: boolean;
+  message?: string;
+  user: {
+    id: string;
+    name: string;
+    email: string;
+  };
+  tokens_login: string;
+}
+
+export interface RegisterResponse {
+  success: boolean;
+  message?: string;
+}
+
 // ── Reward Flow ───────────────────────────────────────
 export type Step = 1 | 2 | 3 | 4 | 5;
 

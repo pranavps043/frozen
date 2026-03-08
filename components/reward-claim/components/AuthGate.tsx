@@ -4,8 +4,7 @@ import { AuthMode, AuthUser } from "../types/reward";
 import { SignIn } from "./SignIn";
 import { SignUp } from "./SignUp";
 import { useAuth } from "../hooks/useAuth";
-import { post } from "@/lib/api";
-import { loginMember, registerMember } from "../lib/reward-apis";
+import { loginMember, registerMember } from "../lib/reward-apis-client";
 
 interface AuthGateProps {
   onAuthenticated: (user: AuthUser) => void;
@@ -39,7 +38,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onAuthenticated }) => {
     }
 
     if (data.success == false) {
-      setError(data.message);
+      setError(data.message || "Login failed");
       setIsLoading(false);
       return false;
     }
@@ -66,14 +65,14 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onAuthenticated }) => {
     setIsLoading(true);
     setError("");
     const { data, error } = await registerMember(payload);
-    if (error) {
-      setError(error);
+    if (error || !data) {
+      setError(error || "Registration failed");
       setIsLoading(false);
       return false;
     }
 
     if (data.success == false) {
-      setError(data.message);
+      setError(data.message || "Registration failed");
       setIsLoading(false);
       return false;
     }
