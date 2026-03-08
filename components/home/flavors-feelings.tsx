@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useCallback, useMemo } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { BackgroundType, ButtonType, ImageType } from '@/types/common';
 import Button from '../ui/button';
 import Image from 'next/image';
@@ -23,7 +23,6 @@ interface Accordion {
     button: ButtonType;
 }
 
-// Extracted constant for animation variants
 const ANIMATION_VARIANTS = {
     fadeInUp: {
         initial: { opacity: 0, y: 20 },
@@ -35,32 +34,28 @@ const ANIMATION_VARIANTS = {
 export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType }) {
     const [activeIndex, setActiveIndex] = useState(0);
 
-    // Memoize click handler to prevent unnecessary re-renders
     const handleAccordionClick = useCallback((index: number) => {
         setActiveIndex(index);
     }, []);
 
-    // Memoize title splitting to avoid recalculation on each render
     const formattedTitle = useMemo(() => {
         if (!data?.title) return '';
         return data.title;
     }, [data?.title]);
 
-    // Early return if no data
     if (!data?.accordion?.length) {
         return null;
     }
 
     return (
         <div className="relative h-full w-full flex flex-col items-center justify-center p-4 md:p-8">
-            {/* Background gradient with improved performance */}
             <div
-                className="absolute inset-0 z-1 opacity-50 will-change-transform"
+                className="absolute inset-0 z-[1] opacity-50"
                 style={{ background: `var(--theme-gradient)` }}
                 aria-hidden="true"
             />
 
-            <div className="relative w-full max-w-7xl z-2 px-4 md:px-6">
+            <div className="relative w-full max-w-7xl z-[2] px-4 md:px-6">
                 <motion.div
                     {...ANIMATION_VARIANTS.fadeInUp}
                     viewport={{ once: true, margin: "-100px" }}
@@ -76,7 +71,7 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
             </div>
 
             <div
-                className="relative w-full max-w-7xl min-h-[60vh] flex gap-2 z-2 px-0 md:px-2 md:px-6"
+                className="relative w-full max-w-7xl min-h-[60vh] flex gap-2 z-[2] px-0 md:px-6"
                 role="tablist"
                 aria-label="Flavors and feelings accordion"
             >
@@ -96,7 +91,6 @@ export default function FlavorsFeelings({ data }: { data: FlavorsFeelingsType })
     );
 }
 
-// Extracted Accordion Item component for better separation of concerns
 const AccordionItem = React.memo(({
     item,
     index,
@@ -112,7 +106,6 @@ const AccordionItem = React.memo(({
     accordionBg: string;
     accordionBgActive: string;
 }) => {
-    // Memoize title words to avoid recalculation
     const titleWords = useMemo(() => item.title.split(' '), [item.title]);
 
     const handleClick = useCallback(() => {
@@ -121,15 +114,21 @@ const AccordionItem = React.memo(({
 
     return (
         <motion.div
-            className="relative rounded-3xl overflow-hidden cursor-pointer shadow-xl will-change-contents"
-            style={{ background: `var(${accordionBg})` }}
+            className="relative rounded-3xl overflow-hidden cursor-pointer shadow-xl"
+            style={{
+                background: `var(${isActive ? accordionBgActive : accordionBg})`,
+            }}
+            initial={false}
             animate={{
-                flex: isActive ? 3 : 0.8,
+                flex: isActive ? 3 : 0.5,
             }}
             transition={{
-                duration: 0.6,
-                ease: [0.32, 0.72, 0, 1]
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+                mass: 1
             }}
+            layout
             onClick={handleClick}
             role="tab"
             aria-selected={isActive}
@@ -142,14 +141,14 @@ const AccordionItem = React.memo(({
             }}
         >
             {/* Collapsed State - Vertical Title */}
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="popLayout">
                 {!isActive && (
                     <motion.div
-                        key={`collapsed-${index}`}
+                        key="collapsed"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
                         className="absolute inset-0 flex items-center justify-center"
                         style={{ background: `var(${accordionBg})` }}
                     >
@@ -168,45 +167,40 @@ const AccordionItem = React.memo(({
                 {/* Expanded State - Full Content */}
                 {isActive && (
                     <motion.div
-                        key={`expanded-${index}`}
+                        key="expanded"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.4, delay: 0.2 }}
-                        className="h-full p-4 md:p-5 flex flex-col justify-center gap-4 md:gap-8 overflow-y-auto"
+                        transition={{ duration: 0.3, delay: 0.1 }}
+                        className="absolute inset-0 p-4 md:p-8 flex flex-col justify-center overflow-hidden"
                         style={{ background: `var(${accordionBgActive})` }}
                     >
-                        <div className="flex items-start gap-4 md:gap-8 flex-col lg:flex-row">
-                            {/* Image Container */}
+                        <div className="flex items-center gap-6 md:gap-8 flex-col lg:flex-row h-full">
+                            {/* Image Container - Fixed size prevents growing animation */}
                             <motion.div
-                                initial={{ scale: 0.8, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                transition={{ duration: 0.5, delay: 0.3 }}
-                                className="flex-shrink-0 w-full lg:w-auto"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.4, delay: 0.2 }}
+                                className="flex-shrink-0 w-full lg:w-[300px] h-[200px] lg:h-[300px] relative"
                             >
-                                <div className="w-full lg:w-[300px] h-[300px] lg:h-[300px] rounded-3xl">
-                                    <div className="relative w-full h-full">
-                                        <Image
-                                            src={item.image.src}
-                                            alt={item.image.alt || item.title}
-                                            fill
-                                            className="object-cover rounded-2xl"
-                                            sizes="(max-width: 768px) 100vw, 300px"
-                                            priority={index === 0}
-                                            loading={index === 0 ? "eager" : "lazy"}
-                                        />
-                                    </div>
-                                </div>
+                                <Image
+                                    src={item.image.src}
+                                    alt={item.image.alt || item.title}
+                                    fill
+                                    className="object-cover rounded-2xl"
+                                    sizes="(max-width: 768px) 100vw, 300px"
+                                    priority={index === 0}
+                                />
                             </motion.div>
 
                             {/* Text Content */}
                             <motion.div
-                                initial={{ x: 20, opacity: 0 }}
-                                animate={{ x: 0, opacity: 1 }}
-                                transition={{ duration: 0.5, delay: 0.4 }}
-                                className="flex-1 flex flex-col gap-4 md:gap-6"
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.4, delay: 0.3 }}
+                                className="flex-1 flex flex-col gap-4 md:gap-6 min-w-0"
                             >
-                                <h3 className="lg:text-5xl text-2xl font-serif italic text-gray-800 leading-tight">
+                                <h3 className="lg:text-3xl text-2xl font-serif italic text-gray-800">
                                     {titleWords.map((word, i) => (
                                         <React.Fragment key={i}>
                                             {word}
@@ -215,15 +209,15 @@ const AccordionItem = React.memo(({
                                     ))}
                                 </h3>
 
-                                <p className="lg:text-lg text-sm text-gray-700 leading-relaxed max-w-xl">
+                                <p className="lg:text-base text-sm text-gray-700 leading-relaxed">
                                     {item.description}
                                 </p>
 
                                 {item.button?.label && (
-                                    <div className="w-full md:w-1/2">
+                                    <div className="w-full md:w-auto">
                                         <Button
                                             variant="primary"
-                                            size="lg"
+                                            size="md"
                                             href={item.button.link}
                                         >
                                             {item.button.label}
