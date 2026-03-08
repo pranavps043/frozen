@@ -14,12 +14,12 @@ interface ErrorType {
 //   onSuccess: (reward: Reward, code: string) => void;
 // }
 
-export const StepCode: React.FC<StepCodeProps> = ({ onSuccess }) => {
+export const StepCode: React.FC<StepCodeProps> = ({ handleCodeVerification, error }) => {
   const [code, setCode] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  // const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async () => {
+  /* const handleSubmit = async () => {
     if (!code) { setError("Please enter a reward code."); return; }
     setIsLoading(true);
     setError("");
@@ -40,7 +40,7 @@ export const StepCode: React.FC<StepCodeProps> = ({ onSuccess }) => {
 
     setError("");
     onSuccess(data, code);
-  };
+  }; */
 
   return (
     <div className="animate-fade-in">
@@ -55,15 +55,16 @@ export const StepCode: React.FC<StepCodeProps> = ({ onSuccess }) => {
         <p className="text-amber-800 text-[18px] font-bold mb-4 tracking-tight font-serif text-shadow-sm">Enter it below to unlock your reward!</p>
       </div>
 
-      <SplitCodeInput length={6}
+      <SplitCodeInput
+        length={6}
         value={code}
         error={error}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setCode(e.target.value); setError(""); }}
-        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => e.key === "Enter" && handleSubmit()}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setCode(e.target.value); }}
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => e.key === "Enter" && handleCodeVerification(code)}
       />
 
       <div className="mt-5 flex justify-center">
-        <Button isLoading={isLoading} onClick={handleSubmit}>Verify & Continue →</Button>
+        <Button isLoading={isLoading} onClick={() => handleCodeVerification(code)}>Verify & Continue →</Button>
       </div>
 
     </div>

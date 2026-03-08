@@ -43,6 +43,20 @@ export interface UserInfo {
   email: string;
 }
 
+export interface RewardResponse {
+  status: boolean;
+  reward: Reward;
+  message?: string;
+}
+
+export interface UserRewardsResponse {
+  status: boolean;
+  rewards?: Reward[];
+  // Include any other fields that getUserReward might return
+  [key: string]: any;
+}
+
+
 // ── Component Props ───────────────────────────────────
 export interface ScratchCardProps {
   reward: Reward | null;
@@ -52,7 +66,8 @@ export interface ScratchCardProps {
 }
 
 export interface StepCodeProps {
-  onSuccess: (reward: Reward, code: string) => void;
+  handleCodeVerification: (code: string) => void;
+  error: string | null;
 }
 
 export interface StepUserInfoProps {

@@ -109,6 +109,7 @@ const OtherRewards = ({ userRewards }: { userRewards: any }) => {
         Expired
       </h2>
 
+      {userRewards.length < 2 && <p className="text-center text-yellow-500/70">No expired rewards</p>}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {userRewards.slice(1, 4).map((reward: any, index: number) => {
           const isFirst = index === 0;

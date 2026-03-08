@@ -8,7 +8,7 @@ import { StepCode } from "./components/steps/StepCode";
 import { StepUserInfo } from "./components/steps/StepUserInfo";
 import { StepScratch } from "./components/steps/StepScratch";
 import { StepCongrats } from "./components/steps/StepCongrats";
-import { claimReward, getRandomReward, getUserGameReward, getUserReward } from "./lib/reward-apis";
+import { claimReward, getRandomReward, getUserGameReward, getUserReward, verifyCode } from "./lib/reward-apis-client";
 import { AllRewards } from "./components/steps/AllRewards";
 
 export const RewardClaimApp: React.FC = () => {
@@ -21,6 +21,7 @@ export const RewardClaimApp: React.FC = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [isLoadingScratch, setIsLoadingScratch] = useState(false);
   const [userRewards, setUserRewards] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleAuthenticated = async (user: AuthUser) => {
     setAuthUser(user);
@@ -29,19 +30,33 @@ export const RewardClaimApp: React.FC = () => {
     localStorage.setItem("name", user.name);
     localStorage.setItem("start_level", user.game_level);
     localStorage.setItem("justLoggedIn", "yes");
-    const { data, error } = await getRandomReward(user);
+    const { data, error } = await getRandomReward(user.id);
 
-    if (data.status) {
+    if (data && data.status) {
       setReward(data.reward);
       setStep(3);
     }
+    if (error) {
+      setError(error);
+    }
+
   };
 
-  const handleCodeSuccess = (r: Reward, code: string) => {
-    setReward(r);
+  const handleCodeVerification = async (code: string) => {
+    const { data, error: apiError } = await verifyCode(code);
+    if (apiError || !data) {
+      const errorMessage = typeof apiError === "object" && apiError !== null
+        ? ((apiError as any).message || (apiError as any).error || JSON.stringify(apiError))
+        : (apiError || "Invalid response");
+      setError(errorMessage as string);
+      return;
+    }
+
     setClaimedCode(code);
+    setReward(data.reward);
     setStep(2);
   };
+
 
   const handleUserInfoSuccess = (info: UserInfo) => {
     setUserInfo(info);
@@ -55,11 +70,16 @@ export const RewardClaimApp: React.FC = () => {
   const handleScratchedClaimSubmit = async () => {
     if (!authUser) return;
     setIsLoadingScratch(true);
-    const { data: claimed_data, error: claimed_error } = await claimReward(authUser);
-    localStorage.setItem("memberClaimedReward", JSON.stringify(claimed_data.reward));
-    const { data: user_reward_data, error: user_reward_error } = await getUserReward(authUser);
-    setUserRewards(user_reward_data);
-    localStorage.setItem("memberAvailableRewards", JSON.stringify(user_reward_data));
+    const { data: claimed_data, error: claimed_error } = await claimReward(authUser.id);
+    if (claimed_data) {
+      localStorage.setItem("memberClaimedReward", JSON.stringify(claimed_data.reward));
+    }
+    const { data: user_reward_data, error: user_reward_error } = await getUserReward(authUser.id);
+    if (user_reward_data) {
+      setUserRewards(user_reward_data);
+      localStorage.setItem("memberAvailableRewards", JSON.stringify(user_reward_data));
+    }
+
     setIsLoadingScratch(false);
     setStep(5);
   };
@@ -84,7 +104,7 @@ export const RewardClaimApp: React.FC = () => {
       <div className="lg:w-1/2 w-full bg-white/4 backdrop-blur-xl border border-white/10 rounded-[28px] px-6 lg:px-12 py-12 lg:py-12 shadow-[0_25px_80px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.1)] relative z-10 box-border">
 
         {/* {step === 1 && <AuthGate onAuthenticated={handleAuthenticated} />} */}
-        {step === 1 && <StepCode onSuccess={handleCodeSuccess} />}
+        {step === 1 && <StepCode handleCodeVerification={handleCodeVerification} error={error} />}
 
         {step === 2 && (
           <AuthGate onAuthenticated={handleAuthenticated} />
